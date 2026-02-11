@@ -704,6 +704,30 @@
   .package.bug { background: #6b2030; color: #ffa0b0; border-color: #8c2a3e; }
   .package.chore { background: #2a5a3a; color: #90e8b0; border-color: #387a4e; }
 
+  .package.mandatory {
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--yellow) !important;
+    box-shadow: 0 0 8px rgba(253, 203, 110, 0.25);
+  }
+  .package.mandatory::before {
+    content: '!';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: #1a1d27;
+    font-size: 0.6rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
   /* Deploy ready train */
   .deploy-station .compartment {
     border-style: solid;
@@ -845,12 +869,37 @@
 
   <div class="ownership-divider">
     <span class="line"></span>
+    <span class="label">PM + Leads + Users decide what to build &rarr;</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="pipeline">
+    <div class="stage active" data-stage="intake">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F4E5;</div>
+        <div class="stage-label">Intake</div>
+        <div class="stage-owner">PM / Users / Leads</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="decision">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x2696;&#xFE0F;</div>
+        <div class="stage-label">Decision</div>
+        <div class="stage-owner">PM + Tech Lead</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+  </div>
+
+  <div class="ownership-divider">
+    <span class="line"></span>
     <span class="label">Devs own this &rarr;</span>
     <span class="line"></span>
   </div>
 
   <div class="pipeline">
-    <div class="stage active" data-stage="triage">
+    <div class="stage" data-stage="triage">
       <div class="stage-inner">
         <div class="stage-icon">&#x1F50D;</div>
         <div class="stage-label">Triage</div>
@@ -925,6 +974,25 @@
   </div>
 
   <!-- Stage Details -->
+  <div class="stage-detail active" id="detail-intake">
+    <h3>&#x1F4E5; Intake</h3>
+    <ul>
+      <li><strong>Features:</strong> PM/PO submits feature requests based on product roadmap and business goals</li>
+      <li><strong>Bug fixes:</strong> Users report issues via support channels, crash reports, or feedback</li>
+      <li><strong>Improvements:</strong> Tech leads propose tech debt, performance, or architecture improvements</li>
+      <li>Everything lands here first — no filtering yet, just capturing</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-decision">
+    <h3>&#x2696;&#xFE0F; Decision</h3>
+    <ul>
+      <li><strong>PM + Tech Lead</strong> review intake together and decide what moves forward</li>
+      <li>Prioritise based on: business value, user impact, technical urgency, dependencies</li>
+      <li>Items are categorised: feature / bug fix / improvement / tech debt</li>
+      <li>Rejected or deferred items go to an icebox — not lost, just parked</li>
+      <li>Approved items move to Triage for technical assessment with Claude</li>
+    </ul>
+  </div>
   <div class="stage-detail" id="detail-triage">
     <h3>&#x1F50D; Triage</h3>
     <ul>
@@ -1012,12 +1080,32 @@
     <div class="sim-legend-item"><div class="swatch feat"></div> Feature</div>
     <div class="sim-legend-item"><div class="swatch bug"></div> Bug Fix</div>
     <div class="sim-legend-item"><div class="swatch chore"></div> Chore / Tech Debt</div>
+    <div class="sim-legend-item"><div class="swatch" style="background:var(--yellow);border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:800;color:#1a1d27;">!</div> Mandatory for release</div>
   </div>
 
   <div class="train-sim-wrap">
     <div class="track-container">
       <div class="rail"></div>
       <div class="stations" id="station-board">
+
+        <div class="station" data-station="intake">
+          <div class="station-name">Intake<span class="owner-tag">PM / Users / Leads</span></div>
+          <div class="compartment" data-station="intake">
+            <div class="package feat" draggable="true" data-id="T-110"><span class="pkg-id">T-110</span>Loyalty program</div>
+            <div class="package bug" draggable="true" data-id="T-111"><span class="pkg-id">T-111</span>Slow checkout</div>
+            <div class="package chore" draggable="true" data-id="T-112"><span class="pkg-id">T-112</span>Migrate to Swift 6</div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station" data-station="decision">
+          <div class="station-name">Decision<span class="owner-tag">PM + Tech Lead</span></div>
+          <div class="compartment" data-station="decision">
+            <div class="package feat" draggable="true" data-id="T-105"><span class="pkg-id">T-105</span>Biometric login</div>
+            <div class="package bug mandatory" draggable="true" data-id="T-106"><span class="pkg-id">T-106</span>Crash on iOS 18</div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
 
         <div class="station" data-station="triage">
           <div class="station-name">Triage<span class="owner-tag">Dev + Claude</span></div>
@@ -1041,7 +1129,7 @@
         <div class="station active-station" data-station="progress">
           <div class="station-name">In Progress<span class="owner-tag">Dev + Claude</span></div>
           <div class="compartment" data-station="progress">
-            <div class="package feat" draggable="true" data-id="T-82"><span class="pkg-id">T-82</span>Payment flow<span class="pkg-sp">8 SP</span></div>
+            <div class="package feat mandatory" draggable="true" data-id="T-82"><span class="pkg-id">T-82</span>Payment flow<span class="pkg-sp">8 SP</span></div>
             <div class="package bug" draggable="true" data-id="T-85"><span class="pkg-id">T-85</span>Memory leak<span class="pkg-sp">3 SP</span></div>
           </div>
           <div class="station-dot"></div>
@@ -1078,8 +1166,8 @@
         <div class="station deploy-station" data-station="deploy-ready">
           <div class="station-name">Deploy Ready<span class="owner-tag">Lead + PM</span></div>
           <div class="compartment" data-station="deploy-ready">
-            <div class="package feat" draggable="true" data-id="T-58"><span class="pkg-id">T-58</span>Checkout v3<span class="pkg-sp">8 SP</span></div>
-            <div class="package bug" draggable="true" data-id="T-60"><span class="pkg-id">T-60</span>SSL pinning<span class="pkg-sp">3 SP</span></div>
+            <div class="package feat mandatory" draggable="true" data-id="T-58"><span class="pkg-id">T-58</span>Checkout v3<span class="pkg-sp">8 SP</span></div>
+            <div class="package bug mandatory" draggable="true" data-id="T-60"><span class="pkg-id">T-60</span>SSL pinning<span class="pkg-sp">3 SP</span></div>
           </div>
           <div class="train-departing">
             <div class="departure-label">B2C Train Departs In</div>
@@ -1099,6 +1187,15 @@
 
       </div>
     </div>
+  </div>
+
+  <div id="mandatory-tracker" style="margin-top: 24px; background: var(--surface); border: 1px solid var(--yellow); border-radius: var(--radius); padding: 16px 20px;">
+    <h4 style="font-size: 0.95rem; margin-bottom: 12px; color: var(--yellow); display: flex; align-items: center; gap: 8px;">
+      &#x1F3AF; Mandatory Items Tracker
+      <span style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted);">— must ship this release</span>
+    </h4>
+    <div id="mandatory-items" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+    <div id="mandatory-summary" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);"></div>
   </div>
 
   <div class="rules-grid" style="margin-top: 30px;">
@@ -1649,8 +1746,67 @@
     setInterval(tick, 1000);
   }
 
+  // ── Mandatory item tracker ──
+  const stationOrder = ['intake','decision','triage','todo','progress','review','validation','approved','deploy-ready','deployed'];
+  const stationLabels = {
+    'intake': 'Intake', 'decision': 'Decision', 'triage': 'Triage', 'todo': 'Todo',
+    'progress': 'In Progress', 'review': 'Code Review', 'validation': 'Validation',
+    'approved': 'Approved', 'deploy-ready': 'Deploy Ready', 'deployed': 'Deployed'
+  };
+
+  function updateMandatoryTracker() {
+    const container = document.getElementById('mandatory-items');
+    const summary = document.getElementById('mandatory-summary');
+    if (!container) return;
+
+    const mandatoryPkgs = document.querySelectorAll('#station-board .package.mandatory');
+    container.innerHTML = '';
+
+    let shipped = 0;
+    let total = mandatoryPkgs.length;
+
+    mandatoryPkgs.forEach(pkg => {
+      const comp = pkg.closest('.compartment');
+      const station = comp ? comp.dataset.station : '?';
+      const id = pkg.dataset.id;
+      const name = pkg.childNodes[1] ? pkg.childNodes[1].textContent.trim() : '';
+      const isShipped = station === 'deployed';
+      const isReady = station === 'deploy-ready' || station === 'approved';
+      if (isShipped) shipped++;
+
+      let color = 'var(--orange)';
+      let statusText = stationLabels[station] || station;
+      if (isShipped) { color = 'var(--green)'; statusText = 'Shipped'; }
+      else if (isReady) { color = 'var(--accent)'; }
+
+      const el = document.createElement('div');
+      el.style.cssText = `background:var(--surface2);border-radius:8px;padding:8px 12px;border-left:3px solid ${color};min-width:140px;`;
+      el.innerHTML = `
+        <div style="font-size:0.7rem;color:var(--text-muted);">${id}</div>
+        <div style="font-size:0.8rem;font-weight:600;">${name}</div>
+        <div style="font-size:0.65rem;color:${color};margin-top:4px;font-weight:500;">${statusText}</div>
+      `;
+      container.appendChild(el);
+    });
+
+    const pct = total > 0 ? Math.round((shipped / total) * 100) : 0;
+    summary.innerHTML = `<strong>${shipped}/${total}</strong> mandatory items shipped (${pct}%). ` +
+      (shipped === total ? '<span style="color:var(--green);">All mandatory items delivered!</span>' :
+       `<span style="color:var(--orange);">${total - shipped} remaining before release.</span>`);
+  }
+
+  // Update tracker on every drop
+  const origDropHandlers = [];
+  document.querySelectorAll('.compartment').forEach(comp => {
+    const origDrop = comp.ondrop;
+    comp.addEventListener('drop', () => {
+      setTimeout(updateMandatoryTracker, 50);
+    });
+  });
+
   startCountdown();
   updateWIP();
+  updateMandatoryTracker();
 
   // ── Platform toggle (visual only for demo) ──
   document.querySelectorAll('.plat-btn').forEach(btn => {

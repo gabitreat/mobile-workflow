@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Workflow — Continuous Flow</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3347;
+    --text: #e2e4ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108, 92, 231, 0.15);
+    --green: #00b894;
+    --green-glow: rgba(0, 184, 148, 0.15);
+    --orange: #f39c12;
+    --orange-glow: rgba(243, 156, 18, 0.15);
+    --pink: #e84393;
+    --pink-glow: rgba(232, 67, 147, 0.15);
+    --blue: #0984e3;
+    --blue-glow: rgba(9, 132, 227, 0.15);
+    --red: #d63031;
+    --yellow: #fdcb6e;
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── NAVIGATION TABS ── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 30px 20px 10px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .tab:hover { border-color: var(--accent); color: var(--text); }
+  .tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 0.4s ease;
+  }
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── WORKFLOW PIPELINE ── */
+  .pipeline {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    padding: 20px 0 30px;
+    position: relative;
+  }
+  .pipeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .stage {
+    flex: 1;
+    min-width: 140px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .stage:hover { transform: translateY(-4px); }
+  .stage-inner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+  }
+  .stage:hover .stage-inner { border-color: var(--accent); box-shadow: 0 4px 20px var(--accent-glow); }
+  .stage.active .stage-inner { border-color: var(--accent); background: var(--surface2); box-shadow: 0 4px 20px var(--accent-glow); }
+  .stage-icon { font-size: 1.6rem; margin-bottom: 6px; }
+  .stage-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stage-owner {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+  .stage-arrow {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+
+  .stage-detail {
+    display: none;
+    margin-top: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    animation: fadeIn 0.3s ease;
+  }
+  .stage-detail.active { display: block; }
+  .stage-detail h3 { font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .stage-detail ul { list-style: none; padding: 0; }
+  .stage-detail li {
+    padding: 8px 12px;
+    border-left: 2px solid var(--accent);
+    margin-bottom: 8px;
+    background: var(--surface2);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+
+  /* ── REFINEMENT FLOW ── */
+  .refine-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 20px 0;
+  }
+  .refine-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 30px;
+  }
+  .refine-step::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .refine-step:last-child::before { display: none; }
+  .refine-step .step-number {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .refine-step .step-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    flex: 1;
+    transition: var(--transition);
+  }
+  .refine-step .step-content:hover { border-color: var(--accent); }
+  .refine-step h4 { font-size: 0.95rem; margin-bottom: 6px; }
+  .refine-step p { font-size: 0.85rem; color: var(--text-muted); }
+
+  .branch-box {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .branch {
+    flex: 1;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 12px;
+    border-left: 3px solid var(--green);
+    font-size: 0.85rem;
+  }
+  .branch.diverge { border-left-color: var(--orange); }
+
+  /* ── ESTIMATION TABLE ── */
+  .est-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .est-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .est-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 15px var(--accent-glow); }
+  .est-card .est-icon { font-size: 1.5rem; margin-bottom: 8px; }
+  .est-card .est-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .est-card .est-value { font-size: 1rem; font-weight: 600; margin-top: 4px; }
+  .est-note {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ── PR TIERS ── */
+  .tier-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .tier-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .tier-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .tier-card.ai-only { border-top: 3px solid var(--green); }
+  .tier-card.ai-only:hover { box-shadow: 0 6px 20px var(--green-glow); }
+  .tier-card.standard { border-top: 3px solid var(--blue); }
+  .tier-card.standard:hover { box-shadow: 0 6px 20px var(--blue-glow); }
+  .tier-card.complex { border-top: 3px solid var(--pink); }
+  .tier-card.complex:hover { box-shadow: 0 6px 20px var(--pink-glow); }
+  .tier-card h4 { font-size: 1rem; margin-bottom: 4px; }
+  .tier-card .tier-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ai-only .tier-badge { background: var(--green-glow); color: var(--green); }
+  .standard .tier-badge { background: var(--blue-glow); color: var(--blue); }
+  .complex .tier-badge { background: var(--pink-glow); color: var(--pink); }
+  .tier-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+  .tier-card .examples { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
+
+  /* ── RELEASE TRAIN ── */
+  .train-track {
+    position: relative;
+    padding: 40px 0;
+    margin: 20px 0;
+  }
+  .track-line {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .track-line::before, .track-line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+  }
+  .track-line::before { left: 0; }
+  .track-line::after { right: 0; }
+  .trains {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    z-index: 1;
+  }
+  .train {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 200px;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .train:hover { transform: translateY(-4px); }
+  .train.b2c { border-color: var(--accent); box-shadow: 0 4px 20px var(--accent-glow); }
+  .train.b2b { border-color: var(--orange); box-shadow: 0 4px 20px var(--orange-glow); }
+  .train .train-icon { font-size: 2rem; margin-bottom: 6px; }
+  .train h4 { font-size: 1rem; }
+  .train p { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+  .train .cadence {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .b2c .cadence { background: var(--accent-glow); color: var(--accent); }
+  .b2b .cadence { background: var(--orange-glow); color: var(--orange); }
+
+  .release-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .release-rule {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .release-rule h4 { font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .release-rule p { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* ── ROLES TABLE ── */
+  .roles-grid {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .role-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    align-items: center;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .role-row:hover { border-color: var(--accent); }
+  .role-row.header {
+    background: var(--surface2);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+  .role-name { font-weight: 600; font-size: 0.9rem; }
+  .role-name .count { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
+  .role-owns, .role-actions { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* ── WIP / RULES ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: var(--transition);
+  }
+  .rule-card:hover { border-color: var(--accent); }
+  .rule-card h4 { font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .rule-card p, .rule-card li { font-size: 0.85rem; color: var(--text-muted); }
+  .rule-card ul { list-style: none; padding: 0; }
+  .rule-card li { padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .rule-card li:last-child { border-bottom: none; }
+
+  .wip-visual {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .wip-slot {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+  }
+  .wip-slot.filled {
+    border-style: solid;
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .wip-slot.warning {
+    border-style: solid;
+    border-color: var(--orange);
+    background: var(--orange-glow);
+    color: var(--orange);
+  }
+  .wip-slot.blocked {
+    border-style: solid;
+    border-color: var(--red);
+    background: rgba(214, 48, 49, 0.1);
+    color: var(--red);
+  }
+
+  /* ── FUTURE ── */
+  .future-list {
+    margin: 20px 0;
+  }
+  .future-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .future-item:hover { border-color: var(--accent); }
+  .future-item .fi-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .future-item h4 { font-size: 0.9rem; margin-bottom: 4px; }
+  .future-item p { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── SECTION HEADERS ── */
+  .section h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .section .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  /* ── TOOLTIP ── */
+  .hint {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-left: 8px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .pipeline { flex-direction: column; gap: 8px; }
+    .pipeline::before { display: none; }
+    .stage-arrow { display: none; }
+    .release-rules { grid-template-columns: 1fr; }
+    .role-row { grid-template-columns: 1fr; gap: 4px; }
+    .role-row.header { display: none; }
+    .branch-box { flex-direction: column; }
+  }
+
+  .ownership-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0 -8px;
+    padding: 0 4px;
+  }
+  .ownership-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .ownership-divider .label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* ── TRAIN SIMULATION ── */
+  .train-sim-wrap {
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+
+  .track-container {
+    position: relative;
+    min-width: 1100px;
+    padding: 30px 20px 0;
+  }
+
+  .rail {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 110px;
+    height: 6px;
+    background: #3d4155;
+    border-radius: 3px;
+    z-index: 0;
+  }
+  .rail::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 18px, #555a70 18px, #555a70 20px);
+  }
+
+  .stations {
+    display: flex;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .station {
+    flex: 1;
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .station-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .station-name .owner-tag {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: #555a70;
+    margin-top: 2px;
+  }
+
+  .compartment {
+    width: 120px;
+    min-height: 160px;
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: var(--transition);
+    position: relative;
+  }
+  .compartment.drag-over {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .station-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 3px solid #555a70;
+    margin-top: 12px;
+    position: relative;
+    z-index: 2;
+  }
+  .station.active-station .station-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  /* Packages (tasks) */
+  .package {
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: grab;
+    transition: var(--transition);
+    position: relative;
+    user-select: none;
+    border: 1px solid transparent;
+  }
+  .package:active { cursor: grabbing; }
+  .package:hover { transform: scale(1.04); }
+  .package.dragging { opacity: 0.4; }
+  .package .pkg-id { font-size: 0.6rem; opacity: 0.7; display: block; }
+  .package .pkg-sp {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 0.55rem;
+    background: rgba(0,0,0,0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .package.feat { background: #2d3a8c; color: #a0b4ff; border-color: #3d4db0; }
+  .package.bug { background: #6b2030; color: #ffa0b0; border-color: #8c2a3e; }
+  .package.chore { background: #2a5a3a; color: #90e8b0; border-color: #387a4e; }
+
+  /* Deploy ready train */
+  .deploy-station .compartment {
+    border-style: solid;
+    border-color: var(--orange);
+    background: var(--orange-glow);
+    position: relative;
+  }
+  .deploy-station .compartment::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--orange);
+  }
+
+  .train-departing {
+    text-align: center;
+    margin-top: 6px;
+    padding: 10px 0 0;
+  }
+  .train-departing .departure-label {
+    font-size: 0.65rem;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .countdown {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--orange);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .deployed-station .compartment {
+    border-style: solid;
+    border-color: var(--green);
+    background: var(--green-glow);
+  }
+
+  /* Train sim legend */
+  .sim-legend {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sim-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .sim-legend-item .swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+  }
+  .swatch.feat { background: #2d3a8c; }
+  .swatch.bug { background: #6b2030; }
+  .swatch.chore { background: #2a5a3a; }
+
+  .sim-instructions {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .wip-indicator {
+    text-align: center;
+    font-size: 0.6rem;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .wip-indicator.ok { color: var(--green); }
+  .wip-indicator.warn { color: var(--orange); }
+  .wip-indicator.full { color: var(--red); }
+
+  .platform-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .plat-btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .plat-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mobile Development Workflow</h1>
+  <p>Continuous flow with AI-augmented refinement. Ship what's ready, when it's ready.</p>
+</header>
+
+<nav class="tabs">
+  <div class="tab active" data-tab="flow">Workflow</div>
+  <div class="tab" data-tab="train-sim">Train Station Board</div>
+  <div class="tab" data-tab="refinement">Refinement</div>
+  <div class="tab" data-tab="estimation">Estimation</div>
+  <div class="tab" data-tab="pr-review">PR Review</div>
+  <div class="tab" data-tab="releases">Release Trains</div>
+  <div class="tab" data-tab="roles">Roles</div>
+  <div class="tab" data-tab="rules">WIP & Rules</div>
+  <div class="tab" data-tab="future">Future</div>
+</nav>
+
+<!-- ════════════════════════ WORKFLOW ════════════════════════ -->
+<div class="section active" id="flow">
+  <h2>The Pipeline</h2>
+  <p class="subtitle">Click any stage to see details. Work flows left to right continuously — no fixed sprints.</p>
+
+  <div class="ownership-divider">
+    <span class="line"></span>
+    <span class="label">Devs own this &rarr;</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="pipeline">
+    <div class="stage active" data-stage="triage">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F50D;</div>
+        <div class="stage-label">Triage</div>
+        <div class="stage-owner">Dev + Claude</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="todo">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F4CB;</div>
+        <div class="stage-label">Todo</div>
+        <div class="stage-owner">Backlog</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="progress">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F527;</div>
+        <div class="stage-label">In Progress</div>
+        <div class="stage-owner">Dev + Claude</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="codereview">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F4DD;</div>
+        <div class="stage-label">Code Review</div>
+        <div class="stage-owner">AI + Dev</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="validation">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x2705;</div>
+        <div class="stage-label">Validation</div>
+        <div class="stage-owner">Dev / QA / UI</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="approved">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F3C6;</div>
+        <div class="stage-label">Approved</div>
+        <div class="stage-owner">Ready to ship</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+  </div>
+
+  <div class="ownership-divider">
+    <span class="line"></span>
+    <span class="label">&larr; Leads + PM own this &rarr;</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="pipeline" style="max-width: 400px; margin: 12px auto 0;">
+    <div class="stage" data-stage="deploy-ready">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F4E6;</div>
+        <div class="stage-label">Deploy Ready</div>
+        <div class="stage-owner">Lead + PM</div>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage" data-stage="deployed">
+      <div class="stage-inner">
+        <div class="stage-icon">&#x1F680;</div>
+        <div class="stage-label">Deployed</div>
+        <div class="stage-owner">Released</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage Details -->
+  <div class="stage-detail" id="detail-triage">
+    <h3>&#x1F50D; Triage</h3>
+    <ul>
+      <li><strong>Who:</strong> Dev + Claude assess incoming tickets (features from PM, bugs from users)</li>
+      <li><strong>Simple tasks</strong> skip refinement and go straight to Todo</li>
+      <li><strong>Medium+ tasks</strong> go through the full refinement cycle (see Refinement tab)</li>
+      <li>Complexity is assigned collaboratively — team experience + Claude's codebase analysis</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-todo">
+    <h3>&#x1F4CB; Todo</h3>
+    <ul>
+      <li>Prioritised backlog — refined items land here with plans and estimates attached</li>
+      <li>Devs pull work based on priority and their capacity</li>
+      <li>Each item has a Claude estimation breakdown + dev-assigned SP</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-progress">
+    <h3>&#x1F527; In Progress</h3>
+    <ul>
+      <li><strong>Dev + Claude pair-implement</strong> following the approved plan</li>
+      <li>iOS and Android work is separate — each platform has its own implementation</li>
+      <li>Claude handles boilerplate, tests, and repetitive parts; dev focuses on logic and decisions</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-codereview">
+    <h3>&#x1F4DD; Code Review</h3>
+    <ul>
+      <li><strong>Step 1:</strong> Claude Code reviews locally before push</li>
+      <li><strong>Step 2:</strong> Push PR to GitHub</li>
+      <li><strong>Step 3:</strong> Codex / Gemini review async in GitHub</li>
+      <li><strong>Step 4:</strong> Claude classifies PR tier (AI-only / Standard / Complex)</li>
+      <li>See the <strong>PR Review</strong> tab for tier details</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-validation">
+    <h3>&#x2705; Validation <span class="hint">WIP limited ~3/platform</span></h3>
+    <ul>
+      <li><strong>Dev Validation:</strong> functional check on device</li>
+      <li><strong>QA Validation:</strong> manual testers run test cases</li>
+      <li><strong>UI Validation:</strong> reviewers check visual fidelity against design</li>
+      <li>Not all items need all three — depends on the change</li>
+      <li>Issues found? Item goes back to In Progress</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-approved">
+    <h3>&#x1F3C6; Approved</h3>
+    <ul>
+      <li>All validations passed — item is ready to be included in a release</li>
+      <li>Devs move items here from Validation</li>
+      <li>Leads + PM decide which approved items go into the next release train</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-deploy-ready">
+    <h3>&#x1F4E6; Deployment Ready</h3>
+    <ul>
+      <li>Selected for the next release — mandatory items + whatever else fits</li>
+      <li>Leads + PM curate this column based on release scope</li>
+    </ul>
+  </div>
+  <div class="stage-detail" id="detail-deployed">
+    <h3>&#x1F680; Deployed</h3>
+    <ul>
+      <li>Shipped to users via the release train</li>
+      <li>B2C: biweekly &nbsp;|&nbsp; B2B: ~monthly with internal milestones</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════════════════════ TRAIN SIMULATION ════════════════════════ -->
+<div class="section" id="train-sim">
+  <h2>Train Station Board</h2>
+  <p class="subtitle">A reimagined Jira board. Stations instead of columns. Packages instead of cards. Drag tasks between compartments.</p>
+
+  <div class="sim-instructions">
+    Drag and drop packages between station compartments. The Deployment Ready train departs on a timer. Watch the WIP limits on Validation.
+  </div>
+
+  <div class="platform-toggle">
+    <div class="plat-btn active" data-plat="ios">iOS</div>
+    <div class="plat-btn" data-plat="android">Android</div>
+  </div>
+
+  <div class="sim-legend">
+    <div class="sim-legend-item"><div class="swatch feat"></div> Feature</div>
+    <div class="sim-legend-item"><div class="swatch bug"></div> Bug Fix</div>
+    <div class="sim-legend-item"><div class="swatch chore"></div> Chore / Tech Debt</div>
+  </div>
+
+  <div class="train-sim-wrap">
+    <div class="track-container">
+      <div class="rail"></div>
+      <div class="stations" id="station-board">
+
+        <div class="station" data-station="triage">
+          <div class="station-name">Triage<span class="owner-tag">Dev + Claude</span></div>
+          <div class="compartment" data-station="triage">
+            <div class="package feat" draggable="true" data-id="T-101"><span class="pkg-id">T-101</span>New onboarding<span class="pkg-sp">5 SP</span></div>
+            <div class="package bug" draggable="true" data-id="T-102"><span class="pkg-id">T-102</span>Login crash<span class="pkg-sp">2 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station" data-station="todo">
+          <div class="station-name">Todo<span class="owner-tag">Backlog</span></div>
+          <div class="compartment" data-station="todo">
+            <div class="package feat" draggable="true" data-id="T-88"><span class="pkg-id">T-88</span>Dark mode<span class="pkg-sp">8 SP</span></div>
+            <div class="package chore" draggable="true" data-id="T-91"><span class="pkg-id">T-91</span>Update deps<span class="pkg-sp">2 SP</span></div>
+            <div class="package feat" draggable="true" data-id="T-93"><span class="pkg-id">T-93</span>Push notifs<span class="pkg-sp">5 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station active-station" data-station="progress">
+          <div class="station-name">In Progress<span class="owner-tag">Dev + Claude</span></div>
+          <div class="compartment" data-station="progress">
+            <div class="package feat" draggable="true" data-id="T-82"><span class="pkg-id">T-82</span>Payment flow<span class="pkg-sp">8 SP</span></div>
+            <div class="package bug" draggable="true" data-id="T-85"><span class="pkg-id">T-85</span>Memory leak<span class="pkg-sp">3 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station" data-station="review">
+          <div class="station-name">Code Review<span class="owner-tag">AI + Dev</span></div>
+          <div class="compartment" data-station="review">
+            <div class="package feat" draggable="true" data-id="T-78"><span class="pkg-id">T-78</span>Profile edit<span class="pkg-sp">5 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station" data-station="validation">
+          <div class="station-name">Validation<span class="owner-tag">Dev / QA / UI</span></div>
+          <div class="compartment" data-station="validation">
+            <div class="package feat" draggable="true" data-id="T-71"><span class="pkg-id">T-71</span>Search filter<span class="pkg-sp">5 SP</span></div>
+            <div class="package bug" draggable="true" data-id="T-73"><span class="pkg-id">T-73</span>Nav bar glitch<span class="pkg-sp">2 SP</span></div>
+            <div class="package chore" draggable="true" data-id="T-74"><span class="pkg-id">T-74</span>CI pipeline<span class="pkg-sp">3 SP</span></div>
+          </div>
+          <div class="wip-indicator full">WIP 3/3 — FULL</div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station" data-station="approved">
+          <div class="station-name">Approved<span class="owner-tag">Ready to ship</span></div>
+          <div class="compartment" data-station="approved">
+            <div class="package feat" draggable="true" data-id="T-65"><span class="pkg-id">T-65</span>Settings v2<span class="pkg-sp">5 SP</span></div>
+            <div class="package bug" draggable="true" data-id="T-67"><span class="pkg-id">T-67</span>Crash fix #42<span class="pkg-sp">1 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station deploy-station" data-station="deploy-ready">
+          <div class="station-name">Deploy Ready<span class="owner-tag">Lead + PM</span></div>
+          <div class="compartment" data-station="deploy-ready">
+            <div class="package feat" draggable="true" data-id="T-58"><span class="pkg-id">T-58</span>Checkout v3<span class="pkg-sp">8 SP</span></div>
+            <div class="package bug" draggable="true" data-id="T-60"><span class="pkg-id">T-60</span>SSL pinning<span class="pkg-sp">3 SP</span></div>
+          </div>
+          <div class="train-departing">
+            <div class="departure-label">B2C Train Departs In</div>
+            <div class="countdown" id="departure-clock">--:--:--</div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+        <div class="station deployed-station" data-station="deployed">
+          <div class="station-name">Deployed<span class="owner-tag">Shipped</span></div>
+          <div class="compartment" data-station="deployed">
+            <div class="package feat" draggable="true" data-id="T-50"><span class="pkg-id">T-50</span>Home redesign<span class="pkg-sp">13 SP</span></div>
+            <div class="package chore" draggable="true" data-id="T-52"><span class="pkg-id">T-52</span>Analytics v2<span class="pkg-sp">3 SP</span></div>
+          </div>
+          <div class="station-dot"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-grid" style="margin-top: 30px;">
+    <div class="rule-card">
+      <h4>&#x1F689; Stations = Jira Columns</h4>
+      <ul>
+        <li>Each station represents a workflow state</li>
+        <li>Packages (tasks) travel along the track left to right</li>
+        <li>Validation station has WIP limits — blocks incoming when full</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F4E6; Packages = Tickets</h4>
+      <ul>
+        <li>Color-coded by type: feature, bug, chore</li>
+        <li>Show SP estimate in the corner</li>
+        <li>Drag between compartments to move through the flow</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F682; The Departure Train</h4>
+      <ul>
+        <li>Deploy Ready is the boarding platform</li>
+        <li>Countdown shows when the next release train departs</li>
+        <li>Only packages in this compartment ship when the timer hits zero</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F6A8; WIP Enforcement</h4>
+      <ul>
+        <li>Validation shows a live WIP counter</li>
+        <li>Green = space available, orange = almost full, red = blocked</li>
+        <li>When full, team focuses on clearing before adding new work</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ REFINEMENT ════════════════════════ -->
+<div class="section" id="refinement">
+  <h2>Refinement</h2>
+  <p class="subtitle">For medium+ tasks only. One dev plans with Claude, another reviews the plan.</p>
+
+  <div class="refine-flow">
+    <div class="refine-step">
+      <span class="step-number">1</span>
+      <div class="step-content">
+        <h4>Dev A + Claude explore the codebase</h4>
+        <p>Claude explores the relevant modules, understands current architecture, identifies affected areas. Dev A guides the exploration with domain knowledge.</p>
+      </div>
+    </div>
+    <div class="refine-step">
+      <span class="step-number">2</span>
+      <div class="step-content">
+        <h4>Dev A + Claude write the plan</h4>
+        <p>Structured plan saved as a Jira comment or on a branch <code>plan/TICKET-devA</code>. Includes approach, files to change, risks, estimation breakdown, and open questions.</p>
+      </div>
+    </div>
+    <div class="refine-step">
+      <span class="step-number">3</span>
+      <div class="step-content">
+        <h4>Dev B + Claude review the plan</h4>
+        <p>A second dev reviews with Claude's help. Claude can highlight gaps, suggest alternatives, or confirm the approach is solid.</p>
+        <div class="branch-box">
+          <div class="branch">
+            <strong>Aligned</strong><br>
+            Plan is approved. Move to estimation and Todo.
+          </div>
+          <div class="branch diverge">
+            <strong>Disagreement</strong><br>
+            Devs discuss differences, resolve approach, then finalize.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="refine-step">
+      <span class="step-number">4</span>
+      <div class="step-content">
+        <h4>Claude provides estimation breakdown</h4>
+        <p>Structured dimensions (see Estimation tab). Devs translate to story points factoring in validation and QA effort.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="est-note">
+    <strong>Tips for better plans:</strong> Let Claude explore before constraining it. Ask "what could go wrong?" and "is there a simpler way?". Request file-level specificity. Save structured artifacts so the review step is efficient.
+  </div>
+</div>
+
+<!-- ════════════════════════ ESTIMATION ════════════════════════ -->
+<div class="section" id="estimation">
+  <h2>Estimation Model</h2>
+  <p class="subtitle">Claude provides a structured breakdown. Devs translate to story points using team calibration.</p>
+
+  <div class="est-grid">
+    <div class="est-card">
+      <div class="est-icon">&#x1F9E9;</div>
+      <div class="est-label">Complexity</div>
+      <div class="est-value">Low / Medium / High</div>
+    </div>
+    <div class="est-card">
+      <div class="est-icon">&#x1F4C2;</div>
+      <div class="est-label">Files Touched</div>
+      <div class="est-value">Count + List</div>
+    </div>
+    <div class="est-card">
+      <div class="est-icon">&#x26A0;&#xFE0F;</div>
+      <div class="est-label">Risk Level</div>
+      <div class="est-value">Low / Medium / High</div>
+    </div>
+    <div class="est-card">
+      <div class="est-icon">&#x1F3D7;&#xFE0F;</div>
+      <div class="est-label">New Patterns</div>
+      <div class="est-value">Yes / No</div>
+    </div>
+    <div class="est-card">
+      <div class="est-icon">&#x1F517;</div>
+      <div class="est-label">External Deps</div>
+      <div class="est-value">API / Design / Teams</div>
+    </div>
+  </div>
+
+  <div class="est-note">
+    <strong>How devs add to the estimate:</strong> Claude's breakdown covers implementation effort. Devs then factor in dev validation time (+1-2 SP), QA/UI validation (+1 SP), likelihood of human intervention (+1-3 SP), and codebase risk for shared/legacy code (+1-2 SP). Over time, Claude learns the team's calibration from historical tickets.
+  </div>
+</div>
+
+<!-- ════════════════════════ PR REVIEW ════════════════════════ -->
+<div class="section" id="pr-review">
+  <h2>PR Review Tiers</h2>
+  <p class="subtitle">AI classifies every PR. Trust is built gradually — start conservative, loosen over time.</p>
+
+  <div class="tier-cards">
+    <div class="tier-card ai-only">
+      <span class="tier-badge">AI Only</span>
+      <h4>Trivial Changes</h4>
+      <p>Codex / Gemini review in GitHub. No human review needed.</p>
+      <div class="examples">Config changes, copy updates, dependency bumps, generated/boilerplate code, formatting</div>
+    </div>
+    <div class="tier-card standard">
+      <span class="tier-badge">One Dev Review</span>
+      <h4>Standard Changes</h4>
+      <p>AI review summary + one dev spot-checks implementation and business logic.</p>
+      <div class="examples">Feature implementation, bug fixes, moderate scope changes, new screens with established patterns</div>
+    </div>
+    <div class="tier-card complex">
+      <span class="tier-badge">Lead Review</span>
+      <h4>Complex Changes</h4>
+      <p>AI review summary + team lead does a deep review of architecture and impact.</p>
+      <div class="examples">Architecture changes, shared module modifications, high-risk areas, new patterns introduced, security-sensitive code</div>
+    </div>
+  </div>
+
+  <div class="est-note">
+    <strong>Review pipeline for every PR:</strong>
+    <br>1. Claude Code reviews locally (before push)
+    <br>2. PR is pushed to GitHub
+    <br>3. Codex / Gemini scan async
+    <br>4. Claude classifies tier &rarr; routes to appropriate human review (or none)
+    <br><br>
+    <strong>Building trust:</strong> Start with most PRs going through one dev review. Track AI review accuracy. As confidence grows, expand the AI-only tier.
+  </div>
+</div>
+
+<!-- ════════════════════════ RELEASES ════════════════════════ -->
+<div class="section" id="releases">
+  <h2>Release Trains</h2>
+  <p class="subtitle">Predefined departure dates. Whatever is approved gets on the train. Mandatory items are guaranteed a seat.</p>
+
+  <div class="train-track">
+    <div class="track-line"></div>
+    <div class="trains">
+      <div class="train b2c">
+        <div class="train-icon">&#x1F685;</div>
+        <h4>B2C Train</h4>
+        <p>Consumer-facing releases</p>
+        <span class="cadence">Every 2 weeks</span>
+      </div>
+      <div class="train b2b">
+        <div class="train-icon">&#x1F682;</div>
+        <h4>B2B Train</h4>
+        <p>Business / partner releases</p>
+        <span class="cadence">~Monthly + milestones</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="release-rules">
+    <div class="release-rule">
+      <h4>&#x1F3AB; Boarding Rules</h4>
+      <p>Every release has mandatory items (committed to PM/stakeholders). Remaining capacity is filled with whatever else sits in Approved. No item boards without passing all validations.</p>
+    </div>
+    <div class="release-rule">
+      <h4>&#x1F6E4;&#xFE0F; No Sprints</h4>
+      <p>Work flows continuously. Release dates are fixed departure times, not work containers. Teams don't commit to a sprint scope — they commit to flow efficiency.</p>
+    </div>
+    <div class="release-rule">
+      <h4>&#x1F4CA; Ship More If You Can</h4>
+      <p>If the team clears validation faster than expected, more items ship. The system rewards flow efficiency without adding pressure.</p>
+    </div>
+    <div class="release-rule">
+      <h4>&#x1F512; Cut-off</h4>
+      <p>Items must be in Approved by cut-off date to board the train. Leads + PM manage the Deployment Ready column.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ ROLES ════════════════════════ -->
+<div class="section" id="roles">
+  <h2>Roles & Ownership</h2>
+  <p class="subtitle">Clear boundaries — devs push work forward, leads and PM manage the release funnel.</p>
+
+  <div class="roles-grid">
+    <div class="role-row header">
+      <div>Role</div>
+      <div>Owns</div>
+      <div>Key Actions</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">PO / PM <span class="count">&times;2</span></div>
+      <div class="role-owns">Intake, prioritisation, release scope</div>
+      <div class="role-actions">Triage input, define mandatory release items, manage Approved &rarr; Deployed</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">Team Lead <span class="count">&times;2 (iOS + Android)</span></div>
+      <div class="role-owns">Quality gate, complex PR review</div>
+      <div class="role-actions">Assess complexity in triage, review complex PRs, unblock validation, manage Approved &rarr; Deployed</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">Senior Dev</div>
+      <div class="role-owns">Plans, reviews plans, mentors</div>
+      <div class="role-actions">Plans with Claude or reviews junior plans, implements, standard PR review</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">Mid Dev</div>
+      <div class="role-owns">Plans & implements</div>
+      <div class="role-actions">Plans/reviews with Claude, implements, standard PR review</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">Junior Dev</div>
+      <div class="role-owns">Implements, grows</div>
+      <div class="role-actions">Plans with Claude (senior reviews), implements simple + standard tasks</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">QA <span class="count">&times;2</span></div>
+      <div class="role-owns">Manual testing</div>
+      <div class="role-actions">Validates in QA Validation column, regression testing, test cases</div>
+    </div>
+    <div class="role-row">
+      <div class="role-name">UI Reviewer <span class="count">&times;2</span></div>
+      <div class="role-owns">Visual / UX fidelity</div>
+      <div class="role-actions">Checks implementation matches design in UI Validation column</div>
+    </div>
+  </div>
+
+  <div class="ownership-divider" style="margin: 30px 0 10px;">
+    <span class="line"></span>
+    <span class="label">Ownership boundary</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <h4>&#x1F6E0;&#xFE0F; Devs Own</h4>
+      <ul>
+        <li>Todo &rarr; In Progress &rarr; Code Review &rarr; Validation &rarr; Approved</li>
+        <li>Moving their own tickets forward</li>
+        <li>Clearing the validation queue</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F3AF; Leads + PM Own</h4>
+      <ul>
+        <li>Approved &rarr; Deployment Ready &rarr; Deployed</li>
+        <li>Release scope decisions</li>
+        <li>Unblocking when validation is stuck 2+ days</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ RULES ════════════════════════ -->
+<div class="section" id="rules">
+  <h2>WIP Limits & Flow Rules</h2>
+  <p class="subtitle">Keep work flowing. When queues fill up, stop starting and start finishing.</p>
+
+  <div class="rule-card" style="margin-bottom: 24px;">
+    <h4>&#x1F6A6; Validation Queue — Visual</h4>
+    <p style="margin-bottom: 12px;">~3 slots per platform. When full, throttle new items entering Code Review.</p>
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">iOS Validation</div>
+        <div class="wip-visual">
+          <div class="wip-slot filled">T-42</div>
+          <div class="wip-slot filled">T-58</div>
+          <div class="wip-slot warning">T-71</div>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--orange);">&#x26A0; At limit — focus on clearing</div>
+      </div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px;">Android Validation</div>
+        <div class="wip-visual">
+          <div class="wip-slot filled">T-43</div>
+          <div class="wip-slot filled">T-60</div>
+          <div class="wip-slot"></div>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--green);">&#x2714; 1 slot open</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <h4>&#x1F6D1; When Validation is Full</h4>
+      <ul>
+        <li>Stop pulling new items into In Progress</li>
+        <li>Focus on reviewing and clearing validation items</li>
+        <li>Dailies: explicitly discuss what's blocking the queue</li>
+        <li>If stuck 2+ days, leads escalate</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F4C5; Dailies Checkpoint</h4>
+      <ul>
+        <li>Check WIP limits — are we at capacity?</li>
+        <li>Identify blockers in validation</li>
+        <li>Devs own: unblocking their items through validation</li>
+        <li>Leads/PM own: prioritising what gets released</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F504; Flow Principle</h4>
+      <ul>
+        <li>Finish before you start — completing items > starting new ones</li>
+        <li>Small batches — easier to review, validate, and ship</li>
+        <li>No fixed sprint commitments — continuous delivery to release trains</li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>&#x1F4CF; Adjusting Limits</h4>
+      <ul>
+        <li>Start with ~3 per platform in validation</li>
+        <li>Track how fast items clear validation</li>
+        <li>If team consistently clears quickly, raise limit</li>
+        <li>If bottlenecked, lower limit or add reviewers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ FUTURE ════════════════════════ -->
+<div class="section" id="future">
+  <h2>Future Improvements</h2>
+  <p class="subtitle">Parked ideas — to be explored as the workflow matures.</p>
+
+  <div class="future-list">
+    <div class="future-item">
+      <div class="fi-icon">&#x1F5A5;&#xFE0F;</div>
+      <div>
+        <h4>Autonomous Mac Mini Agents</h4>
+        <p>Straightforward bugs dispatched to a remote Claude agent that plans, implements, and opens a PR. Slack bot connects the agent to a dev when it needs guidance.</p>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="fi-icon">&#x1F4AC;</div>
+      <div>
+        <h4>Slack Bot &harr; Claude Integration</h4>
+        <p>When autonomous agents are blocked, they post to a Slack channel. Dev responds in-thread, agent continues. Escalation if no response in X hours.</p>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="fi-icon">&#x1F504;</div>
+      <div>
+        <h4>Cross-Platform Plan Comparison</h4>
+        <p>For shared features, Claude compares iOS and Android plans to detect approach divergences or estimate mismatches early.</p>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="fi-icon">&#x26A1;</div>
+      <div>
+        <h4>Fast Lane for Simple Tasks</h4>
+        <p>Simple tasks skip plan/review entirely and go straight to autonomous implementation &rarr; PR &rarr; validation. Requires trust in autonomous setup.</p>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="fi-icon">&#x1F4C8;</div>
+      <div>
+        <h4>SP Calibration Learning</h4>
+        <p>Claude learns the team's story point calibration from historical tickets — improving estimation accuracy over time.</p>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="fi-icon">&#x1F916;</div>
+      <div>
+        <h4>Auto-Triage</h4>
+        <p>Claude reads incoming tickets + explores the codebase and suggests a complexity rating automatically, reducing manual triage effort.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab navigation
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Stage click → show detail
+  document.querySelectorAll('.stage').forEach(stage => {
+    stage.addEventListener('click', () => {
+      const wasActive = stage.classList.contains('active');
+      document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.stage-detail').forEach(d => d.classList.remove('active'));
+
+      if (!wasActive) {
+        stage.classList.add('active');
+        const detail = document.getElementById('detail-' + stage.dataset.stage);
+        if (detail) detail.classList.add('active');
+      }
+    });
+  });
+
+  // ── TRAIN SIMULATION: Drag & Drop ──
+  let draggedPkg = null;
+
+  document.addEventListener('dragstart', (e) => {
+    if (!e.target.classList.contains('package')) return;
+    draggedPkg = e.target;
+    e.target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  document.addEventListener('dragend', (e) => {
+    if (!e.target.classList.contains('package')) return;
+    e.target.classList.remove('dragging');
+    draggedPkg = null;
+    document.querySelectorAll('.compartment').forEach(c => c.classList.remove('drag-over'));
+  });
+
+  document.querySelectorAll('.compartment').forEach(comp => {
+    comp.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      comp.classList.add('drag-over');
+    });
+
+    comp.addEventListener('dragleave', () => {
+      comp.classList.remove('drag-over');
+    });
+
+    comp.addEventListener('drop', (e) => {
+      e.preventDefault();
+      comp.classList.remove('drag-over');
+      if (draggedPkg) {
+        comp.appendChild(draggedPkg);
+        updateWIP();
+      }
+    });
+  });
+
+  // ── WIP Limit tracking ──
+  const WIP_LIMIT = 3;
+
+  function updateWIP() {
+    const valComp = document.querySelector('.station[data-station="validation"] .compartment');
+    if (!valComp) return;
+    const count = valComp.querySelectorAll('.package').length;
+    let indicator = valComp.parentElement.querySelector('.wip-indicator');
+
+    if (!indicator) {
+      indicator = document.createElement('div');
+      indicator.className = 'wip-indicator';
+      valComp.parentElement.insertBefore(indicator, valComp.parentElement.querySelector('.station-dot'));
+    }
+
+    indicator.textContent = `WIP ${count}/${WIP_LIMIT}`;
+    indicator.className = 'wip-indicator';
+
+    if (count < WIP_LIMIT) {
+      indicator.classList.add('ok');
+      indicator.textContent += ' — OK';
+    } else if (count === WIP_LIMIT) {
+      indicator.classList.add('full');
+      indicator.textContent += ' — FULL';
+    } else {
+      indicator.classList.add('full');
+      indicator.textContent += ' — OVER LIMIT!';
+    }
+  }
+
+  // ── Departure countdown ──
+  function startCountdown() {
+    const clock = document.getElementById('departure-clock');
+    if (!clock) return;
+
+    // Simulate: next B2C train departs in 6 days, 14 hours
+    let totalSeconds = (6 * 24 * 3600) + (14 * 3600) + (30 * 60);
+
+    function tick() {
+      if (totalSeconds <= 0) {
+        clock.textContent = 'DEPARTED!';
+        clock.style.color = 'var(--green)';
+
+        // Move packages from deploy-ready to deployed
+        const deployComp = document.querySelector('.station[data-station="deploy-ready"] .compartment');
+        const deployedComp = document.querySelector('.station[data-station="deployed"] .compartment');
+        if (deployComp && deployedComp) {
+          const pkgs = [...deployComp.querySelectorAll('.package')];
+          pkgs.forEach(p => deployedComp.appendChild(p));
+        }
+
+        // Reset after 3 seconds
+        setTimeout(() => {
+          totalSeconds = 14 * 24 * 3600;
+          clock.style.color = '';
+          tick();
+        }, 3000);
+        return;
+      }
+
+      const days = Math.floor(totalSeconds / 86400);
+      const hrs = Math.floor((totalSeconds % 86400) / 3600);
+      const mins = Math.floor((totalSeconds % 3600) / 60);
+      const secs = totalSeconds % 60;
+
+      if (days > 0) {
+        clock.textContent = `${days}d ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+      } else {
+        clock.textContent = `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+      }
+
+      // Urgency coloring
+      if (totalSeconds < 86400) {
+        clock.style.color = 'var(--red)';
+      } else if (totalSeconds < 3 * 86400) {
+        clock.style.color = 'var(--orange)';
+      }
+
+      totalSeconds--;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  startCountdown();
+  updateWIP();
+
+  // ── Platform toggle (visual only for demo) ──
+  document.querySelectorAll('.plat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.plat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

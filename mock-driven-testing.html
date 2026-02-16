@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock-Driven Testing — Discovery</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3347;
+    --text: #e2e4ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108, 92, 231, 0.15);
+    --green: #00b894;
+    --green-glow: rgba(0, 184, 148, 0.15);
+    --orange: #f39c12;
+    --orange-glow: rgba(243, 156, 18, 0.15);
+    --pink: #e84393;
+    --pink-glow: rgba(232, 67, 147, 0.15);
+    --blue: #0984e3;
+    --blue-glow: rgba(9, 132, 227, 0.15);
+    --red: #d63031;
+    --yellow: #fdcb6e;
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 100;
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--accent); }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+  }
+
+  /* ── MAIN CONTAINER ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── PIPELINE ── */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .pipeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
+    z-index: 0;
+    opacity: 0.3;
+  }
+
+  .stage {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .stage-inner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    margin: 0 8px;
+    transition: all var(--transition);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .stage-inner:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px var(--accent-glow);
+  }
+  .stage.active .stage-inner {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px var(--accent-glow);
+  }
+
+  .stage-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .stage-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .stage-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .stage-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .stage-arrow {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+
+  /* Color variants */
+  .stage-blue .stage-inner { border-top: 3px solid var(--blue); }
+  .stage-green .stage-inner { border-top: 3px solid var(--green); }
+  .stage-orange .stage-inner { border-top: 3px solid var(--orange); }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-bottom: 60px;
+    display: none;
+    animation: slideIn 0.3s ease;
+  }
+  .detail-panel.visible { display: block; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .detail-panel h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .detail-panel .detail-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .detail-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .detail-section h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .detail-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .detail-section li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .detail-section li::before {
+    content: '>';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    overflow-x: auto;
+    margin-top: 12px;
+  }
+  .code-block .comment { color: var(--text-muted); }
+  .code-block .key { color: var(--blue); }
+  .code-block .value { color: var(--green); }
+  .code-block .string { color: var(--orange); }
+
+  /* ── HOW IT CONNECTS ── */
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .section-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 60px;
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .flow-node:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px var(--accent-glow);
+  }
+  .flow-node.source {
+    border-left: 3px solid var(--blue);
+  }
+  .flow-node.ai {
+    border-left: 3px solid var(--accent);
+  }
+  .flow-node.human {
+    border-left: 3px solid var(--green);
+  }
+  .flow-node.output {
+    border-left: 3px solid var(--orange);
+  }
+  .flow-node.future {
+    border-left: 3px solid var(--pink);
+    border-style: dashed;
+    opacity: 0.7;
+  }
+
+  .flow-connector {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+  }
+  .flow-connector span {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+  }
+
+  /* ── EXAMPLE CARDS ── */
+  .example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .example-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all var(--transition);
+  }
+  .example-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px var(--accent-glow);
+  }
+  .example-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .example-card .endpoint {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .example-card .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .tag-example { background: var(--blue-glow); color: var(--blue); }
+  .tag-flow { background: var(--green-glow); color: var(--green); }
+  .tag-env { background: var(--orange-glow); color: var(--orange); }
+
+  /* ── ROLES STRIP ── */
+  .roles-strip {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 60px;
+  }
+  .role-card {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+  }
+  .role-icon {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+  .role-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .role-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── NEXT STEPS ── */
+  .next-steps {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .next-steps h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-status {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-done {
+    background: var(--green-glow);
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+  .step-wip {
+    background: var(--orange-glow);
+    color: var(--orange);
+    border: 1px solid var(--orange);
+  }
+  .step-todo {
+    background: var(--surface2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .step-content h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .step-content p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .pipeline { flex-direction: column; gap: 12px; }
+    .stage-inner { margin: 0; min-height: auto; }
+    .stage-arrow { display: none; }
+    .detail-columns { grid-template-columns: 1fr; }
+    .roles-strip { flex-direction: column; }
+    .flow-row { flex-wrap: wrap; }
+    header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">&larr; Back to Workflow</a>
+
+<header>
+  <h1>Mock-Driven Testing</h1>
+  <p>From Swagger spec to validated user flows — an AI-augmented approach to deterministic mobile testing</p>
+  <span class="badge">Discovery</span>
+</header>
+
+<div class="container">
+
+  <!-- ── PIPELINE OVERVIEW ── -->
+  <div class="pipeline">
+    <div class="stage stage-blue" data-stage="swagger" onclick="showDetail('swagger')">
+      <div class="stage-inner">
+        <span class="stage-number">Stage 1</span>
+        <span class="stage-icon">{ }</span>
+        <span class="stage-title">Swagger Spec</span>
+        <span class="stage-sub">Source of truth</span>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage stage-green" data-stage="examples" onclick="showDetail('examples')">
+      <div class="stage-inner">
+        <span class="stage-number">Stage 2</span>
+        <span class="stage-icon">&lt;/&gt;</span>
+        <span class="stage-title">Examples</span>
+        <span class="stage-sub">AI + Human generated</span>
+      </div>
+      <span class="stage-arrow">&rarr;</span>
+    </div>
+    <div class="stage stage-orange" data-stage="flows" onclick="showDetail('flows')">
+      <div class="stage-inner">
+        <span class="stage-number">Stage 3</span>
+        <span class="stage-icon">&crarr;</span>
+        <span class="stage-title">User Flows &amp; Tests</span>
+        <span class="stage-sub">Maestro validated</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DETAIL PANELS ── -->
+  <div class="detail-panel" id="detail-swagger">
+    <h2>Stage 1 — Swagger Spec (Source of Truth)</h2>
+    <p class="detail-subtitle">The OpenAPI 3.0.3 YAML defines every endpoint, schema, and response contract</p>
+    <div class="detail-columns">
+      <div class="detail-section">
+        <h3>What it contains</h3>
+        <ul>
+          <li>8 API paths covering the full eSIM lifecycle</li>
+          <li>Schema definitions (DTOs) for every response</li>
+          <li>Named examples embedded per endpoint</li>
+          <li>Server base URL: <code>/sdk/esim/v1</code></li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>API Endpoints</h3>
+        <ul>
+          <li><code>GET /devices</code> — Device compatibility</li>
+          <li><code>GET /countries</code> — Countries &amp; regions</li>
+          <li><code>GET /packages</code> — Package catalog</li>
+          <li><code>GET /packages/{id}</code> — Package details</li>
+          <li><code>POST /user-packages</code> — Purchase</li>
+          <li><code>GET /user-packages</code> — User's eSIMs</li>
+          <li><code>POST /.../topups</code> — Top-up</li>
+          <li><code>GET /esim/bt/transactions</code> — History</li>
+        </ul>
+      </div>
+    </div>
+    <div class="code-block">
+      <span class="comment"># esim-mockserver-swagger.yaml</span><br>
+      <span class="key">openapi</span>: <span class="value">3.0.3</span><br>
+      <span class="key">paths</span>:<br>
+      &nbsp;&nbsp;<span class="key">/devices</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">get</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">examples</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">compatibleDevice</span>: <span class="comment"># each example is a named scenario</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">value</span>: { <span class="key">data</span>: { <span class="key">isCompatible</span>: <span class="value">true</span> } }<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">incompatibleDevice</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">value</span>: { <span class="key">data</span>: { <span class="key">isCompatible</span>: <span class="value">false</span> } }
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-examples">
+    <h2>Stage 2 — Example Generation</h2>
+    <p class="detail-subtitle">Human and Claude collaborate to create realistic API response examples for each scenario</p>
+    <div class="detail-columns">
+      <div class="detail-section">
+        <h3>Inputs</h3>
+        <ul>
+          <li>PRD agent (product requirements)</li>
+          <li>App codebase (how the app consumes the API)</li>
+          <li>Swagger docs (schemas &amp; contracts)</li>
+          <li>Generation script (soon: MockServer MCP)</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Output</h3>
+        <ul>
+          <li>Named examples per endpoint (e.g. <code>compatibleDevice</code>, <code>fullCountryList</code>)</li>
+          <li>Embedded directly in the swagger YAML</li>
+          <li>Served by mock server at known URL</li>
+          <li>Cover happy paths, edge cases, errors</li>
+        </ul>
+      </div>
+    </div>
+    <div class="code-block">
+      <span class="comment"># Example: compatibleDevice</span><br>
+      <span class="key">compatibleDevice</span>:<br>
+      &nbsp;&nbsp;<span class="key">summary</span>: <span class="string">Device supports eSIM</span><br>
+      &nbsp;&nbsp;<span class="key">value</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">error</span>: <span class="value">false</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">data</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">isCompatible</span>: <span class="value">true</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">model</span>: <span class="string">"iPhone 17 Pro (iOS 26.2)"</span>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-flows">
+    <h2>Stage 3 — User Flows &amp; Maestro Tests</h2>
+    <p class="detail-subtitle">Flows are collaboratively defined, bound to mock configs via env variables, and validated with Maestro</p>
+    <div class="detail-columns">
+      <div class="detail-section">
+        <h3>How flows are built</h3>
+        <ul>
+          <li>Human + Claude define realistic user journeys</li>
+          <li>Human validates each flow makes sense for a real user</li>
+          <li>Each flow gets its own environment variable</li>
+          <li>Env var binds the flow to a specific mock server config</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Testing</h3>
+        <ul>
+          <li>Flows are translated to Maestro test files</li>
+          <li>Tests run against the app pointing at mock server</li>
+          <li>Deterministic: same env = same API responses</li>
+          <li>Each test is isolated and reproducible</li>
+        </ul>
+      </div>
+    </div>
+    <div class="code-block">
+      <span class="comment"># Each flow has its own env variable binding</span><br>
+      <span class="key">FLOW_PURCHASE_HAPPY_PATH</span>=<span class="string">"purchase-romania-1gb"</span><br>
+      <span class="key">FLOW_INCOMPATIBLE_DEVICE</span>=<span class="string">"device-not-supported"</span><br>
+      <span class="key">FLOW_TOPUP_SUCCESS</span>=<span class="string">"topup-existing-esim"</span><br>
+      <br>
+      <span class="comment"># Maestro test picks up the env and hits mock server</span><br>
+      <span class="comment"># with the corresponding example set</span>
+    </div>
+  </div>
+
+  <!-- ── FULL PIPELINE FLOW ── -->
+  <h2 class="section-title">End-to-End Flow</h2>
+  <p class="section-subtitle">How the pieces connect — from spec to validated test</p>
+
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-node source">Swagger YAML</div>
+      <span style="color: var(--text-muted)">+</span>
+      <div class="flow-node source">PRD Agent</div>
+      <span style="color: var(--text-muted)">+</span>
+      <div class="flow-node source">App Codebase</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node ai">Generation Script / MockServer MCP</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node output">Named API Examples (embedded in swagger)</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node ai">Human + Claude define User Flows</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node human">Human validates flow makes sense</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node output">ENV_VAR per flow &rarr; Mock Server Config</div>
+    </div>
+    <div class="flow-connector"><span>&darr;</span></div>
+    <div class="flow-row">
+      <div class="flow-node output">Maestro Tests (deterministic, reproducible)</div>
+    </div>
+  </div>
+
+  <!-- ── EXAMPLE SCENARIOS ── -->
+  <h2 class="section-title">Example Scenarios</h2>
+  <p class="section-subtitle">Real examples from the eSIM swagger spec</p>
+
+  <div class="example-grid">
+    <div class="example-card">
+      <h4>Compatible Device Check</h4>
+      <div class="endpoint">GET /devices</div>
+      <span class="tag tag-example">compatibleDevice</span>
+      <span class="tag tag-example">incompatibleDevice</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">Checks if the user's device supports eSIM installation</p>
+    </div>
+    <div class="example-card">
+      <h4>Browse Countries</h4>
+      <div class="endpoint">GET /countries</div>
+      <span class="tag tag-example">fullCountryList</span>
+      <span class="tag tag-example">emptyCountryList</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">Returns available countries, regions, and global packages</p>
+    </div>
+    <div class="example-card">
+      <h4>Package Catalog</h4>
+      <div class="endpoint">GET /packages</div>
+      <span class="tag tag-flow">by country</span>
+      <span class="tag tag-flow">by region</span>
+      <span class="tag tag-flow">global</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">Filters packages by country, region, or global scope</p>
+    </div>
+    <div class="example-card">
+      <h4>Purchase Flow</h4>
+      <div class="endpoint">POST /user-packages</div>
+      <span class="tag tag-env">FLOW_PURCHASE_*</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">Full purchase lifecycle: browse &rarr; select &rarr; buy &rarr; install</p>
+    </div>
+    <div class="example-card">
+      <h4>My eSIMs</h4>
+      <div class="endpoint">GET /user-packages</div>
+      <span class="tag tag-flow">active</span>
+      <span class="tag tag-flow">expired</span>
+      <span class="tag tag-flow">empty</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">User's purchased eSIMs with various states</p>
+    </div>
+    <div class="example-card">
+      <h4>Top-up</h4>
+      <div class="endpoint">POST /.../topups</div>
+      <span class="tag tag-env">FLOW_TOPUP_*</span>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px">Add data to an existing active eSIM package</p>
+    </div>
+  </div>
+
+  <!-- ── WHO DOES WHAT ── -->
+  <h2 class="section-title">Who Does What</h2>
+  <p class="section-subtitle">Human-in-the-loop at every critical decision point</p>
+
+  <div class="roles-strip">
+    <div class="role-card">
+      <div class="role-icon" style="color:var(--blue)">{ }</div>
+      <h4>Swagger Spec</h4>
+      <p>Maintained by backend team. Single source of truth for API contracts and schemas.</p>
+    </div>
+    <div class="role-card">
+      <div class="role-icon" style="color:var(--accent)">&lt;/&gt;</div>
+      <h4>Claude (AI)</h4>
+      <p>Generates examples from PRD + codebase + spec. Proposes user flows. Writes Maestro tests.</p>
+    </div>
+    <div class="role-card">
+      <div class="role-icon" style="color:var(--green)">&#10003;</div>
+      <h4>Human</h4>
+      <p>Validates every flow makes sense for a real user. Reviews and approves generated artifacts.</p>
+    </div>
+  </div>
+
+  <!-- ── PROGRESS ── -->
+  <div class="next-steps">
+    <h3>Progress &amp; Next Steps</h3>
+    <div class="step-item">
+      <span class="step-status step-done">&#10003;</span>
+      <div class="step-content">
+        <h4>Swagger spec with embedded examples</h4>
+        <p>OpenAPI 3.0.3 YAML with named examples per endpoint</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-status step-done">&#10003;</span>
+      <div class="step-content">
+        <h4>Mock server serving examples</h4>
+        <p>cloudmocks.diricrawls.ro/sdk/esim/v1 responds with configured examples</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-status step-done">&#10003;</span>
+      <div class="step-content">
+        <h4>Example generation script</h4>
+        <p>Script that uses PRD + codebase + spec to generate examples</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-status step-wip">...</span>
+      <div class="step-content">
+        <h4>MockServer MCP</h4>
+        <p>Transform the generation script into a Claude MCP tool for seamless integration</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-status step-wip">...</span>
+      <div class="step-content">
+        <h4>User flow definitions with env bindings</h4>
+        <p>Each flow gets its own env variable pointing to a mock configuration</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-status step-todo">&bull;</span>
+      <div class="step-content">
+        <h4>Maestro test generation</h4>
+        <p>Translate validated user flows into automated Maestro test suites</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let activeStage = null;
+
+  function showDetail(stage) {
+    // Hide all panels
+    document.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('visible'));
+    document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+
+    if (activeStage === stage) {
+      activeStage = null;
+      return;
+    }
+
+    const panel = document.getElementById('detail-' + stage);
+    const stageEl = document.querySelector('[data-stage="' + stage + '"]');
+    if (panel) {
+      panel.classList.add('visible');
+      stageEl.classList.add('active');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    activeStage = stage;
+  }
+</script>
+
+</body>
+</html>

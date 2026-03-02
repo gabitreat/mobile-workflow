@@ -517,6 +517,122 @@
   .future-item h4 { font-size: 0.9rem; margin-bottom: 4px; }
   .future-item p { font-size: 0.8rem; color: var(--text-muted); }
 
+  /* ── PUDDYBOT ── */
+  .puddy-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .puddy-comp {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    transition: var(--transition);
+  }
+  .puddy-comp:hover { border-color: var(--accent); }
+  .puddy-comp .comp-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .puddy-comp h4 { font-size: 0.9rem; margin-bottom: 4px; }
+  .puddy-comp code { font-size: 0.75rem; color: var(--accent); background: var(--accent-glow); padding: 1px 6px; border-radius: 4px; }
+  .puddy-comp p { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
+
+  .puddy-flow {
+    margin: 30px 0 20px;
+  }
+  .puddy-flow h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .puddy-flow h3 .flow-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .flow-badge.new-task { background: var(--green-glow); color: var(--green); }
+  .flow-badge.ipc { background: var(--accent-glow); color: var(--accent); }
+  .flow-badge.reply { background: var(--orange-glow); color: var(--orange); }
+  .flow-badge.terminate { background: rgba(214, 48, 49, 0.1); color: var(--red); }
+
+  .flow-steps {
+    position: relative;
+    padding-left: 28px;
+  }
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--border);
+    border-radius: 1px;
+  }
+  .flow-step {
+    position: relative;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+  }
+  .flow-step:hover { border-color: var(--accent); color: var(--text); }
+  .flow-step::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--accent);
+  }
+  .flow-step .step-num {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .flow-step code {
+    font-size: 0.75rem;
+    color: var(--green);
+    background: var(--green-glow);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .flow-step .arrow { color: var(--accent); font-weight: 600; }
+
+  .puddy-footer {
+    margin-top: 30px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .puddy-footer strong { color: var(--text); }
+
   /* ── SECTION HEADERS ── */
   .section h2 {
     font-size: 1.6rem;
@@ -861,6 +977,7 @@
   <div class="tab" data-tab="roles">Roles</div>
   <div class="tab" data-tab="rules">WIP & Rules</div>
   <div class="tab" data-tab="future">Future</div>
+  <div class="tab" data-tab="puddybot">PuddyBot</div>
 </nav>
 
 <!-- ════════════════════════ WORKFLOW ════════════════════════ -->
@@ -1595,6 +1712,97 @@
         <p>Claude reads incoming tickets + explores the codebase and suggests a complexity rating automatically, reducing manual triage effort.</p>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ PUDDYBOT ════════════════════════ -->
+<div class="section" id="puddybot">
+  <h2>PuddyBot &mdash; Technical Flow</h2>
+  <p class="subtitle">A Slack bot that spawns autonomous Claude Code workers in tmux sessions. Workers communicate back to Slack through a file-based IPC bridge.</p>
+
+  <div class="puddy-overview">
+    <div class="puddy-comp">
+      <div class="comp-icon">&#x1F916;</div>
+      <h4>Orchestrator</h4>
+      <code>puddy.py</code>
+      <p>Python Slack bot (Socket Mode). Listens for @puddy mentions, spawns workers, routes messages.</p>
+    </div>
+    <div class="puddy-comp">
+      <div class="comp-icon">&#x1F4E1;</div>
+      <h4>IPC Bridge</h4>
+      <code>slack.sh</code>
+      <p>Bash script inside each worker sandbox. Posts, asks questions, uploads snippets, adds reactions via JSON file queue.</p>
+    </div>
+    <div class="puddy-comp">
+      <div class="comp-icon">&#x1F680;</div>
+      <h4>Worker Launcher</h4>
+      <code>claudiu-launch.sh</code>
+      <p>Sets up the worker directory and runs <code>claude --dangerously-skip-permissions</code> inside a tmux session.</p>
+    </div>
+    <div class="puddy-comp">
+      <div class="comp-icon">&#x1F4C1;</div>
+      <h4>Worker Directory</h4>
+      <code>Sandbox/Workers/&lt;id&gt;/</code>
+      <p>Per-worker isolated directory with symlinked host-commands, .slack-env, and .slack-queue/.</p>
+    </div>
+  </div>
+
+  <!-- Flow: New Task -->
+  <div class="puddy-flow">
+    <h3><span class="flow-badge new-task">New Task</span> User dispatches a task</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><span class="step-num">1</span>User posts <code>@puddy &lt;task&gt;</code> in Slack</div>
+      <div class="flow-step"><span class="step-num">2</span><code>puddy.py</code> generates a fun worker name (title + cartoon character + task slug)</div>
+      <div class="flow-step"><span class="step-num">3</span>Writes <code>.slack-env-&lt;worker-id&gt;</code> with channel + thread info</div>
+      <div class="flow-step"><span class="step-num">4</span>Creates worker directory, symlinks <code>host-commands/</code> into it</div>
+      <div class="flow-step"><span class="step-num">5</span>Creates a tmux session <code>puddy-&lt;worker-id&gt;</code></div>
+      <div class="flow-step"><span class="step-num">6</span>Runs <code>claudiu-launch.sh --auto &lt;worker-id&gt;</code> inside tmux <span class="arrow">&rarr;</span> starts Claude Code</div>
+      <div class="flow-step"><span class="step-num">7</span>Waits 8s for Claude TUI to load, then pastes the task prompt via tmux buffer</div>
+      <div class="flow-step"><span class="step-num">8</span>Adds &#x1F680; reaction, posts worker ID to thread</div>
+      <div class="flow-step"><span class="step-num">9</span>Starts a <code>slack_watcher</code> thread polling the worker's <code>.slack-queue/</code> every 1s</div>
+    </div>
+  </div>
+
+  <!-- Flow: IPC -->
+  <div class="puddy-flow">
+    <h3><span class="flow-badge ipc">IPC</span> Claude communicates back</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><span class="step-num">1</span>Claude calls <code>./host-commands/slack.sh &lt;action&gt; &lt;args&gt;</code></div>
+      <div class="flow-step"><span class="step-num">2</span><code>slack.sh</code> auto-detects worker ID from <code>$PUDDY_TASK_ID</code> or working directory path</div>
+      <div class="flow-step"><span class="step-num">3</span>Writes a JSON command file to <code>.slack-queue/</code> (e.g. <code>slack-&lt;id&gt;-&lt;ts&gt;-&lt;pid&gt;.json</code>)</div>
+      <div class="flow-step"><span class="step-num">4</span><code>puddy.py</code> watcher picks up the file, dispatches to Slack API:
+        <br>&nbsp;&nbsp;&bull; <code>post</code> <span class="arrow">&rarr;</span> chat_postMessage <span class="arrow">&rarr;</span> writes ack result file
+        <br>&nbsp;&nbsp;&bull; <code>ask</code> <span class="arrow">&rarr;</span> chat_postMessage (question) <span class="arrow">&rarr;</span> registers pending decision <span class="arrow">&rarr;</span> blocks until user replies
+        <br>&nbsp;&nbsp;&bull; <code>snippet</code> <span class="arrow">&rarr;</span> files_upload_v2 <span class="arrow">&rarr;</span> ack
+        <br>&nbsp;&nbsp;&bull; <code>react</code> <span class="arrow">&rarr;</span> reactions_add <span class="arrow">&rarr;</span> ack
+      </div>
+      <div class="flow-step"><span class="step-num">5</span><code>slack.sh</code> polls for <code>slack-result-&lt;id&gt;.json</code>, reads it, cleans up, returns</div>
+    </div>
+  </div>
+
+  <!-- Flow: User replies -->
+  <div class="puddy-flow">
+    <h3><span class="flow-badge reply">Reply</span> User replies &amp; follow-ups</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><span class="step-num">1</span>User replies in active thread while Claude is busy <span class="arrow">&rarr;</span> message queued in <code>followup_queues[worker_id]</code></div>
+      <div class="flow-step"><span class="step-num">2</span>When Claude exits (done marker file appears), watcher marks worker as idle</div>
+      <div class="flow-step"><span class="step-num">3</span>If queue has messages, pops next one and launches <code>claudiu-launch.sh --auto &lt;id&gt; --continue</code></div>
+      <div class="flow-step"><span class="step-num">4</span>If reply is to an <code>ask</code> question <span class="arrow">&rarr;</span> routed to <code>pending_decisions[worker_id]</code>, unblocks <code>slack.sh</code></div>
+    </div>
+  </div>
+
+  <!-- Flow: Termination -->
+  <div class="puddy-flow">
+    <h3><span class="flow-badge terminate">Terminate</span> Worker shutdown</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><span class="step-num">1</span>User says done/stop/close <span class="arrow">&rarr;</span> sets <code>done_event</code>, sends <code>/exit</code> to tmux session</div>
+      <div class="flow-step"><span class="step-num">2</span>Or task timeout (5h) triggers auto-termination</div>
+      <div class="flow-step"><span class="step-num">3</span>Cleanup: removes env files, queue files, runner scripts; adds &#x2705; reaction</div>
+    </div>
+  </div>
+
+  <div class="puddy-footer">
+    <strong>Concurrency:</strong> Max 5 parallel workers. Thread-to-worker mappings persisted in <code>.puddy-workers.json</code>. Workers resumable from any thread via <code>@puddy #&lt;worker-id&gt;</code>.
   </div>
 </div>
 

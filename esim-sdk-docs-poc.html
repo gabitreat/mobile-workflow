@@ -139,7 +139,9 @@
   </main>
 
   <script>
-    const dataUrl = './data/esim-sdk-snapshot.json';
+    const defaultDataUrl = './data/esim-sdk-snapshot.json';
+    const rawDataUrl = 'https://raw.githubusercontent.com/gabitreat/mobile-workflow/feature/gitbook-replacement-poc/data/esim-sdk-snapshot.json';
+    const dataUrl = location.hostname.includes('htmlpreview.github.io') ? rawDataUrl : defaultDataUrl;
 
     const toItems = (arr) => (arr && arr.length ? arr : ['No data extracted yet.']);
 

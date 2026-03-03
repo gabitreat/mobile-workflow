@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pago eSIM SDK Docs POC</title>
+  <style>
+    :root {
+      --paper: #f3f1ec;
+      --ink: #12212f;
+      --muted: #4f5d6b;
+      --line: #c9c3b6;
+      --accent: #0f766e;
+      --accent-2: #cb4b16;
+      --panel: #fffcf5;
+      --shadow: 0 10px 30px rgba(18, 33, 47, 0.08);
+      --mono: "SFMono-Regular", Menlo, Consolas, monospace;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% -10%, #f8d7b0 0%, transparent 45%),
+        radial-gradient(circle at 90% -20%, #b4e4dc 0%, transparent 40%),
+        var(--paper);
+      line-height: 1.45;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(130deg, #fffaf1 0%, #f4fff9 100%);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      letter-spacing: 0.4px;
+    }
+
+    .lede { color: var(--muted); max-width: 80ch; }
+
+    .meta {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .meta strong { color: var(--accent); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--accent-2);
+      background: #fff7eb;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin: 5px 0;
+      overflow-wrap: anywhere;
+    }
+
+    code {
+      font-family: var(--mono);
+      background: #f7f2e6;
+      border: 1px solid #e5dcc9;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.86rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 14px; }
+      .hero { padding: 16px; border-radius: 14px; }
+      .card { border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Pago eSIM Integration Docs: Code-Linked POC</h1>
+      <p class="lede">
+        This preview is generated from real code in <code>iOS-eSIM</code> and <code>android-esim</code>.
+        The goal is replacing static GitBook pages with a docs surface that can be regenerated from source repos.
+      </p>
+      <div id="meta" class="meta"></div>
+    </section>
+
+    <section class="grid" id="cards"></section>
+  </main>
+
+  <script>
+    const dataUrl = './data/esim-sdk-snapshot.json';
+
+    const toItems = (arr) => (arr && arr.length ? arr : ['No data extracted yet.']);
+
+    const createList = (title, tag, items) => {
+      const section = document.createElement('section');
+      section.className = 'card';
+      const list = toItems(items).map((x) => `<li><code>${x.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</code></li>`).join('');
+      section.innerHTML = `
+        <h2>${title} <span class="tag">${tag}</span></h2>
+        <ul>${list}</ul>
+      `;
+      return section;
+    };
+
+    const createReqCard = (title, tag, reqs) => {
+      const section = document.createElement('section');
+      section.className = 'card';
+      const rows = Object.entries(reqs || {}).map(([k, v]) => `<li><strong>${k}:</strong> <code>${String(v)}</code></li>`).join('');
+      section.innerHTML = `
+        <h2>${title} <span class="tag">${tag}</span></h2>
+        <ul>${rows || '<li>No requirements detected.</li>'}</ul>
+      `;
+      return section;
+    };
+
+    async function render() {
+      const meta = document.getElementById('meta');
+      const cards = document.getElementById('cards');
+
+      try {
+        const res = await fetch(dataUrl, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Failed to load ${dataUrl}: ${res.status}`);
+        const data = await res.json();
+
+        meta.innerHTML = `
+          <div><strong>Snapshot generated:</strong> ${data.generatedAt}</div>
+          <div><strong>iOS source:</strong> ${data.sourceRepos.ios.repository}@${data.sourceRepos.ios.commit} (${data.sourceRepos.ios.branch})</div>
+          <div><strong>Android source:</strong> ${data.sourceRepos.android.repository}@${data.sourceRepos.android.commit} (${data.sourceRepos.android.branch})</div>
+          <div><strong>Freshness:</strong> iOS ${data.sourceRepos.ios.lastCommitDate}, Android ${data.sourceRepos.android.lastCommitDate}</div>
+        `;
+
+        cards.appendChild(createReqCard('iOS Requirements', 'iOS', data.ios.requirements));
+        cards.appendChild(createList('iOS Package Dependencies', 'SPM', data.ios.packageDependencies));
+        cards.appendChild(createList('iOS Public Entry Points', 'API', data.ios.publicEntryPoints));
+        cards.appendChild(createList('iOS Notification Signals', 'Events', data.ios.notificationSignals));
+
+        cards.appendChild(createReqCard('Android Requirements', 'Android', data.android.requirements));
+        cards.appendChild(createList('Android Dependencies (Sample)', 'Gradle', data.android.gradleDependenciesSample));
+        cards.appendChild(createList('Android Manifest Permissions', 'Manifest', data.android.manifestPermissions));
+        cards.appendChild(createList('Android SDK Entry Points', 'API', data.android.publicEntryPoints));
+        cards.appendChild(createList('Android Docs Catalog', 'Docs', data.android.docsCatalog));
+      } catch (err) {
+        meta.innerHTML = `<div class="muted">${err.message}</div>`;
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>

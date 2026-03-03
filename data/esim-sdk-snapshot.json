@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-03-03T13:05:01Z",
+  "sourceRepos": {
+    "ios": {
+      "repository": "PagoApp/iOS-eSIM",
+      "branch": "main",
+      "commit": "7ec3367",
+      "lastCommitDate": "2026-03-02"
+    },
+    "android": {
+      "repository": "PagoApp/android-esim",
+      "branch": "master",
+      "commit": "f530328",
+      "lastCommitDate": "2026-03-03"
+    }
+  },
+  "ios": {
+    "requirements": {
+      "minOS": "iOS 15+",
+      "swiftTools": "5.9",
+      "xcode": "Xcode 15.0"
+    },
+    "packageDependencies": [
+      " .package(url: \"git@github.com:PagoApp/ios-ui-dev.git\", branch: \"main\"),",
+      " .package(url: \"https://github.com/realm/SwiftLint.git\", from: \"0.55.1\"),"
+    ],
+    "publicEntryPoints": [
+      " public static func notify(_ notification: PagoESIMNotification) {",
+      " public static func configure(config: PagoESIMConfigurator) async throws {",
+      " public static func startFlow(",
+      " public static func checkDataPreloadAndStartFlow(completion: @escaping () -> Void) {",
+      " public static func startDemoFlow(",
+      " public static func stopFlow(animated: Bool = true, error: PagoESIMFlowError? = nil) {",
+      " public static func notifyPaymentCompleted(userPackageId: Int) async throws -> PagoESIMUserPackage {",
+      " public static func clearStorage() -> Bool {",
+      " public static func setAdditionalHeaders(_ headers: [String: String]) {",
+      " public static func showTestErrorAlert() {",
+      " public static func setMockAPIEnabled(_ enabled: Bool, simulateIncompatibleDevice: Bool = false) {"
+    ],
+    "notificationSignals": [
+      "ESIMApp/Flows/ESIMSelectPlanFlow/ESIMSelectPlanViewModel.swift:168:                PagoESIMManager.notify(.paymentEntitySelected(payment))",
+      "ESIMApp/Flows/ESIMTopupSelectionFlow/ESIMTopupSelectionViewModel.swift:179:                PagoESIMManager.notify(.paymentEntitySelected(payment))",
+      "ESIMApp/DemoFlow/ESIMDemoView.swift:39:                    PagoESIMManager.notify(.paymentEntitySelected(payment))",
+      "PagoESIMManager.swift:112:    /// For `.paymentEntitySelected`, the integrator's original nav bar state is",
+      "PagoESIMManager.swift:116:        if case .paymentEntitySelected = notification {",
+      "PagoESIMManager.swift:256:                case .paymentEntitySelected(let payment):",
+      "PagoESIMManager.swift:258:                case .externalPaymentCompleted:",
+      "Configuration/PagoESIMNotification.swift:17:/// case .paymentEntitySelected(let payment):",
+      "PagoESIMSDKTests/Flows/ESIMTopupSelectionViewModelTests.swift:301:                if case .paymentEntitySelected(let payment) = notification {",
+      "PagoESIMSDKTests/Flows/ESIMSelectPlanViewModelTests.swift:584:                if case .paymentEntitySelected(let payment) = notification {"
+    ]
+  },
+  "android": {
+    "requirements": {
+      "compileSdk": "36",
+      "minSdk": "24",
+      "targetSdk": "35",
+      "java": "17"
+    },
+    "gradleDependenciesSample": [
+      " implementation libs.androidx.activity.ktx",
+      " implementation libs.androidx.lifecycle.runtime.ktx",
+      " implementation libs.androidx.lifecycle.livedata.ktx",
+      " implementation libs.androidx.lifecycle.runtime.compose",
+      " api libs.pago.core",
+      " implementation libs.pago.ui",
+      " implementation libs.pago.validator",
+      " implementation libs.lottie",
+      " implementation libs.lottie.compose",
+      " implementation libs.squareup.okhttp",
+      " implementation libs.squareup.retrofit",
+      " implementation libs.squareup.retrofit.converter.gson",
+      " implementation libs.squareup.retrofit.converter.scalars",
+      " implementation libs.androidx.compose.material3",
+      " implementation libs.androidx.compose.material.icons.core",
+      " implementation libs.androidx.compose.ui",
+      " implementation libs.androidx.compose.ui.graphics",
+      " implementation libs.androidx.compose.ui.tooling.preview",
+      " implementation libs.androidx.constraintlayout.compose",
+      " implementation libs.androidx.activity.compose",
+      " implementation libs.androidx.compose.foundation",
+      " implementation libs.androidx.navigation3.runtime",
+      " implementation libs.androidx.navigation3.ui",
+      " implementation libs.androidx.lifecycle.viewmodel.navigation3",
+      " implementation libs.glide.compose"
+    ],
+    "manifestPermissions": [
+      " <uses-permission android:name=\"android.permission.INTERNET\" />"
+    ],
+    "manifestFeatures": [],
+    "publicEntryPoints": [
+      "PagoEsimConfigurator.kt:81: fun addFlowFinishListener(pagoEsimFlowFinishedListener: PagoEsimFlowFinishedListener) =",
+      "PagoEsimConfigurator.kt:84: fun addPagoPaymentEntitySelector(pagoPaymentEntitySelectedListener: PagoPaymentEntitySelectedListener) =",
+      "PagoEsimConfigurator.kt:90: fun setFonts(",
+      "PagoEsimConfigurator.kt:104: fun addPagoInterceptors(pagoInterceptorList: List<Interceptor>) =",
+      "PagoEsimConfigurator.kt:111: override fun finishFlow(error: PagoSDKError?) {",
+      "PagoEsimManager.kt:87: fun loadConfig(",
+      "PagoEsimManager.kt:107: override fun startFlow(activity: Activity) {",
+      "PagoEsimManager.kt:111: override fun startFlow(activity: Activity, flowAction: StartFlowAction) {",
+      "PagoEsimManager.kt:115: override fun finishFlow() {"
+    ],
+    "docsCatalog": [
+      "ESIM_LOGICAL_FLOWS.md",
+      "ESIM_NAVIGATION_GRAPH.md",
+      "esim-flows/checkout-flow.md",
+      "esim-flows/installation-flows.md",
+      "esim-flows/overview.md",
+      "esim-flows/plan-states.md",
+      "esim-flows/ui-elements.md",
+      "esim_api.yaml",
+      "prd-esim.md"
+    ]
+  }
+}

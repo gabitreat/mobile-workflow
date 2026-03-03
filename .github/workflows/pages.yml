@@ -1,7 +1,8 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main]
+    branches: [main, feature/gitbook-replacement-poc]
+  workflow_dispatch:
 permissions:
   contents: read
   pages: write

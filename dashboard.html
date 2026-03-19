@@ -64,10 +64,8 @@
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
     position: relative;
-    overflow: hidden;
   }
-  .card:hover { border-color: var(--accent); }
-  .card.open { border-color: var(--accent); box-shadow: 0 4px 24px rgba(108, 92, 231, 0.12); }
+  .card:hover { border-color: var(--accent); box-shadow: 0 2px 16px rgba(108, 92, 231, 0.08); }
 
   .card-top {
     display: flex;
@@ -75,19 +73,7 @@
     align-items: flex-start;
     margin-bottom: 8px;
   }
-  .card-name {
-    font-size: 1.05rem;
-    font-weight: 700;
-  }
-  .card-folder {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    background: var(--surface2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
+  .card-name { font-size: 1.05rem; font-weight: 700; }
   .card-goal {
     font-size: 0.8rem;
     color: var(--muted);
@@ -95,29 +81,19 @@
     margin-bottom: 12px;
   }
 
-  /* Health dots row */
   .health {
     display: flex;
     gap: 5px;
     align-items: center;
   }
-  .hdot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
+  .hdot { width: 8px; height: 8px; border-radius: 50%; }
   .hdot.ok { background: var(--green); }
   .hdot.warn { background: var(--orange); }
   .hdot.pending { background: var(--muted); }
   .hdot.legacy { background: var(--orange); opacity: 0.4; }
   .hdot.reference { background: var(--blue); opacity: 0.4; }
-  .health-label {
-    font-size: 0.68rem;
-    color: var(--muted);
-    margin-left: 4px;
-  }
+  .health-label { font-size: 0.68rem; color: var(--muted); margin-left: 4px; }
 
-  /* Issue count badge */
   .badge {
     position: absolute;
     top: 14px;
@@ -132,36 +108,88 @@
   .badge.blocker { background: rgba(214, 48, 49, 0.12); color: var(--red); }
   .badge.clear { background: rgba(0, 184, 148, 0.12); color: var(--green); }
 
-  /* Expand arrow */
   .expand-hint {
     font-size: 0.68rem;
     color: var(--muted);
     margin-top: 10px;
     text-align: center;
-    opacity: 0.6;
-    transition: opacity 0.2s;
+    opacity: 0.5;
   }
   .card:hover .expand-hint { opacity: 1; }
-  .card.open .expand-hint { display: none; }
 
-  /* Detail panel */
-  .detail {
+  /* Overlay */
+  .overlay {
     display: none;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    animation: fadeIn 0.25s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: overlayIn 0.2s ease;
   }
-  .card.open .detail { display: block; }
+  .overlay.open { display: flex; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes overlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .detail-section {
-    margin-bottom: 12px;
+  .overlay-panel {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 28px 24px;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(108, 92, 231, 0.2);
+    animation: panelIn 0.25s ease;
   }
+
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .overlay-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .overlay-close:hover { border-color: var(--accent); color: var(--text); }
+
+  .overlay-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    padding-right: 36px;
+  }
+  .overlay-goal {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .detail-section { margin-bottom: 14px; }
   .detail-label {
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -171,91 +199,20 @@
     margin-bottom: 6px;
   }
   .detail-progress {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text);
     line-height: 1.5;
   }
 
-  /* Repo rows */
-  .repo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 10px;
-    background: var(--surface2);
-    border-radius: 6px;
-    font-size: 0.75rem;
-    margin-bottom: 3px;
-  }
-  .repo .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot.ok { background: var(--green); }
-  .dot.warn { background: var(--orange); }
-  .dot.pending { background: var(--muted); }
-  .dot.legacy { background: var(--orange); opacity: 0.4; }
-  .dot.reference { background: var(--blue); opacity: 0.4; }
-
-  .repo .rname {
-    font-weight: 600;
-    color: var(--text);
-    min-width: 110px;
-  }
-  .repo .rbranch {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.68rem;
-    color: var(--muted);
-  }
-  .repo .rcommit {
-    color: var(--muted);
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: right;
-  }
-
-  /* Issues in detail */
-  .issue {
-    font-size: 0.78rem;
-    color: var(--orange);
-    padding: 3px 0 3px 14px;
-    position: relative;
-  }
-  .issue::before {
-    content: '';
-    position: absolute;
-    left: 3px;
-    top: 10px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--orange);
-  }
-  .issue.blocker { color: var(--red); }
-  .issue.blocker::before { background: var(--red); }
-
-  /* Coverage bars */
-  .coverage {
-    margin-bottom: 10px;
-  }
+  /* Coverage */
+  .coverage { margin-bottom: 10px; }
   .cov-overall {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
   }
-  .cov-pct {
-    font-size: 1.3rem;
-    font-weight: 700;
-  }
-  .cov-label {
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
+  .cov-pct { font-size: 1.3rem; font-weight: 700; }
   .cov-bar-bg {
     flex: 1;
     height: 6px;
@@ -290,17 +247,10 @@
     border-radius: 2px;
     overflow: hidden;
   }
-  .cov-layer .lbar-fill {
-    height: 100%;
-    border-radius: 2px;
-  }
-  .cov-layer .lcount {
-    font-size: 0.65rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
+  .cov-layer .lbar-fill { height: 100%; border-radius: 2px; }
+  .cov-layer .lcount { font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
 
-  /* Working / Blocked lists */
+  /* Working / Blocked */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -342,6 +292,46 @@
   .mini-list.ok-list li::before { background: var(--green); }
   .mini-list.blocked-list li::before { background: var(--red); }
 
+  /* Repos in overlay */
+  .repo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    background: var(--surface2);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+  }
+  .repo .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot.ok { background: var(--green); }
+  .dot.warn { background: var(--orange); }
+  .dot.pending { background: var(--muted); }
+  .dot.legacy { background: var(--orange); opacity: 0.4; }
+  .dot.reference { background: var(--blue); opacity: 0.4; }
+  .repo .rname { font-weight: 600; color: var(--text); min-width: 110px; }
+  .repo .rbranch { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); }
+  .repo .rcommit { color: var(--muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
+
+  .issue {
+    font-size: 0.78rem;
+    color: var(--orange);
+    padding: 3px 0 3px 14px;
+    position: relative;
+  }
+  .issue::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .issue.blocker { color: var(--red); }
+  .issue.blocker::before { background: var(--red); }
+
   .updated {
     text-align: center;
     font-size: 0.7rem;
@@ -376,9 +366,16 @@
   <div id="root"><div style="text-align:center;padding:60px 0;color:var(--muted);">Loading...</div></div>
 </div>
 
+<div class="overlay" id="overlay">
+  <div class="overlay-panel" id="overlay-panel"></div>
+</div>
+
 <script>
 (async function() {
   const root = document.getElementById('root');
+  const overlay = document.getElementById('overlay');
+  const panel = document.getElementById('overlay-panel');
+
   let data;
   try {
     const r = await fetch('dashboard-data.json?' + Date.now());
@@ -432,22 +429,7 @@
     return h;
   }
 
-  let html = `<h1>Workers</h1><div class="sub">${data.engineer} &middot; ${data.role}</div>`;
-  html += '<div class="cards">';
-
-  (data.projects || []).forEach(p => {
-    const hasBlocker = (p.issues || []).some(i => i.toLowerCase().includes('blocker'));
-    const issueCount = (p.issues || []).length;
-
-    let badgeHtml = '';
-    if (hasBlocker) badgeHtml = '<span class="badge blocker">blocker</span>';
-    else if (issueCount > 0) badgeHtml = `<span class="badge issues">${issueCount} issue${issueCount > 1 ? 's' : ''}</span>`;
-    else badgeHtml = '<span class="badge clear">clear</span>';
-
-    // Health dots
-    const dots = (p.repos || []).map(r => `<span class="hdot ${r.status}" title="${r.name}"></span>`).join('');
-
-    // Repo detail rows
+  function openOverlay(p) {
     let repoRows = '';
     (p.repos || []).forEach(r => {
       repoRows += `<div class="repo">
@@ -458,15 +440,64 @@
       </div>`;
     });
 
-    // Issue rows
     let issueRows = '';
     (p.issues || []).forEach(issue => {
       const cls = issue.toLowerCase().includes('blocker') ? 'issue blocker' : 'issue';
       issueRows += `<div class="${cls}">${issue}</div>`;
     });
 
+    panel.innerHTML = `
+      <button class="overlay-close" onclick="closeOverlay()">&times;</button>
+      <div class="overlay-name">${p.name}</div>
+      <div class="overlay-goal">${p.endGoal}</div>
+      ${renderCoverage(p)}
+      <div class="detail-section">
+        <div class="detail-label">Progress</div>
+        <div class="detail-progress">${p.progress}</div>
+      </div>
+      ${renderWorkingBlocked(p)}
+      <div class="detail-section">
+        <div class="detail-label">Repos</div>
+        ${repoRows}
+      </div>
+      ${issueRows ? `<div class="detail-section"><div class="detail-label">Issues</div>${issueRows}</div>` : ''}
+    `;
+    overlay.classList.add('open');
+  }
+
+  window.closeOverlay = function() {
+    overlay.classList.remove('open');
+  };
+
+  // Close on backdrop click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeOverlay();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeOverlay();
+  });
+
+  // Store projects for click handler
+  window._projects = data.projects || [];
+
+  let html = `<h1>Workers</h1><div class="sub">${data.engineer} &middot; ${data.role}</div>`;
+  html += '<div class="cards">';
+
+  (data.projects || []).forEach((p, i) => {
+    const hasBlocker = (p.issues || []).some(x => x.toLowerCase().includes('blocker'));
+    const issueCount = (p.issues || []).length;
+
+    let badgeHtml = '';
+    if (hasBlocker) badgeHtml = '<span class="badge blocker">blocker</span>';
+    else if (issueCount > 0) badgeHtml = `<span class="badge issues">${issueCount} issue${issueCount > 1 ? 's' : ''}</span>`;
+    else badgeHtml = '<span class="badge clear">clear</span>';
+
+    const dots = (p.repos || []).map(r => `<span class="hdot ${r.status}" title="${r.name}"></span>`).join('');
+
     html += `
-      <div class="card" onclick="this.classList.toggle('open')">
+      <div class="card" onclick="openOverlay(window._projects[${i}])">
         ${badgeHtml}
         <div class="card-top">
           <span class="card-name">${p.name}</span>
@@ -474,20 +505,6 @@
         <div class="card-goal">${p.endGoal}</div>
         <div class="health">${dots}<span class="health-label">${(p.repos||[]).length} repo${(p.repos||[]).length > 1 ? 's' : ''}</span></div>
         <div class="expand-hint">tap for details</div>
-
-        <div class="detail">
-          ${renderCoverage(p)}
-          <div class="detail-section">
-            <div class="detail-label">Progress</div>
-            <div class="detail-progress">${p.progress}</div>
-          </div>
-          ${renderWorkingBlocked(p)}
-          <div class="detail-section">
-            <div class="detail-label">Repos</div>
-            ${repoRows}
-          </div>
-          ${issueRows ? `<div class="detail-section"><div class="detail-label">Issues</div>${issueRows}</div>` : ''}
-        </div>
       </div>
     `;
   });
@@ -498,6 +515,9 @@
   html += `<div class="updated">Updated ${updated.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</div>`;
 
   root.innerHTML = html;
+
+  // Make openOverlay available globally
+  window.openOverlay = openOverlay;
 })();
 </script>
 

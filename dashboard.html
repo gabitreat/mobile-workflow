@@ -8,10 +8,15 @@
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
+    --surface2: #242836;
     --border: #2e3347;
     --text: #e2e4ed;
     --muted: #8b8fa3;
     --accent: #6c5ce7;
+    --green: #00b894;
+    --orange: #f39c12;
+    --red: #d63031;
+    --blue: #0984e3;
     --radius: 12px;
   }
 
@@ -22,64 +27,176 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .container {
-    max-width: 480px;
-    width: 100%;
-    padding: 40px 20px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 24px;
     background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 32px;
   }
 
-  .initiatives {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
+  /* Initiative */
   .initiative {
+    margin-bottom: 28px;
+  }
+  .init-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .init-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .init-folder {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .init-goal {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .init-progress {
+    font-size: 0.82rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    padding: 10px 14px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 20px;
+    border-radius: 8px;
+  }
+
+  /* Repos */
+  .repos {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .repo {
     display: flex;
     align-items: center;
-    gap: 14px;
-    transition: border-color 0.2s;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--surface);
+    border-radius: 6px;
+    font-size: 0.78rem;
   }
-  .initiative:hover { border-color: var(--accent); }
+  .repo .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot.ok { background: var(--green); }
+  .dot.warn { background: var(--orange); }
+  .dot.pending { background: var(--muted); }
+  .dot.legacy { background: var(--orange); opacity: 0.5; }
+  .dot.reference { background: var(--blue); opacity: 0.5; }
 
-  .initiative .folder {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
+  .repo .rname {
+    font-weight: 600;
     min-width: 120px;
+    color: var(--text);
+  }
+  .repo .rbranch {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    min-width: 140px;
+  }
+  .repo .rcommit {
+    color: var(--muted);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .initiative .name {
-    font-size: 0.95rem;
+  /* Issues */
+  .issues {
+    margin-top: 6px;
+  }
+  .issue {
+    font-size: 0.78rem;
+    color: var(--orange);
+    padding: 4px 0 4px 16px;
+    position: relative;
+  }
+  .issue::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .issue.blocker { color: var(--red); }
+  .issue.blocker::before { background: var(--red); }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  .updated {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 32px;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 5px 14px;
+    border-radius: 16px;
+    font-size: 0.8rem;
     font-weight: 500;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    text-decoration: none;
+  }
+  .back-link:hover { border-color: var(--accent); color: var(--text); }
+
+  @media (max-width: 600px) {
+    .repo { flex-wrap: wrap; }
+    .repo .rbranch { min-width: auto; }
+    .repo .rcommit { width: 100%; margin-top: 2px; }
   }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Workers</h1>
-  <div class="initiatives" id="root"></div>
+  <a href="index.html" class="back-link">&larr; Workflow</a>
+  <div id="root"><div style="text-align:center;padding:60px 0;color:var(--muted);">Loading...</div></div>
 </div>
 
 <script>
@@ -91,16 +208,51 @@
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     data = await r.json();
   } catch (e) {
-    root.innerHTML = `<div style="color:var(--muted);">Could not load data.</div>`;
+    root.innerHTML = `<div style="color:var(--red);text-align:center;padding:40px;">Could not load data: ${e.message}</div>`;
     return;
   }
 
-  root.innerHTML = (data.projects || []).map(p => `
-    <div class="initiative">
-      <span class="folder">${p.id}/</span>
-      <span class="name">${p.name}</span>
-    </div>
-  `).join('');
+  let html = `<h1>Workers</h1><div class="subtitle">${data.engineer} &middot; ${data.role}</div>`;
+
+  (data.projects || []).forEach((p, i) => {
+    if (i > 0) html += '<hr class="divider">';
+
+    html += `<div class="initiative">`;
+    html += `<div class="init-header"><span class="init-name">${p.name}</span><span class="init-folder">${p.id}/</span></div>`;
+    html += `<div class="init-goal">${p.endGoal}</div>`;
+    html += `<div class="init-progress">${p.progress}</div>`;
+
+    // Repos
+    if (p.repos && p.repos.length) {
+      html += '<div class="repos">';
+      p.repos.forEach(r => {
+        html += `<div class="repo">
+          <span class="dot ${r.status}"></span>
+          <span class="rname">${r.name}</span>
+          <span class="rbranch">${r.branch}</span>
+          <span class="rcommit">${r.lastCommit}</span>
+        </div>`;
+      });
+      html += '</div>';
+    }
+
+    // Issues
+    if (p.issues && p.issues.length) {
+      html += '<div class="issues">';
+      p.issues.forEach(issue => {
+        const cls = issue.toLowerCase().includes('blocker') ? 'issue blocker' : 'issue';
+        html += `<div class="${cls}">${issue}</div>`;
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';
+  });
+
+  const updated = new Date(data.lastUpdated);
+  html += `<div class="updated">Updated ${updated.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</div>`;
+
+  root.innerHTML = html;
 })();
 </script>
 

@@ -150,7 +150,10 @@
     position: relative;
     box-shadow: 0 8px 40px rgba(108, 92, 231, 0.2);
     animation: panelIn 0.25s ease;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
+  .overlay-panel::-webkit-scrollbar { display: none; }
 
   @keyframes panelIn {
     from { opacity: 0; transform: translateY(20px) scale(0.97); }

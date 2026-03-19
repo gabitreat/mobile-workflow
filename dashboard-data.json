@@ -1,28 +1,51 @@
 {
-  "lastUpdated": "2026-03-19T12:00:00Z",
+  "lastUpdated": "2026-03-19T14:15:00Z",
   "engineer": "Gabi Pago",
   "role": "iOS Team Lead",
   "projects": [
     {
       "id": "pago-spm",
       "name": "Migrate to SPM",
-      "endGoal": "All SDKs build as Swift Packages, consumed by a single app. Enables internal SDK distribution and integration testing.",
+      "endGoal": "Migrate all ios-pago modules to SPM, consolidate into a single integrator app, support local/remote per-dependency switching, and release via xcframeworks.",
       "repos": [
-        { "name": "ios-bills-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove tracked .package.resolved to prevent stale SPM pin caching" },
-        { "name": "ios-buffer", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove .gitmodules leftover from submodule migration" },
-        { "name": "ios-core-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Add Package.resolved to .gitignore for SPM library hygiene" },
-        { "name": "ios-esim", "branch": "feature/spm", "status": "ok", "lastCommit": "Fix: pass additionalHeaders to createHTTPClient (reverted by SPM migration)" },
-        { "name": "ios-freemium", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove stale submodule gitlinks" },
-        { "name": "ios-hub", "branch": "main", "status": "pending", "lastCommit": "PAGO-42714 - Add eSIM entry point to Hub landing page" },
-        { "name": "ios-network-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove stale ios-core-dev submodule gitlink" },
-        { "name": "ios-pay", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove tracked Package.resolved to prevent stale SPM pin caching" },
-        { "name": "ios-rca-dev", "branch": "feature/spm", "status": "warn", "lastCommit": "Still has committed Package.resolved — needs cleanup" },
-        { "name": "ios-ui-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Remove tracked Package.resolved to prevent stale SPM pin caching" }
+        { "name": "ios-core-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done — base dependency" },
+        { "name": "ios-ui-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done" },
+        { "name": "ios-network-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done" },
+        { "name": "ios-buffer", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done" },
+        { "name": "ios-freemium", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done" },
+        { "name": "ios-pay", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done" },
+        { "name": "ios-bills-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done" },
+        { "name": "ios-rca-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done, has integrator" },
+        { "name": "ios-esim", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done, has integrator" },
+        { "name": "ios-hub", "branch": "main", "status": "pending", "lastCommit": "No Package.swift — monorepo with submodule copies" }
       ],
-      "progress": "9/10 repos on feature/spm with Package.swift. Submodule gitlinks and .gitmodules cleaned up. Package.resolved gitignored.",
+      "coverage": {
+        "overall": 60,
+        "layers": [
+          { "name": "Package.swift", "done": 9, "total": 10 },
+          { "name": "switch-deps", "done": 3, "total": 10 },
+          { "name": "Integrators", "done": 3, "total": 1 },
+          { "name": "Per-dep switch", "done": 0, "total": 1 },
+          { "name": "xcframework", "done": 0, "total": 1 }
+        ]
+      },
+      "working": [
+        "9/10 modules have Package.swift",
+        "Global dependency switching (all deps local/remote)",
+        "3 integrator apps exist (rca, bills, esim)",
+        "switch-deps.sh works for bills, rca, esim + integrators"
+      ],
+      "blocked": [
+        "ios-hub — needs SPM migration (break monorepo submodule pattern)",
+        "Single integrator — consolidate rca/bills into ios-esim-integrator",
+        "Per-dependency switching — toggle individual deps independently",
+        "xcframework releases — build & release from unified integrator",
+        "switch-deps for core, ui, network, buffer, freemium, pay, hub"
+      ],
+      "progress": "9/10 modules have Package.swift. 3 integrators exist but need consolidation into one. Global dep switching works. Per-dep switching and xcframework releases pending.",
       "issues": [
-        "ios-hub still on main — not yet migrated to SPM",
-        "ios-rca-dev still has committed Package.resolved"
+        "ios-hub still monorepo with submodules — no Package.swift",
+        "3 integrators need consolidation into ios-esim-integrator"
       ]
     },
     {
@@ -67,9 +90,23 @@
       "name": "Workflow refinement",
       "endGoal": "Shape how the team works in the AI era. Visualize and iterate on new workflows, processes, and tooling.",
       "repos": [
-        { "name": "mobile-workflow", "branch": "main", "status": "ok", "lastCommit": "Rewrite dashboard as minimal Workers/ overview" }
+        { "name": "mobile-workflow", "branch": "main", "status": "ok", "lastCommit": "Switch card details to overlay modal" }
       ],
-      "progress": "Workflow pipeline, train station board, refinement process, PR review tiers, and release train model documented. Dashboard live on GitHub Pages.",
+      "coverage": {
+        "overall": 100,
+        "layers": [
+          { "name": "Pages", "done": 11, "total": 11 },
+          { "name": "Dashboard", "done": 6, "total": 6 }
+        ]
+      },
+      "working": [
+        "All workflow pages (pipeline, train board, refinement, estimation, PR review, releases, roles, WIP, future)",
+        "Mock-driven testing page",
+        "Workers dashboard with overlay details, coverage bars, status badges",
+        "Auto-update from status.md (15min loop)"
+      ],
+      "blocked": [],
+      "progress": "All pages and dashboard features complete. Auto-update loop active. status.md files now in all 4 Workers.",
       "issues": []
     },
     {
@@ -77,14 +114,34 @@
       "name": "Maestro fixes",
       "endGoal": "Decouple legacy tests from shared repo. Tests live alongside each product's codebase. Builds infrastructure for async AI-driven testing.",
       "repos": [
-        { "name": "ios-esim", "branch": "main", "status": "ok", "lastCommit": "bugfix/maestro_fixes merged — 15 test YAMLs (SDK + integrator)" },
-        { "name": "ios-rca-dev", "branch": "feature/add-maestro-tests", "status": "warn", "lastCommit": "Add Maestro UI tests from maestro-ui-testing repo — dirty submodules + copy YAML files" },
-        { "name": "maestro-ui-testing", "branch": "master", "status": "legacy", "lastCommit": "Legacy shared repo — iOS + Android tests. Being decomposed into per-product repos." }
+        { "name": "ios-esim", "branch": "main", "status": "ok", "lastCommit": "Maestro tests migrated and merged" },
+        { "name": "ios-rca-dev", "branch": "main", "status": "ok", "lastCommit": "Maestro tests migrated from maestro-ui-testing" },
+        { "name": "maestro-ui-testing", "branch": "master", "status": "legacy", "lastCommit": "Legacy shared repo — being decomposed" }
       ],
-      "progress": "ios-esim tests migrated and merged to main (15 YAMLs). ios-rca-dev migration in progress on feature branch. maestro-ui-testing is the legacy source being decomposed.",
+      "coverage": {
+        "overall": 33,
+        "layers": [
+          { "name": "ios-esim", "done": 1, "total": 1 },
+          { "name": "ios-rca-dev", "done": 1, "total": 1 },
+          { "name": "ios-bills-dev", "done": 0, "total": 1 },
+          { "name": "ios-freemium", "done": 0, "total": 1 },
+          { "name": "ios-pago", "done": 0, "total": 1 },
+          { "name": "ios-hub", "done": 0, "total": 1 }
+        ]
+      },
+      "working": [
+        "ios-esim — maestro tests migrated and done",
+        "ios-rca-dev — maestro tests migrated from maestro-ui-testing, done"
+      ],
+      "blocked": [
+        "ios-bills-dev — tests pending migration",
+        "ios-freemium — tests pending",
+        "ios-pago — tests pending",
+        "ios-hub — tests pending"
+      ],
+      "progress": "2/6 apps migrated (ios-esim, ios-rca-dev). 4 remaining: ios-bills-dev, ios-freemium, ios-pago, ios-hub.",
       "issues": [
-        "ios-rca-dev has dirty submodules and duplicate 'copy' YAML files that need cleanup",
-        "maestro-ui-testing (legacy) still the source of truth for some products — not all tests migrated yet"
+        "4 apps still without colocated maestro tests"
       ]
     }
   ]

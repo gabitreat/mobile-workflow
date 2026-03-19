@@ -26,7 +26,7 @@
 | Card layout with tap-to-expand | Done |
 | Coverage bars (per-layer) | Done |
 | Working/blocked lists | Done |
-| Auto-update from status.md (15min loop) | Done |
+| Auto-update from status.md (30min loop) | Done |
 | Health dots per repo | Done |
 | Issue/blocker badges | Done |
 

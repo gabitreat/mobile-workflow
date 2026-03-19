@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T14:15:00Z",
+  "lastUpdated": "2026-03-19T16:30:00Z",
   "engineer": "Gabi Pago",
   "role": "iOS Team Lead",
   "projects": [
@@ -105,7 +105,7 @@
       "working": [
         "Workflow pages (pipeline, train board, refinement, estimation, PR review, releases, roles, WIP, future)",
         "Workers dashboard with overlay details, coverage bars, status badges",
-        "Auto-update from status.md (15min loop)",
+        "Auto-update from status.md (30min loop)",
         "Working on live preview for what we work on"
       ],
       "blocked": [

@@ -33,9 +33,38 @@
         { "name": "ios-pago", "branch": "feature/loto", "status": "ok", "lastCommit": "Merge branch 'main' into feature/loto" },
         { "name": "android-pago", "branch": "master", "status": "reference", "lastCommit": "Added cross-module JaCoCo code coverage" }
       ],
-      "progress": "iOS feature/loto branch active with loto history bottom sheet, ticket details, claim prize, and cell tap flow. Loto SPM package at ios-packages/Loto/Package.swift.",
+      "coverage": {
+        "overall": 25,
+        "layers": [
+          { "name": "Network", "done": 2, "total": 7 },
+          { "name": "Models", "done": 6, "total": 12 },
+          { "name": "Use Cases", "done": 2, "total": 11 },
+          { "name": "Screens", "done": 3, "total": 11 }
+        ]
+      },
+      "working": [
+        "Game list display",
+        "Game selection",
+        "Variant A/B/C UI",
+        "Number grid selection",
+        "Quick-pick random generation",
+        "Ticket submission API",
+        "Terms check"
+      ],
+      "blocked": [
+        "Profile selection — no PersonList screen",
+        "Profile creation — no PersonDetails screen",
+        "Eligibility check — no API/use case",
+        "Payment — no WebviewCheckout",
+        "Ticket history — no TicketDetails screen",
+        "Luck games (NOROC) — no LuckInfo screen",
+        "Joker — no multi-pool support"
+      ],
+      "progress": "~25% overall coverage. Game selection and number picking work. Profile, payment, ticket history, and luck games still blocked. Currently in Phase 1 (Profile Foundation).",
       "issues": [
-        "PDF generation not rendering correctly (blocker, medium severity)"
+        "PDF generation not rendering correctly (blocker, medium severity)",
+        "5/7 API endpoints still missing",
+        "8/11 screens not yet built"
       ]
     },
     {

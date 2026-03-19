@@ -238,6 +238,110 @@
   .issue.blocker { color: var(--red); }
   .issue.blocker::before { background: var(--red); }
 
+  /* Coverage bars */
+  .coverage {
+    margin-bottom: 10px;
+  }
+  .cov-overall {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .cov-pct {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .cov-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .cov-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .cov-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+  .cov-layers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  .cov-layer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    background: var(--surface2);
+    border-radius: 4px;
+  }
+  .cov-layer .lname { color: var(--muted); min-width: 65px; }
+  .cov-layer .lbar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .cov-layer .lbar-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+  .cov-layer .lcount {
+    font-size: 0.65rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* Working / Blocked lists */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+  .mini-list {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+    background: var(--surface2);
+    border-radius: 6px;
+  }
+  .mini-list .ml-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .ml-title.ok { color: var(--green); }
+  .ml-title.blocked { color: var(--red); }
+  .mini-list li {
+    color: var(--muted);
+    padding: 1px 0;
+    list-style: none;
+    padding-left: 10px;
+    position: relative;
+  }
+  .mini-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .mini-list.ok-list li::before { background: var(--green); }
+  .mini-list.blocked-list li::before { background: var(--red); }
+
   .updated {
     text-align: center;
     font-size: 0.7rem;
@@ -285,6 +389,49 @@
     return;
   }
 
+  function covColor(pct) {
+    if (pct >= 70) return 'var(--green)';
+    if (pct >= 40) return 'var(--orange)';
+    return 'var(--red)';
+  }
+
+  function renderCoverage(p) {
+    if (!p.coverage) return '';
+    const c = p.coverage;
+    let h = '<div class="detail-section"><div class="detail-label">Coverage</div><div class="coverage">';
+    h += `<div class="cov-overall">
+      <span class="cov-pct" style="color:${covColor(c.overall)}">${c.overall}%</span>
+      <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:${c.overall}%;background:${covColor(c.overall)}"></div></div>
+    </div>`;
+    if (c.layers && c.layers.length) {
+      h += '<div class="cov-layers">';
+      c.layers.forEach(l => {
+        const pct = Math.round((l.done / l.total) * 100);
+        h += `<div class="cov-layer">
+          <span class="lname">${l.name}</span>
+          <div class="lbar"><div class="lbar-fill" style="width:${pct}%;background:${covColor(pct)}"></div></div>
+          <span class="lcount">${l.done}/${l.total}</span>
+        </div>`;
+      });
+      h += '</div>';
+    }
+    h += '</div></div>';
+    return h;
+  }
+
+  function renderWorkingBlocked(p) {
+    if (!p.working && !p.blocked) return '';
+    let h = '<div class="detail-section"><div class="two-col">';
+    if (p.working && p.working.length) {
+      h += `<div class="mini-list ok-list"><div class="ml-title ok">Working</div><ul>${p.working.map(w => `<li>${w}</li>`).join('')}</ul></div>`;
+    }
+    if (p.blocked && p.blocked.length) {
+      h += `<div class="mini-list blocked-list"><div class="ml-title blocked">Blocked</div><ul>${p.blocked.map(b => `<li>${b}</li>`).join('')}</ul></div>`;
+    }
+    h += '</div></div>';
+    return h;
+  }
+
   let html = `<h1>Workers</h1><div class="sub">${data.engineer} &middot; ${data.role}</div>`;
   html += '<div class="cards">';
 
@@ -329,10 +476,12 @@
         <div class="expand-hint">tap for details</div>
 
         <div class="detail">
+          ${renderCoverage(p)}
           <div class="detail-section">
             <div class="detail-label">Progress</div>
             <div class="detail-progress">${p.progress}</div>
           </div>
+          ${renderWorkingBlocked(p)}
           <div class="detail-section">
             <div class="detail-label">Repos</div>
             ${repoRows}

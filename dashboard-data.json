@@ -26,7 +26,7 @@
       ]
     },
     {
-      "id": "pago-loto",
+      "id": "ios-pago-loto",
       "name": "Loto in Pago from Android",
       "endGoal": "Port Loto 6/49 from Android to iOS. Adds a new revenue stream for Pago.",
       "repos": [
@@ -34,37 +34,32 @@
         { "name": "android-pago", "branch": "master", "status": "reference", "lastCommit": "Added cross-module JaCoCo code coverage" }
       ],
       "coverage": {
-        "overall": 25,
+        "overall": 80,
         "layers": [
-          { "name": "Network", "done": 2, "total": 7 },
-          { "name": "Models", "done": 6, "total": 12 },
-          { "name": "Use Cases", "done": 2, "total": 11 },
-          { "name": "Screens", "done": 3, "total": 11 }
+          { "name": "Phases", "done": 4, "total": 5 },
+          { "name": "Loto 6/49", "done": 7, "total": 7 },
+          { "name": "Loto 5/40", "done": 0, "total": 7 },
+          { "name": "Joker", "done": 0, "total": 7 },
+          { "name": "Profile", "done": 6, "total": 6 },
+          { "name": "History", "done": 3, "total": 4 }
         ]
       },
       "working": [
-        "Game list display",
-        "Game selection",
-        "Variant A/B/C UI",
-        "Number grid selection",
-        "Quick-pick random generation",
-        "Ticket submission API",
-        "Terms check"
+        "Loto 6/49 — full happy flow e2e (game list, selection, numbers, luck, eligibility, checkout, ticket details)",
+        "Profile management — create, edit, county/city cascade, CNP/phone/address validation",
+        "History bottom sheet, payment summary, ticket details button",
+        "Phases 1-4 complete (gap analysis, network, business logic, screens)"
       ],
       "blocked": [
-        "Profile selection — no PersonList screen",
-        "Profile creation — no PersonDetails screen",
-        "Eligibility check — no API/use case",
-        "Payment — no WebviewCheckout",
-        "Ticket history — no TicketDetails screen",
-        "Luck games (NOROC) — no LuckInfo screen",
-        "Joker — no multi-pool support"
+        "PDF download — Open PDF button fails to load, root cause not identified",
+        "Loto 5/40 — not verified end-to-end",
+        "Joker — not verified end-to-end",
+        "Profile management — not fully verified",
+        "Edge cases (US-014) — network errors, payment cancelled, session expired"
       ],
-      "progress": "~25% overall coverage. Game selection and number picking work. Profile, payment, ticket history, and luck games still blocked. Currently in Phase 1 (Profile Foundation).",
+      "progress": "Phase 5 (Flow Verification) in progress. Loto 6/49 happy flow works e2e. Loto 5/40 and Joker not yet verified. Profile implemented but needs full verification.",
       "issues": [
-        "PDF generation not rendering correctly (blocker, medium severity)",
-        "5/7 API endpoints still missing",
-        "8/11 screens not yet built"
+        "PDF download not working (blocker) — diagnostic logs added, root cause unknown"
       ]
     },
     {

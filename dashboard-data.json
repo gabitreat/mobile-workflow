@@ -1,0 +1,658 @@
+{
+  "lastUpdated": "2026-03-19T08:21:49Z",
+  "engineer": "Gabi Pago",
+  "role": "iOS Developer",
+  "currentFocus": "loto — Add loto history bottom sheet, ticket details, claim prize, and fix cell tap flo",
+  "activeItems": [
+    {
+      "id": "loto",
+      "title": "feature/loto",
+      "repo": "ios-pago-loto",
+      "status": "in-progress",
+      "branch": "feature/loto",
+      "summary": "Add loto history bottom sheet, ticket details, claim prize, and fix cell tap flow",
+      "lastTouchedAt": "2026-03-18 16:09:17 +0000",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "add-maestro-tests",
+      "title": "feature/add-maestro-tests",
+      "repo": "maestro/ios-rca-dev",
+      "status": "in-progress",
+      "branch": "feature/add-maestro-tests",
+      "summary": "removed claude shared submodule (#1163)",
+      "lastTouchedAt": "2026-03-18 13:22:13 +0200",
+      "tags": [
+        "feature",
+        "testing"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-esim",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Add Package.resolved to .gitignore for SPM library hygiene",
+      "lastTouchedAt": "2026-03-18 09:57:05 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-freemium",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Add Package.resolved to .gitignore for SPM library hygiene",
+      "lastTouchedAt": "2026-03-18 09:57:05 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-network-dev",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Add Package.resolved to .gitignore for SPM library hygiene",
+      "lastTouchedAt": "2026-03-18 09:57:05 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-rca-dev",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Add Package.resolved to .gitignore for SPM library hygiene",
+      "lastTouchedAt": "2026-03-18 09:57:05 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-core-dev",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Add Package.resolved to .gitignore for SPM library hygiene",
+      "lastTouchedAt": "2026-03-18 09:56:51 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-bills-dev",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Remove tracked .package.resolved to prevent stale SPM pin caching",
+      "lastTouchedAt": "2026-03-18 09:56:11 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-ui-dev",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Remove tracked Package.resolved to prevent stale SPM pin caching",
+      "lastTouchedAt": "2026-03-18 09:56:09 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-buffer",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Remove tracked Package.resolved to prevent stale SPM pin caching",
+      "lastTouchedAt": "2026-03-18 09:56:08 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "spm",
+      "title": "feature/spm",
+      "repo": "pago-spm/ios-pay",
+      "status": "in-progress",
+      "branch": "feature/spm",
+      "summary": "Remove tracked Package.resolved to prevent stale SPM pin caching",
+      "lastTouchedAt": "2026-03-18 09:55:54 +0000",
+      "tags": [
+        "feature",
+        "spm"
+      ]
+    },
+    {
+      "id": "maestro_fixes",
+      "title": "bugfix/maestro_fixes",
+      "repo": "iOS-eSIM",
+      "status": "in-progress",
+      "branch": "bugfix/maestro_fixes",
+      "summary": "Improve maestro tests",
+      "lastTouchedAt": "2026-03-17 18:45:00 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "crashlytics-update-firebase-clarity-sdk",
+      "title": "fix/crashlytics-update-firebase-clarity-sdk",
+      "repo": "ios-pago",
+      "status": "in-progress",
+      "branch": "fix/crashlytics-update-firebase-clarity-sdk",
+      "summary": "Update Firebase SDK to 12.10.0 and Clarity SDK to 3.4.4",
+      "lastTouchedAt": "2026-03-16 14:04:32 +0000",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "crashlytics-points-manager-safety",
+      "title": "fix/crashlytics-points-manager-safety",
+      "repo": "ios-pago",
+      "status": "in-progress",
+      "branch": "fix/crashlytics-points-manager-safety",
+      "summary": "Fix crashes in PointsManager: weak self captures and force unwrap",
+      "lastTouchedAt": "2026-03-16 13:20:24 +0000",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "crashlytics-reward-screen-manager-force-unwrap",
+      "title": "fix/crashlytics-reward-screen-manager-force-unwrap",
+      "repo": "ios-pago",
+      "status": "in-progress",
+      "branch": "fix/crashlytics-reward-screen-manager-force-unwrap",
+      "summary": "Fix EXC_BREAKPOINT crash in RewardScreenManager.markRawardsAsSeen",
+      "lastTouchedAt": "2026-03-16 13:20:17 +0000",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    }
+  ],
+  "pastDaySummary": [],
+  "blockers": [
+    {
+      "id": "blocker-1",
+      "relatedItem": "US-015",
+      "description": "PDF generation not rendering correctly",
+      "since": "2026-03-19T10:00:00Z",
+      "severity": "medium"
+    }
+  ],
+  "staleItems": [
+    {
+      "id": "simplifySDKCommunication",
+      "title": "feature/simplifySDKCommunication",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/simplifySDKCommunication",
+      "summary": "UPdate sdk communication with consuming apps",
+      "lastTouchedAt": "2026-02-16 16:47:17 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/0.1.4",
+      "title": "release/0.1.4",
+      "repo": "ios-releases/ios-esim",
+      "status": "stale",
+      "branch": "release/0.1.4",
+      "summary": "created release branch for 0.1.4",
+      "lastTouchedAt": "2026-02-16 17:04:29 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/0.1.4",
+      "title": "release/0.1.4",
+      "repo": "ios-releases/ios-esim-release",
+      "status": "stale",
+      "branch": "release/0.1.4",
+      "summary": "Add release updates for 0.1.4",
+      "lastTouchedAt": "2026-02-16 17:20:49 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "maestro-e2e-tests",
+      "title": "feature/maestro-e2e-tests",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/maestro-e2e-tests",
+      "summary": "Delete .claude/settings.local.json",
+      "lastTouchedAt": "2026-02-17 18:41:31 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42289",
+      "title": "feature/PAGO-42289-2",
+      "repo": "ios-pago",
+      "status": "stale",
+      "branch": "feature/PAGO-42289-2",
+      "summary": "Ignore Package.resolved files in ios-packages (#1153)",
+      "lastTouchedAt": "2026-02-17 11:10:17 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42512",
+      "title": "bugfix/PAGO-42512",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42512",
+      "summary": "Save and restore interactivePopGestureRecognizer state on SDK dismiss - Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+      "lastTouchedAt": "2026-02-18 14:07:20 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42548",
+      "title": "bugfix/PAGO-42548-p1",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42548-p1",
+      "summary": "Fix didFinishESIMFlow not called on back in demo flow - Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+      "lastTouchedAt": "2026-02-19 17:58:33 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42590",
+      "title": "bugfix/PAGO-42590",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42590",
+      "summary": "Replace raw error localizedDescription with generic error message",
+      "lastTouchedAt": "2026-02-20 18:17:05 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42583",
+      "title": "bugfix/PAGO-42583",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42583",
+      "summary": "Integrate checkDataPreloadAndStartFlow into startFlow",
+      "lastTouchedAt": "2026-02-20 16:53:03 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42548",
+      "title": "bugfix/PAGO-42548-p2",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42548-p2",
+      "summary": "Remove nav bar restoration and appState from ESIMHostingViewController - Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+      "lastTouchedAt": "2026-02-20 15:36:30 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "bills_scan",
+      "title": "feature/bills_scan",
+      "repo": "ios-research",
+      "status": "stale",
+      "branch": "feature/bills_scan",
+      "summary": "Add experiment conclusion documenting results and findings",
+      "lastTouchedAt": "2026-02-22 18:05:43 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "topup-validity-sections",
+      "title": "feature/topup-validity-sections",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/topup-validity-sections",
+      "summary": "Group active topup packages by validity with section headers",
+      "lastTouchedAt": "2026-02-23 17:38:40 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42588",
+      "title": "bugfix/PAGO-42588-2",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42588-2",
+      "summary": "Rename logoUrl to logo in ESIMTopupSelectionViewModel",
+      "lastTouchedAt": "2026-02-23 16:29:43 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42600",
+      "title": "bugfix/PAGO-42600",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42600",
+      "summary": "Fix navigation after purchase: show user plans instead of country list (#107)",
+      "lastTouchedAt": "2026-02-23 15:28:10 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "remove_mockserver",
+      "title": "bugfix/remove_mockserver",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/remove_mockserver",
+      "summary": "Rename maestro tests",
+      "lastTouchedAt": "2026-02-23 14:44:37 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42588",
+      "title": "bugfix/PAGO-42588",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42588",
+      "summary": "Pop navigation stack on payment completion",
+      "lastTouchedAt": "2026-02-23 14:22:10 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42644",
+      "title": "bugfix/PAGO-42644-3",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42644-3",
+      "summary": "Reload navigation type after user enters esim sdk after back",
+      "lastTouchedAt": "2026-02-24 18:51:29 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42644",
+      "title": "bugfix/PAGO-42644-2",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42644-2",
+      "summary": "Invalidate destinations cache when locale changes",
+      "lastTouchedAt": "2026-02-24 16:35:31 +0000",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42644",
+      "title": "bugfix/PAGO-42644",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-42644",
+      "summary": "Bugfix",
+      "lastTouchedAt": "2026-02-24 18:17:52 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-426244",
+      "title": "bugfix/PAGO-426244-1",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/PAGO-426244-1",
+      "summary": "Set BT as default integrator in demo app",
+      "lastTouchedAt": "2026-02-24 16:16:09 +0000",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "move_scripts",
+      "title": "bugfix/move_scripts",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/move_scripts",
+      "summary": "Move scripts and add switchAndPull",
+      "lastTouchedAt": "2026-02-24 15:26:22 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "rca",
+      "title": "feature/rca",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/rca",
+      "summary": "Update with new esim release",
+      "lastTouchedAt": "2026-02-24 15:20:19 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "esim_flow",
+      "title": "bugfix/esim_flow",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "bugfix/esim_flow",
+      "summary": "Fix buy second esim flow",
+      "lastTouchedAt": "2026-02-25 12:58:08 +0200",
+      "tags": [
+        "bug",
+        "ios"
+      ]
+    },
+    {
+      "id": "progress_bar_colors",
+      "title": "feature/progress_bar_colors",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/progress_bar_colors",
+      "summary": "bugfix/PAGO-42644-3 (#130)",
+      "lastTouchedAt": "2026-02-25 10:58:00 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "ghiseu_v2",
+      "title": "feature/ghiseu_v2",
+      "repo": "ios-pago",
+      "status": "stale",
+      "branch": "feature/ghiseu_v2",
+      "summary": "Update ghiseul",
+      "lastTouchedAt": "2026-02-25 15:09:07 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/0.1.9",
+      "title": "release/0.1.9",
+      "repo": "ios-releases/ios-esim-release",
+      "status": "stale",
+      "branch": "release/0.1.9",
+      "summary": "Add release updates for 0.1.9",
+      "lastTouchedAt": "2026-02-25 13:17:30 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42634",
+      "title": "feature/settings-page-refactor/PAGO-42634",
+      "repo": "iOS-eSIM",
+      "status": "stale",
+      "branch": "feature/settings-page-refactor/PAGO-42634",
+      "summary": "Update PagoESIMIntegrator/Views/SettingsView.swift",
+      "lastTouchedAt": "2026-03-02 13:27:18 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "PAGO-42419",
+      "title": "feature/PAGO-42419",
+      "repo": "ios-pago",
+      "status": "stale",
+      "branch": "feature/PAGO-42419",
+      "summary": "Add esim sdk target to Pago live",
+      "lastTouchedAt": "2026-03-06 15:03:21 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "esim",
+      "title": "feature/esim",
+      "repo": "ios-pago",
+      "status": "stale",
+      "branch": "feature/esim",
+      "summary": "Revert to main xcode settings",
+      "lastTouchedAt": "2026-03-10 07:54:20 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/1.0.4",
+      "title": "release/1.0.4",
+      "repo": "ios-releases/ios-esim",
+      "status": "stale",
+      "branch": "release/1.0.4",
+      "summary": "created release branch for 1.0.4",
+      "lastTouchedAt": "2026-03-09 12:41:53 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/1.0.4",
+      "title": "release/1.0.4",
+      "repo": "ios-releases/ios-esim-release",
+      "status": "stale",
+      "branch": "release/1.0.4",
+      "summary": "Add release updates for 1.0.4",
+      "lastTouchedAt": "2026-03-09 12:48:41 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/1.0.6",
+      "title": "release/1.0.6",
+      "repo": "ios-releases/ios-esim",
+      "status": "stale",
+      "branch": "release/1.0.6",
+      "summary": "created release branch for 1.0.6",
+      "lastTouchedAt": "2026-03-10 11:46:46 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "release/1.0.6",
+      "title": "release/1.0.6",
+      "repo": "ios-releases/ios-esim-release",
+      "status": "stale",
+      "branch": "release/1.0.6",
+      "summary": "Add release updates for 1.0.6",
+      "lastTouchedAt": "2026-03-10 11:54:44 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    },
+    {
+      "id": "italy_subs",
+      "title": "feature/italy_subs",
+      "repo": "ios-pago-support",
+      "status": "stale",
+      "branch": "feature/italy_subs",
+      "summary": "add italy subs findings",
+      "lastTouchedAt": "2026-03-13 15:06:04 +0200",
+      "tags": [
+        "feature",
+        "ios"
+      ]
+    }
+  ],
+  "sessionLog": []
+}

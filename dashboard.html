@@ -17,7 +17,7 @@
     --orange: #f39c12;
     --red: #d63031;
     --blue: #0984e3;
-    --radius: 12px;
+    --radius: 14px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,16 +27,17 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    min-height: 100vh;
   }
 
   .container {
-    max-width: 720px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 40px 20px 80px;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 100%);
@@ -44,87 +45,169 @@
     -webkit-text-fill-color: transparent;
     margin-bottom: 4px;
   }
-  .subtitle {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-bottom: 32px;
-  }
+  .sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 28px; }
 
-  /* Initiative */
-  .initiative {
-    margin-bottom: 28px;
+  /* Card grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  .init-header {
+  @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card.open { border-color: var(--accent); box-shadow: 0 4px 24px rgba(108, 92, 231, 0.12); }
+
+  .card-top {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 6px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
   }
-  .init-name {
-    font-size: 1.15rem;
+  .card-name {
+    font-size: 1.05rem;
     font-weight: 700;
   }
-  .init-folder {
+  .card-folder {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--muted);
+    background: var(--surface2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .card-goal {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
   }
 
-  .init-goal {
-    font-size: 0.82rem;
+  /* Health dots row */
+  .health {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .hdot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .hdot.ok { background: var(--green); }
+  .hdot.warn { background: var(--orange); }
+  .hdot.pending { background: var(--muted); }
+  .hdot.legacy { background: var(--orange); opacity: 0.4; }
+  .hdot.reference { background: var(--blue); opacity: 0.4; }
+  .health-label {
+    font-size: 0.68rem;
     color: var(--muted);
-    margin-bottom: 10px;
+    margin-left: 4px;
+  }
+
+  /* Issue count badge */
+  .badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  .badge.issues { background: rgba(243, 156, 18, 0.15); color: var(--orange); }
+  .badge.blocker { background: rgba(214, 48, 49, 0.12); color: var(--red); }
+  .badge.clear { background: rgba(0, 184, 148, 0.12); color: var(--green); }
+
+  /* Expand arrow */
+  .expand-hint {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+  .card:hover .expand-hint { opacity: 1; }
+  .card.open .expand-hint { display: none; }
+
+  /* Detail panel */
+  .detail {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.25s ease;
+  }
+  .card.open .detail { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .detail-section {
+    margin-bottom: 12px;
+  }
+  .detail-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .detail-progress {
+    font-size: 0.8rem;
+    color: var(--text);
     line-height: 1.5;
   }
 
-  .init-progress {
-    font-size: 0.82rem;
-    color: var(--text);
-    margin-bottom: 8px;
-    padding: 10px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-  }
-
-  /* Repos */
-  .repos {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 6px;
-  }
+  /* Repo rows */
   .repo {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px;
-    background: var(--surface);
+    padding: 5px 10px;
+    background: var(--surface2);
     border-radius: 6px;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+    margin-bottom: 3px;
   }
   .repo .dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     flex-shrink: 0;
   }
   .dot.ok { background: var(--green); }
   .dot.warn { background: var(--orange); }
   .dot.pending { background: var(--muted); }
-  .dot.legacy { background: var(--orange); opacity: 0.5; }
-  .dot.reference { background: var(--blue); opacity: 0.5; }
+  .dot.legacy { background: var(--orange); opacity: 0.4; }
+  .dot.reference { background: var(--blue); opacity: 0.4; }
 
   .repo .rname {
     font-weight: 600;
-    min-width: 120px;
     color: var(--text);
+    min-width: 110px;
   }
   .repo .rbranch {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--muted);
-    min-width: 140px;
   }
   .repo .rcommit {
     color: var(--muted);
@@ -132,23 +215,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: right;
   }
 
-  /* Issues */
-  .issues {
-    margin-top: 6px;
-  }
+  /* Issues in detail */
   .issue {
     font-size: 0.78rem;
     color: var(--orange);
-    padding: 4px 0 4px 16px;
+    padding: 3px 0 3px 14px;
     position: relative;
   }
   .issue::before {
     content: '';
     position: absolute;
-    left: 4px;
-    top: 11px;
+    left: 3px;
+    top: 10px;
     width: 5px;
     height: 5px;
     border-radius: 50%;
@@ -157,18 +238,11 @@
   .issue.blocker { color: var(--red); }
   .issue.blocker::before { background: var(--red); }
 
-  /* Divider */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 24px 0;
-  }
-
   .updated {
     text-align: center;
     font-size: 0.7rem;
     color: var(--muted);
-    margin-top: 32px;
+    margin-top: 28px;
   }
 
   .back-link {
@@ -187,8 +261,7 @@
 
   @media (max-width: 600px) {
     .repo { flex-wrap: wrap; }
-    .repo .rbranch { min-width: auto; }
-    .repo .rcommit { width: 100%; margin-top: 2px; }
+    .repo .rcommit { width: 100%; text-align: left; margin-top: 2px; }
   }
 </style>
 </head>
@@ -212,42 +285,65 @@
     return;
   }
 
-  let html = `<h1>Workers</h1><div class="subtitle">${data.engineer} &middot; ${data.role}</div>`;
+  let html = `<h1>Workers</h1><div class="sub">${data.engineer} &middot; ${data.role}</div>`;
+  html += '<div class="cards">';
 
-  (data.projects || []).forEach((p, i) => {
-    if (i > 0) html += '<hr class="divider">';
+  (data.projects || []).forEach(p => {
+    const hasBlocker = (p.issues || []).some(i => i.toLowerCase().includes('blocker'));
+    const issueCount = (p.issues || []).length;
 
-    html += `<div class="initiative">`;
-    html += `<div class="init-header"><span class="init-name">${p.name}</span><span class="init-folder">${p.id}/</span></div>`;
-    html += `<div class="init-goal">${p.endGoal}</div>`;
-    html += `<div class="init-progress">${p.progress}</div>`;
+    let badgeHtml = '';
+    if (hasBlocker) badgeHtml = '<span class="badge blocker">blocker</span>';
+    else if (issueCount > 0) badgeHtml = `<span class="badge issues">${issueCount} issue${issueCount > 1 ? 's' : ''}</span>`;
+    else badgeHtml = '<span class="badge clear">clear</span>';
 
-    // Repos
-    if (p.repos && p.repos.length) {
-      html += '<div class="repos">';
-      p.repos.forEach(r => {
-        html += `<div class="repo">
-          <span class="dot ${r.status}"></span>
-          <span class="rname">${r.name}</span>
-          <span class="rbranch">${r.branch}</span>
-          <span class="rcommit">${r.lastCommit}</span>
-        </div>`;
-      });
-      html += '</div>';
-    }
+    // Health dots
+    const dots = (p.repos || []).map(r => `<span class="hdot ${r.status}" title="${r.name}"></span>`).join('');
 
-    // Issues
-    if (p.issues && p.issues.length) {
-      html += '<div class="issues">';
-      p.issues.forEach(issue => {
-        const cls = issue.toLowerCase().includes('blocker') ? 'issue blocker' : 'issue';
-        html += `<div class="${cls}">${issue}</div>`;
-      });
-      html += '</div>';
-    }
+    // Repo detail rows
+    let repoRows = '';
+    (p.repos || []).forEach(r => {
+      repoRows += `<div class="repo">
+        <span class="dot ${r.status}"></span>
+        <span class="rname">${r.name}</span>
+        <span class="rbranch">${r.branch}</span>
+        <span class="rcommit">${r.lastCommit}</span>
+      </div>`;
+    });
 
-    html += '</div>';
+    // Issue rows
+    let issueRows = '';
+    (p.issues || []).forEach(issue => {
+      const cls = issue.toLowerCase().includes('blocker') ? 'issue blocker' : 'issue';
+      issueRows += `<div class="${cls}">${issue}</div>`;
+    });
+
+    html += `
+      <div class="card" onclick="this.classList.toggle('open')">
+        ${badgeHtml}
+        <div class="card-top">
+          <span class="card-name">${p.name}</span>
+        </div>
+        <div class="card-goal">${p.endGoal}</div>
+        <div class="health">${dots}<span class="health-label">${(p.repos||[]).length} repo${(p.repos||[]).length > 1 ? 's' : ''}</span></div>
+        <div class="expand-hint">tap for details</div>
+
+        <div class="detail">
+          <div class="detail-section">
+            <div class="detail-label">Progress</div>
+            <div class="detail-progress">${p.progress}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Repos</div>
+            ${repoRows}
+          </div>
+          ${issueRows ? `<div class="detail-section"><div class="detail-label">Issues</div>${issueRows}</div>` : ''}
+        </div>
+      </div>
+    `;
   });
+
+  html += '</div>';
 
   const updated = new Date(data.lastUpdated);
   html += `<div class="updated">Updated ${updated.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</div>`;

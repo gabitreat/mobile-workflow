@@ -93,20 +93,26 @@
         { "name": "mobile-workflow", "branch": "main", "status": "ok", "lastCommit": "Switch card details to overlay modal" }
       ],
       "coverage": {
-        "overall": 100,
+        "overall": 40,
         "layers": [
           { "name": "Pages", "done": 11, "total": 11 },
-          { "name": "Dashboard", "done": 6, "total": 6 }
+          { "name": "Dashboard", "done": 6, "total": 6 },
+          { "name": "Live preview", "done": 0, "total": 1 },
+          { "name": "Team visibility", "done": 0, "total": 1 },
+          { "name": "Backlogs", "done": 0, "total": 1 }
         ]
       },
       "working": [
-        "All workflow pages (pipeline, train board, refinement, estimation, PR review, releases, roles, WIP, future)",
-        "Mock-driven testing page",
+        "Workflow pages (pipeline, train board, refinement, estimation, PR review, releases, roles, WIP, future)",
         "Workers dashboard with overlay details, coverage bars, status badges",
-        "Auto-update from status.md (15min loop)"
+        "Auto-update from status.md (15min loop)",
+        "Working on live preview for what we work on"
       ],
-      "blocked": [],
-      "progress": "All pages and dashboard features complete. Auto-update loop active. status.md files now in all 4 Workers.",
+      "blocked": [
+        "Make what we work on visible to all the team",
+        "Backlogs, estimation, predictions"
+      ],
+      "progress": "Workflow pages and dashboard done. Now working on live preview. Team visibility and backlogs/estimation/predictions still pending.",
       "issues": []
     },
     {

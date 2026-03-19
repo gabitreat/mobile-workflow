@@ -8,15 +8,10 @@
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
-    --surface2: #242836;
     --border: #2e3347;
     --text: #e2e4ed;
     --muted: #8b8fa3;
     --accent: #6c5ce7;
-    --green: #00b894;
-    --orange: #f39c12;
-    --red: #d63031;
-    --blue: #0984e3;
     --radius: 12px;
   }
 
@@ -28,248 +23,84 @@
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 48px 20px 80px;
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 20px;
   }
 
-  /* Header */
-  .header {
-    margin-bottom: 40px;
-  }
-  .header h1 {
-    font-size: 1.8rem;
+  h1 {
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    margin-bottom: 24px;
     background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 4px;
-  }
-  .header .meta {
-    font-size: 0.85rem;
-    color: var(--muted);
   }
 
-  /* Goal banner */
-  .goal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    margin-bottom: 32px;
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .goal .label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  /* Project cards */
-  .projects {
+  .initiatives {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
   }
 
-  .project {
+  .initiative {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 20px 24px;
-    transition: border-color 0.2s ease;
-  }
-  .project:hover { border-color: var(--accent); }
-
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .project-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-  .status {
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .status.in-progress { background: rgba(9, 132, 227, 0.15); color: var(--blue); }
-  .status.done { background: rgba(0, 184, 148, 0.15); color: var(--green); }
-  .status.blocked { background: rgba(214, 48, 49, 0.15); color: var(--red); }
-
-  .project-goal {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-
-  .project-details {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  .detail {
+    padding: 16px 20px;
     display: flex;
     align-items: center;
-    gap: 5px;
-  }
-  .detail .val {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .branch {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.75rem;
-    background: var(--surface2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: var(--muted);
-  }
-
-  .blocker {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background: rgba(214, 48, 49, 0.08);
-    border: 1px solid rgba(214, 48, 49, 0.25);
-    border-radius: 8px;
-    font-size: 0.8rem;
-    color: var(--red);
-  }
-
-  .summary {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-style: italic;
-  }
-
-  /* Footer */
-  .updated {
-    margin-top: 32px;
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  .back-link {
-    display: inline-block;
-    margin-bottom: 24px;
-    padding: 5px 14px;
-    border-radius: 16px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    background: var(--surface);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    text-decoration: none;
+    gap: 14px;
     transition: border-color 0.2s;
   }
-  .back-link:hover { border-color: var(--accent); color: var(--text); }
+  .initiative:hover { border-color: var(--accent); }
+
+  .initiative .folder {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    min-width: 120px;
+  }
+
+  .initiative .name {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <a href="index.html" class="back-link">&larr; Workflow</a>
-
-  <div id="root">
-    <div style="text-align:center;padding:60px 0;color:var(--muted);">Loading...</div>
-  </div>
+  <h1>Workers</h1>
+  <div class="initiatives" id="root"></div>
 </div>
 
 <script>
 (async function() {
   const root = document.getElementById('root');
-
   let data;
   try {
     const r = await fetch('dashboard-data.json?' + Date.now());
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     data = await r.json();
   } catch (e) {
-    root.innerHTML = `<div style="text-align:center;padding:40px;color:var(--red);">Could not load data: ${e.message}</div>`;
+    root.innerHTML = `<div style="color:var(--muted);">Could not load data.</div>`;
     return;
   }
 
-  const now = new Date();
-  const updated = new Date(data.lastUpdated);
-
-  function daysAgo(dateStr) {
-    const d = new Date(dateStr);
-    const days = Math.floor((now - d) / 86400000);
-    if (days === 0) return 'today';
-    if (days === 1) return 'yesterday';
-    return days + 'd ago';
-  }
-
-  let html = '';
-
-  // Header
-  html += `
-    <div class="header">
-      <h1>Workers</h1>
-      <div class="meta">${data.engineer} &middot; ${data.role}</div>
+  root.innerHTML = (data.projects || []).map(p => `
+    <div class="initiative">
+      <span class="folder">${p.id}/</span>
+      <span class="name">${p.name}</span>
     </div>
-  `;
-
-  // Goal
-  if (data.goal) {
-    html += `
-      <div class="goal">
-        <div class="label">Current Goal</div>
-        ${data.goal}
-      </div>
-    `;
-  }
-
-  // Projects
-  html += '<div class="projects">';
-  (data.projects || []).forEach(p => {
-    const statusClass = p.blocker ? 'blocked' : p.status;
-    const statusLabel = p.blocker ? 'blocked' : p.status.replace('-', ' ');
-
-    html += `
-      <div class="project">
-        <div class="project-header">
-          <span class="project-name">${p.name}</span>
-          <span class="status ${statusClass}">${statusLabel}</span>
-        </div>
-        <div class="project-goal">${p.goal}</div>
-        <div class="project-details">
-          <div class="detail"><span class="branch">${p.branch}</span></div>
-          <div class="detail">${p.repos} repo${p.repos > 1 ? 's' : ''}</div>
-          <div class="detail">active <span class="val">${daysAgo(p.lastActivity)}</span></div>
-        </div>
-        ${p.summary ? `<div class="summary">${p.summary}</div>` : ''}
-        ${p.blocker ? `<div class="blocker">${p.blocker}</div>` : ''}
-      </div>
-    `;
-  });
-  html += '</div>';
-
-  // Footer
-  html += `<div class="updated">Last updated ${updated.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} at ${updated.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</div>`;
-
-  root.innerHTML = html;
+  `).join('');
 })();
 </script>
 

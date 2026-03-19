@@ -2,41 +2,22 @@
   "lastUpdated": "2026-03-19T10:00:00Z",
   "engineer": "Gabi Pago",
   "role": "iOS Developer",
-  "goal": "Modernize the iOS development stack: migrate to SPM, port loto from Android, and add Maestro E2E tests across all apps.",
   "projects": [
     {
       "id": "pago-spm",
-      "name": "SPM Migration",
-      "folder": "Workers/pago-spm",
-      "goal": "Migrate all iOS libraries from CocoaPods to Swift Package Manager",
-      "repos": 13,
-      "status": "in-progress",
-      "summary": "Add Package.resolved to .gitignore, remove tracked .package.resolved across all SPM modules",
-      "branch": "feature/spm",
-      "lastActivity": "2026-03-18"
+      "name": "Migrate to SPM"
     },
     {
       "id": "pago-loto",
-      "name": "Loto 6/49",
-      "folder": "Workers/pago-loto",
-      "goal": "Port the Loto 6/49 feature from Android to iOS (happy flow US-015)",
-      "repos": 2,
-      "status": "in-progress",
-      "summary": "Add loto history bottom sheet, ticket details, claim prize, and fix cell tap flow",
-      "branch": "feature/loto",
-      "lastActivity": "2026-03-18",
-      "blocker": "PDF generation not rendering correctly (medium)"
+      "name": "Loto in Pago from Android"
+    },
+    {
+      "id": "mobile-workflow",
+      "name": "Workflow refinement"
     },
     {
       "id": "maestro",
-      "name": "Maestro E2E Tests",
-      "folder": "Workers/maestro",
-      "goal": "Add and fix Maestro UI tests across all iOS codebases",
-      "repos": 3,
-      "status": "in-progress",
-      "summary": "Removed claude shared submodule, improving maestro tests",
-      "branch": "feature/add-maestro-tests",
-      "lastActivity": "2026-03-18"
+      "name": "Maestro fixes"
     }
   ]
 }

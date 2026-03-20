@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T16:30:00Z",
+  "lastUpdated": "2026-03-20T12:00:00Z",
   "engineer": "Gabi Pago",
   "role": "iOS Team Lead",
   "projects": [
@@ -74,7 +74,7 @@
         "Phases 1-4 complete (gap analysis, network, business logic, screens)"
       ],
       "blocked": [
-        "PDF download — Open PDF button fails to load, root cause not identified",
+        "PDF download — server 504 Gateway Timeout on pago-loto/tickets/{id}/pdf (nginx). Client code confirmed working, needs BE fix.",
         "Loto 5/40 — not verified end-to-end",
         "Joker — not verified end-to-end",
         "Profile management — not fully verified",
@@ -82,7 +82,7 @@
       ],
       "progress": "Phase 5 (Flow Verification) in progress. Loto 6/49 happy flow works e2e. Loto 5/40 and Joker not yet verified. Profile implemented but needs full verification.",
       "issues": [
-        "PDF download not working (blocker) — diagnostic logs added, root cause unknown"
+        "PDF download — server 504 on pago-loto/tickets/{id}/pdf (nginx). Client code works, blocked on BE fix."
       ]
     },
     {

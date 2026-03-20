@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-20T12:00:00Z",
+  "lastUpdated": "2026-03-20T14:15:00Z",
   "engineer": "Gabi Pago",
   "role": "iOS Team Lead",
   "projects": [
@@ -17,34 +17,33 @@
         { "name": "ios-bills-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done" },
         { "name": "ios-rca-dev", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done, has integrator" },
         { "name": "ios-esim", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift + switch-deps.sh done, has integrator" },
-        { "name": "ios-hub", "branch": "main", "status": "pending", "lastCommit": "No Package.swift — monorepo with submodule copies" }
+        { "name": "ios-prepay", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done — depends on core, ui, network, buffer" },
+        { "name": "ios-hub", "branch": "feature/spm", "status": "ok", "lastCommit": "Package.swift done — aggregates all 9 SDK deps, Sources/Tests layout committed" }
       ],
       "coverage": {
-        "overall": 60,
+        "overall": 70,
         "layers": [
-          { "name": "Package.swift", "done": 9, "total": 10 },
-          { "name": "switch-deps", "done": 3, "total": 10 },
+          { "name": "Package.swift", "done": 11, "total": 11 },
+          { "name": "switch-deps", "done": 3, "total": 11 },
           { "name": "Integrators", "done": 3, "total": 1 },
           { "name": "Per-dep switch", "done": 0, "total": 1 },
           { "name": "xcframework", "done": 0, "total": 1 }
         ]
       },
       "working": [
-        "9/10 modules have Package.swift",
+        "11/11 modules have Package.swift (including ios-hub and ios-prepay)",
         "Global dependency switching (all deps local/remote)",
         "3 integrator apps exist (rca, bills, esim)",
         "switch-deps.sh works for bills, rca, esim + integrators"
       ],
       "blocked": [
-        "ios-hub — needs SPM migration (break monorepo submodule pattern)",
         "Single integrator — consolidate rca/bills into ios-esim-integrator",
         "Per-dependency switching — toggle individual deps independently",
         "xcframework releases — build & release from unified integrator",
-        "switch-deps for core, ui, network, buffer, freemium, pay, hub"
+        "switch-deps for core, ui, network, buffer, freemium, pay, prepay, hub"
       ],
-      "progress": "9/10 modules have Package.swift. 3 integrators exist but need consolidation into one. Global dep switching works. Per-dep switching and xcframework releases pending.",
+      "progress": "All 11/11 modules have Package.swift (ios-hub + ios-prepay completed). 3 integrators exist but need consolidation. Global dep switching works. Per-dep switching and xcframework releases pending.",
       "issues": [
-        "ios-hub still monorepo with submodules — no Package.swift",
         "3 integrators need consolidation into ios-esim-integrator"
       ]
     },

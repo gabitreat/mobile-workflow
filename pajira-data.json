@@ -1,0 +1,4858 @@
+{
+  "generatedAt": "2026-03-27T09:06:17Z",
+  "scanRoot": "/Users/gabipago/Work/Claude",
+  "repoCount": 38,
+  "repos": [
+    {
+      "name": "ios-esim",
+      "path": "Workers/ios-esim",
+      "remoteUrl": "git@github.com:PagoApp/ios-esim.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 618,
+      "branchCount": 4,
+      "tagCount": 14,
+      "lastActivity": "2026-03-26T12:40:14+02:00",
+      "branches": [
+        {
+          "name": "feature/apple_pay",
+          "lastCommitDate": "2026-03-23T11:59:30+02:00",
+          "lastCommitMsg": "Merge pull request #201 from PagoApp/fix/hide_warning_screen",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 19
+        },
+        {
+          "name": "feature/maestro-bcr-prelive-tests",
+          "lastCommitDate": "2026-03-25T16:36:59+02:00",
+          "lastCommitMsg": "Revert ios-pay submodule pointer to match main",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 15
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-26T12:40:14+02:00",
+          "lastCommitMsg": "PAGO-42622 - Add invoices screen with empty state (#211)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "pr-209",
+          "lastCommitDate": "2026-03-25T16:01:26+02:00",
+          "lastCommitMsg": "Add Maestro tests for BCR integrator on Prelive environment",
+          "lastAuthor": "adrianarosca",
+          "aheadOfDefault": 1,
+          "behindDefault": 15
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "85b2c02",
+          "date": "2026-03-26T12:40:14+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-42622 - Add invoices screen with empty state (#211)"
+        },
+        {
+          "hash": "04b9aca",
+          "date": "2026-03-26T11:50:51+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New Crowdin updates (#206)"
+        },
+        {
+          "hash": "67eb40d",
+          "date": "2026-03-26T10:10:40+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #208 from PagoApp/feature/bcr_nav_bar"
+        },
+        {
+          "hash": "52ee77f",
+          "date": "2026-03-26T10:05:04+02:00",
+          "author": "Bogdan",
+          "message": "Fixed dismiss callbacks not firing when nav controller is dismissed modally"
+        },
+        {
+          "hash": "e14d6e0",
+          "date": "2026-03-25T18:08:56+02:00",
+          "author": "Bogdan",
+          "message": "remove unnecessary condition"
+        },
+        {
+          "hash": "c340fc5",
+          "date": "2026-03-25T17:59:22+02:00",
+          "author": "Bogdan",
+          "message": "fix nav bar color"
+        },
+        {
+          "hash": "ab4b441",
+          "date": "2026-03-25T17:27:56+02:00",
+          "author": "Bogdan",
+          "message": "fix nav bar colors"
+        },
+        {
+          "hash": "0d64bc8",
+          "date": "2026-03-25T16:53:30+02:00",
+          "author": "Bogdan",
+          "message": "remove buggy behaviour of nav bar"
+        },
+        {
+          "hash": "46ef1a1",
+          "date": "2026-03-25T16:48:59+02:00",
+          "author": "Adriana-Rosca",
+          "message": "Add Maestro tests for BCR integrator on Prelive environment (#209)"
+        },
+        {
+          "hash": "01b1ae2",
+          "date": "2026-03-25T15:57:11+02:00",
+          "author": "Bogdan",
+          "message": "fix loading background color"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.3.0",
+          "date": "2026-03-24T14:25:49+02:00"
+        },
+        {
+          "name": "1.2.1",
+          "date": "2026-03-24T12:50:19+02:00"
+        },
+        {
+          "name": "1.0.7",
+          "date": "2026-03-13T17:15:37+02:00"
+        },
+        {
+          "name": "1.0.6",
+          "date": "2026-03-10T12:15:26+02:00"
+        },
+        {
+          "name": "1.0.5",
+          "date": "2026-03-10T10:30:28+02:00"
+        },
+        {
+          "name": "1.0.4",
+          "date": "2026-03-09T14:05:26+02:00"
+        },
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:34:05+02:00"
+        },
+        {
+          "name": "0.1.8",
+          "date": "2026-02-24T14:43:59+02:00"
+        },
+        {
+          "name": "0.1.7",
+          "date": "2026-02-23T17:17:07+02:00"
+        },
+        {
+          "name": "0.1.6",
+          "date": "2026-02-18T22:25:10+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-integrator-demo",
+      "path": "Workers/ios-integrator-demo",
+      "remoteUrl": "https://github.com/PagoApp/ios-integrator",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 7,
+      "branchCount": 2,
+      "tagCount": 0,
+      "lastActivity": "2026-03-24T16:34:01+02:00",
+      "branches": [
+        {
+          "name": "feature/hub-integration",
+          "lastCommitDate": "2026-03-20T11:16:15+02:00",
+          "lastCommitMsg": "Rename PagoESIMIntegrator to PagoIntegrator",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 3,
+          "behindDefault": 6
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-24T16:34:01+02:00",
+          "lastCommitMsg": "Add README with setup instructions and dependency modes",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "9a70ae1",
+          "date": "2026-03-24T16:34:01+02:00",
+          "author": "Gabi Pago",
+          "message": "Add README with setup instructions and dependency modes"
+        },
+        {
+          "hash": "ad8cf33",
+          "date": "2026-03-24T16:31:54+02:00",
+          "author": "Gabi Pago",
+          "message": "Update Project.swift, Workspace.swift, and AppCoordinator for libs mode"
+        },
+        {
+          "hash": "602fb83",
+          "date": "2026-03-23T11:46:23+02:00",
+          "author": "Gabi Pago",
+          "message": "Improve cleanup: wipe entire DerivedData between mode switches"
+        },
+        {
+          "hash": "8b43aa2",
+          "date": "2026-03-20T18:48:01+02:00",
+          "author": "Gabi Pago",
+          "message": "Add libs mode to switch-deps for xcodeproj-based workspace generation"
+        },
+        {
+          "hash": "8d2ff0e",
+          "date": "2026-03-20T13:02:23+02:00",
+          "author": "Gabi Pago",
+          "message": "Update package pins after switch-deps validation, make script executable"
+        },
+        {
+          "hash": "f345c44",
+          "date": "2026-03-20T11:25:36+02:00",
+          "author": "Gabi Pago",
+          "message": "Consolidate integrator: rename to PagoIntegrator, add Hub SDK for BCR"
+        },
+        {
+          "hash": "76699a0",
+          "date": "2026-03-19T14:38:37Z",
+          "author": "Gabi Pago",
+          "message": "Initial commit: PagoIntegrator with eSIM, RCA, Bills, and Hub SDK integration"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-pago-loto",
+      "path": "Workers/ios-pago-loto",
+      "remoteUrl": "git@github.com:PagoApp/ios-pago.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/loto",
+      "totalCommits": 8425,
+      "branchCount": 2,
+      "tagCount": 123,
+      "lastActivity": "2026-03-26T11:53:08+02:00",
+      "branches": [
+        {
+          "name": "feature/loto",
+          "lastCommitDate": "2026-03-26T11:53:08+02:00",
+          "lastCommitMsg": "Update flow",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 100,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-06T16:07:57+02:00",
+          "lastCommitMsg": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1175)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "70156d769",
+          "date": "2026-03-06T16:07:57+02:00",
+          "author": "Gabi",
+          "message": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1175)"
+        },
+        {
+          "hash": "3347e3d12",
+          "date": "2026-03-05T15:32:47+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1181)"
+        },
+        {
+          "hash": "50fddb99d",
+          "date": "2026-03-05T14:26:32+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "c0f1b024f",
+          "date": "2026-03-05T14:25:25+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        },
+        {
+          "hash": "51a4625c9",
+          "date": "2026-03-04T16:05:32+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1179)"
+        },
+        {
+          "hash": "35e9451d2",
+          "date": "2026-03-04T13:19:41+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "83bec178d",
+          "date": "2026-03-04T13:18:46+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        },
+        {
+          "hash": "4b9e64d93",
+          "date": "2026-03-04T12:55:27+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1177)"
+        },
+        {
+          "hash": "180b9fd7c",
+          "date": "2026-03-03T11:35:35+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "d53fc6d5a",
+          "date": "2026-03-03T11:34:48+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "4.1.0",
+          "date": "2026-03-16T12:17:31+02:00"
+        },
+        {
+          "name": "4.0.3",
+          "date": "2026-02-26T14:32:58+02:00"
+        },
+        {
+          "name": "4.0.1",
+          "date": "2026-02-23T09:02:06+02:00"
+        },
+        {
+          "name": "4.0.0",
+          "date": "2026-02-19T11:23:28+02:00"
+        },
+        {
+          "name": "3.10.2",
+          "date": "2026-02-10T17:01:21+02:00"
+        },
+        {
+          "name": "3.9.2",
+          "date": "2026-01-16T11:03:59+02:00"
+        },
+        {
+          "name": "3.9.1",
+          "date": "2026-01-14T11:11:02+02:00"
+        },
+        {
+          "name": "3.9.0",
+          "date": "2025-12-17T11:40:44+02:00"
+        },
+        {
+          "name": "3.8.2",
+          "date": "2025-12-03T18:01:40+02:00"
+        },
+        {
+          "name": "3.8.1",
+          "date": "2025-12-03T15:23:34+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-bills-dev",
+      "path": "Workers/maestro/ios-bills-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-bills-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 2405,
+      "branchCount": 3,
+      "tagCount": 14,
+      "lastActivity": "2026-03-25T18:00:47+02:00",
+      "branches": [
+        {
+          "name": "bugfix/fix_build",
+          "lastCommitDate": "2026-03-25T17:56:40+02:00",
+          "lastCommitMsg": "Revert submodule pointer changes",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 1
+        },
+        {
+          "name": "feature/add-maestro-tests",
+          "lastCommitDate": "2026-03-25T17:15:46+02:00",
+          "lastCommitMsg": "Move maestro tests from .maestro/ to maestro/BillsSDK/",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 9,
+          "behindDefault": 2
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-25T18:00:47+02:00",
+          "lastCommitMsg": "fix build: remove X509/swift-certificates dependency (#877)",
+          "lastAuthor": "Adriana-Rosca",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "9a12e8cb",
+          "date": "2026-03-25T18:00:47+02:00",
+          "author": "Adriana-Rosca",
+          "message": "fix build: remove X509/swift-certificates dependency (#877)"
+        },
+        {
+          "hash": "a166b48f",
+          "date": "2026-03-25T17:28:52+02:00",
+          "author": "Gabi",
+          "message": "Add Maestro UI tests (migrated from maestro-ui-testing) (#859)"
+        },
+        {
+          "hash": "fc17095d",
+          "date": "2026-03-25T10:34:49+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Release/1.14.1 (#875)"
+        },
+        {
+          "hash": "d1046c6a",
+          "date": "2026-03-23T14:33:53+02:00",
+          "author": "bengarazvan",
+          "message": "Auth0 authentication flow (#864)"
+        },
+        {
+          "hash": "a497f60b",
+          "date": "2026-03-19T12:21:05+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#872)"
+        },
+        {
+          "hash": "cb233247",
+          "date": "2026-03-19T12:04:22+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "2bb17e3f",
+          "date": "2026-03-19T12:04:21+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "3401bfdc",
+          "date": "2026-03-19T12:04:20+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations it.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "0e98bcf6",
+          "date": "2026-03-19T12:04:19+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "6f1a9f64",
+          "date": "2026-03-19T12:04:18+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations en.lproj/Localizable.strings (bundle: 62)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.14.0",
+          "date": "2026-03-24T12:48:36+02:00"
+        },
+        {
+          "name": "1.13.2",
+          "date": "2026-03-13T17:14:37+02:00"
+        },
+        {
+          "name": "1.13.1",
+          "date": "2026-03-10T10:29:24+02:00"
+        },
+        {
+          "name": "1.13.0",
+          "date": "2026-02-18T12:54:43+02:00"
+        },
+        {
+          "name": "1.12.8",
+          "date": "2025-11-24T12:30:31+02:00"
+        },
+        {
+          "name": "1.12.7",
+          "date": "2025-10-01T14:17:53+03:00"
+        },
+        {
+          "name": "1.12.6",
+          "date": "2025-09-18T18:04:36+03:00"
+        },
+        {
+          "name": "1.10.0",
+          "date": "2025-06-11T12:26:34+03:00"
+        },
+        {
+          "name": "0.9.0",
+          "date": "2024-04-09T09:33:43+03:00"
+        },
+        {
+          "name": "0.8.0",
+          "date": "2024-03-27T16:05:35+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-esim",
+      "path": "Workers/maestro/ios-esim",
+      "remoteUrl": "git@github.com:PagoApp/ios-esim.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 545,
+      "branchCount": 1,
+      "tagCount": 12,
+      "lastActivity": "2026-03-18T10:04:13+02:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-18T10:04:13+02:00",
+          "lastCommitMsg": "bugfix/maestro_fixes (#189)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "5e424fa",
+          "date": "2026-03-18T10:04:13+02:00",
+          "author": "Gabi",
+          "message": "bugfix/maestro_fixes (#189)"
+        },
+        {
+          "hash": "337230f",
+          "date": "2026-03-17T17:03:49+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #187 from PagoApp/feature/bcr_custom_buttons/PAGO-42827"
+        },
+        {
+          "hash": "de8efa6",
+          "date": "2026-03-17T16:59:21+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/bcr_custom_buttons/PAGO-42827"
+        },
+        {
+          "hash": "00c2cf7",
+          "date": "2026-03-17T16:55:29+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #186 from PagoApp/feature/success_screen_polling/PAGO-42852"
+        },
+        {
+          "hash": "7169600",
+          "date": "2026-03-17T16:47:07+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/success_screen_polling/PAGO-42852"
+        },
+        {
+          "hash": "586a638",
+          "date": "2026-03-17T15:06:50+02:00",
+          "author": "Bogdan",
+          "message": "Fix test predicates to match viewModel filtering logic"
+        },
+        {
+          "hash": "a93a1f4",
+          "date": "2026-03-17T14:52:19+02:00",
+          "author": "Bogdan",
+          "message": "Added configurable eSIM action row button order and expansion"
+        },
+        {
+          "hash": "a46bfa2",
+          "date": "2026-03-16T18:10:06+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #184 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "5575f9d",
+          "date": "2026-03-16T18:03:01+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into PAGO-28271"
+        },
+        {
+          "hash": "d17a9d5",
+          "date": "2026-03-16T16:48:52+02:00",
+          "author": "Bogdan",
+          "message": "Added polling with exponential backoff for installation data and user packages refresh after purchase"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.7",
+          "date": "2026-03-13T17:15:37+02:00"
+        },
+        {
+          "name": "1.0.6",
+          "date": "2026-03-10T12:15:26+02:00"
+        },
+        {
+          "name": "1.0.5",
+          "date": "2026-03-10T10:30:28+02:00"
+        },
+        {
+          "name": "1.0.4",
+          "date": "2026-03-09T14:05:26+02:00"
+        },
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:34:05+02:00"
+        },
+        {
+          "name": "0.1.8",
+          "date": "2026-02-24T14:43:59+02:00"
+        },
+        {
+          "name": "0.1.7",
+          "date": "2026-02-23T17:17:07+02:00"
+        },
+        {
+          "name": "0.1.6",
+          "date": "2026-02-18T22:25:10+02:00"
+        },
+        {
+          "name": "0.1.5",
+          "date": "2026-02-18T17:45:14+02:00"
+        },
+        {
+          "name": "0.1.4",
+          "date": "2026-02-16T17:04:37+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-freemium",
+      "path": "Workers/maestro/ios-freemium",
+      "remoteUrl": "git@github.com:PagoApp/ios-freemium.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/add-maestro-tests",
+      "totalCommits": 922,
+      "branchCount": 2,
+      "tagCount": 10,
+      "lastActivity": "2026-03-02T19:24:34+02:00",
+      "branches": [
+        {
+          "name": "feature/add-maestro-tests",
+          "lastCommitDate": "2026-03-02T19:24:34+02:00",
+          "lastCommitMsg": "Fix LoginExistingUser helper for current Bills Integrator UI",
+          "lastAuthor": "Pago Buddy",
+          "aheadOfDefault": 2,
+          "behindDefault": 81
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-19T14:07:30+02:00",
+          "lastCommitMsg": "Merge pull request #289 from PagoApp/release/1.2.14",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "cf67c27",
+          "date": "2026-03-19T14:07:30+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #289 from PagoApp/release/1.2.14"
+        },
+        {
+          "hash": "55b9acd",
+          "date": "2026-03-19T12:58:10+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into release/1.2.14"
+        },
+        {
+          "hash": "679f4c7",
+          "date": "2026-03-19T12:14:00+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #291 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "0994dd6",
+          "date": "2026-03-19T12:04:18+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/ro.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "5626970",
+          "date": "2026-03-19T12:04:17+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/pl.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "a028163",
+          "date": "2026-03-19T12:04:16+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/it.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "8c95c44",
+          "date": "2026-03-19T12:04:16+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/hu.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "074b20f",
+          "date": "2026-03-19T12:04:15+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/en.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "72cea82",
+          "date": "2026-03-19T11:04:56+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #290 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "aecea77",
+          "date": "2026-03-19T10:46:28+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into PAGO-28271"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.2.14",
+          "date": "2026-03-13T17:17:31+02:00"
+        },
+        {
+          "name": "1.2.13",
+          "date": "2026-03-10T10:32:09+02:00"
+        },
+        {
+          "name": "1.2.12",
+          "date": "2026-02-18T12:59:17+02:00"
+        },
+        {
+          "name": "1.2.11",
+          "date": "2025-11-24T12:31:35+02:00"
+        },
+        {
+          "name": "1.1.27",
+          "date": "2025-06-11T12:29:19+03:00"
+        },
+        {
+          "name": "0.0.6",
+          "date": "2025-01-09T17:52:11+02:00"
+        },
+        {
+          "name": "0.0.6.binary",
+          "date": "2025-01-09T17:41:16+02:00"
+        },
+        {
+          "name": "0.0.5",
+          "date": "2024-01-11T18:37:29+02:00"
+        },
+        {
+          "name": "0.0.2",
+          "date": "2023-11-15T17:30:54+02:00"
+        },
+        {
+          "name": "0.0.1",
+          "date": "2023-11-10T14:32:05+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-hub",
+      "path": "Workers/maestro/ios-hub",
+      "remoteUrl": "git@github.com:PagoApp/ios-hub.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/add-maestro-tests",
+      "totalCommits": 121,
+      "branchCount": 2,
+      "tagCount": 6,
+      "lastActivity": "2026-03-25T18:13:00+02:00",
+      "branches": [
+        {
+          "name": "feature/add-maestro-tests",
+          "lastCommitDate": "2026-03-25T18:13:00+02:00",
+          "lastCommitMsg": "Reset submodules and .gitmodules to match origin/main",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 4,
+          "behindDefault": 22
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-19T14:09:32+02:00",
+          "lastCommitMsg": "Merge pull request #60 from PagoApp/release/1.3.2",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "f9da84a",
+          "date": "2026-03-19T14:09:32+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #60 from PagoApp/release/1.3.2"
+        },
+        {
+          "hash": "a1b5c97",
+          "date": "2026-03-13T16:54:27+02:00",
+          "author": "Bogdan",
+          "message": "created release branch for 1.3.2"
+        },
+        {
+          "hash": "ebf8810",
+          "date": "2026-03-12T17:51:17+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #59 from PagoApp/feature/mock_authorization_screen"
+        },
+        {
+          "hash": "eaea326",
+          "date": "2026-03-12T16:53:03+02:00",
+          "author": "Bogdan",
+          "message": "Added accessibility identifiers to mock payment authorization buttons"
+        },
+        {
+          "hash": "779edc0",
+          "date": "2026-03-12T16:51:40+02:00",
+          "author": "Bogdan",
+          "message": "Added mock payment authorization screen"
+        },
+        {
+          "hash": "3e6695d",
+          "date": "2026-03-11T16:33:57+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #58 from PagoApp/feature/hub/expose_esim_payment_success_screen"
+        },
+        {
+          "hash": "a71a440",
+          "date": "2026-03-11T15:14:56+02:00",
+          "author": "Bogdan",
+          "message": "update default value"
+        },
+        {
+          "hash": "afc1b8a",
+          "date": "2026-03-11T15:06:28+02:00",
+          "author": "Bogdan",
+          "message": "Exposed showESIMPaymentSuccessScreen in hub configuration"
+        },
+        {
+          "hash": "f8203bc",
+          "date": "2026-03-11T10:05:34+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #57 from PagoApp/fix/hub_module/localization_fix"
+        },
+        {
+          "hash": "df1d301",
+          "date": "2026-03-10T16:43:55+02:00",
+          "author": "Bogdan",
+          "message": "Added eSIM hub title and body localizations for EN and RO"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.3.4",
+          "date": "2026-03-24T14:25:12+02:00"
+        },
+        {
+          "name": "1.3.3",
+          "date": "2026-03-24T12:51:22+02:00"
+        },
+        {
+          "name": "1.3.2",
+          "date": "2026-03-13T17:14:57+02:00"
+        },
+        {
+          "name": "1.3.1",
+          "date": "2026-03-10T10:29:47+02:00"
+        },
+        {
+          "name": "1.3.0",
+          "date": "2026-02-18T13:00:57+02:00"
+        },
+        {
+          "name": "1.6.3.binary",
+          "date": "2024-11-18T20:04:41+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-pago",
+      "path": "Workers/maestro/ios-pago",
+      "remoteUrl": "git@github.com:PagoApp/ios-pago.git",
+      "defaultBranch": "main",
+      "currentBranch": "refactor/maestro-italia-supplier-test-accessibility-ids",
+      "totalCommits": 8372,
+      "branchCount": 5,
+      "tagCount": 123,
+      "lastActivity": "2026-03-26T18:08:29+02:00",
+      "branches": [
+        {
+          "name": "feature/add-maestro-tests",
+          "lastCommitDate": "2026-03-24T13:26:16+02:00",
+          "lastCommitMsg": "Update maestro tests with the ones from remote",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 5
+        },
+        {
+          "name": "fix/maestro-tests-use-element-ids",
+          "lastCommitDate": "2026-03-25T17:56:12+02:00",
+          "lastCommitMsg": "Add accessibility identifiers and update maestro tests to use element IDs",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 2
+        },
+        {
+          "name": "fix/maestro-tests-use-element-ids-v2",
+          "lastCommitDate": "2026-03-24T13:30:18+02:00",
+          "lastCommitMsg": "Update maestro tests with the ones from remote (#1199)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 4
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-25T18:23:30+02:00",
+          "lastCommitMsg": "Add accessibility identifiers and migrate maestro tests to element IDs (#1204)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "refactor/maestro-italia-supplier-test-accessibility-ids",
+          "lastCommitDate": "2026-03-26T18:08:29+02:00",
+          "lastCommitMsg": "Fix Deleteacc test: replace Romanian text with English equivalents",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 9,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "a28c4b1b5",
+          "date": "2026-03-25T18:23:30+02:00",
+          "author": "Gabi",
+          "message": "Add accessibility identifiers and migrate maestro tests to element IDs (#1204)"
+        },
+        {
+          "hash": "7b481cdd9",
+          "date": "2026-03-25T09:39:44+02:00",
+          "author": "Gabi",
+          "message": "New Crowdin updates (#1200)"
+        },
+        {
+          "hash": "e580c8bfa",
+          "date": "2026-03-24T15:43:10+02:00",
+          "author": "oana-pago",
+          "message": "AB test for churn checkout branch (#1180)"
+        },
+        {
+          "hash": "a25beb336",
+          "date": "2026-03-24T15:04:50+02:00",
+          "author": "bengarazvan",
+          "message": "Auth0 integration (#1190)"
+        },
+        {
+          "hash": "6b0c370f9",
+          "date": "2026-03-24T13:30:18+02:00",
+          "author": "Gabi",
+          "message": "Update maestro tests with the ones from remote (#1199)"
+        },
+        {
+          "hash": "d1538638d",
+          "date": "2026-03-18T13:19:07+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1197)"
+        },
+        {
+          "hash": "8a5e2f8ab",
+          "date": "2026-03-18T11:10:31+02:00",
+          "author": "Bogdan",
+          "message": "remove unnecessary file"
+        },
+        {
+          "hash": "8c65e0b8d",
+          "date": "2026-03-18T10:50:57+02:00",
+          "author": "Bogdan",
+          "message": "remove repo"
+        },
+        {
+          "hash": "d6753ef83",
+          "date": "2026-03-18T09:53:06+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "d31d68f8f",
+          "date": "2026-03-18T09:51:07+02:00",
+          "author": "Bogdan",
+          "message": "Merge main"
+        }
+      ],
+      "tags": [
+        {
+          "name": "4.1.0",
+          "date": "2026-03-16T12:17:31+02:00"
+        },
+        {
+          "name": "4.0.3",
+          "date": "2026-02-26T14:32:58+02:00"
+        },
+        {
+          "name": "4.0.1",
+          "date": "2026-02-23T09:02:06+02:00"
+        },
+        {
+          "name": "4.0.0",
+          "date": "2026-02-19T11:23:28+02:00"
+        },
+        {
+          "name": "3.10.2",
+          "date": "2026-02-10T17:01:21+02:00"
+        },
+        {
+          "name": "3.9.2",
+          "date": "2026-01-16T11:03:59+02:00"
+        },
+        {
+          "name": "3.9.1",
+          "date": "2026-01-14T11:11:02+02:00"
+        },
+        {
+          "name": "3.9.0",
+          "date": "2025-12-17T11:40:44+02:00"
+        },
+        {
+          "name": "3.8.2",
+          "date": "2025-12-03T18:01:40+02:00"
+        },
+        {
+          "name": "3.8.1",
+          "date": "2025-12-03T15:23:34+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-rca-dev",
+      "path": "Workers/maestro/ios-rca-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-rca-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 4314,
+      "branchCount": 2,
+      "tagCount": 50,
+      "lastActivity": "2026-03-26T10:01:21+02:00",
+      "branches": [
+        {
+          "name": "feature/add-maestro-tests",
+          "lastCommitDate": "2026-03-26T09:15:55+02:00",
+          "lastCommitMsg": "Update tests",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 4,
+          "behindDefault": 2
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-26T10:01:21+02:00",
+          "lastCommitMsg": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1158)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "c50e1904",
+          "date": "2026-03-26T10:01:21+02:00",
+          "author": "Gabi",
+          "message": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1158)"
+        },
+        {
+          "hash": "d3fbcf72",
+          "date": "2026-03-24T12:07:34+02:00",
+          "author": "Cristi",
+          "message": "release/2.7.19 (#1165)"
+        },
+        {
+          "hash": "5c6568a1",
+          "date": "2026-03-16T11:44:43+02:00",
+          "author": "Cosmin Iulian",
+          "message": "removed claude shared submodule (#1163)"
+        },
+        {
+          "hash": "18085dca",
+          "date": "2026-03-04T13:08:04+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1157)"
+        },
+        {
+          "hash": "d8e0b9da",
+          "date": "2026-03-02T09:43:38+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Removed extra blank lines in DataRepository"
+        },
+        {
+          "hash": "2cb5aff1",
+          "date": "2026-02-25T12:46:09+02:00",
+          "author": "Cristi",
+          "message": "release/2.7.7 (#1154)"
+        },
+        {
+          "hash": "666943a5",
+          "date": "2026-02-25T09:42:12+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1155)"
+        },
+        {
+          "hash": "b8dac160",
+          "date": "2026-02-24T13:02:33+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1152)"
+        },
+        {
+          "hash": "ff060e92",
+          "date": "2026-02-23T09:23:23+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1151)"
+        },
+        {
+          "hash": "220e137d",
+          "date": "2026-02-19T16:26:29+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1148)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "2.7.19",
+          "date": "2026-03-24T12:53:04+02:00"
+        },
+        {
+          "name": "2.7.15",
+          "date": "2026-03-10T12:15:04+02:00"
+        },
+        {
+          "name": "2.7.13",
+          "date": "2026-03-09T14:05:09+02:00"
+        },
+        {
+          "name": "2.7.12",
+          "date": "2026-03-03T12:33:46+02:00"
+        },
+        {
+          "name": "2.7.7",
+          "date": "2026-02-24T14:43:42+02:00"
+        },
+        {
+          "name": "2.7.6",
+          "date": "2026-02-23T17:16:46+02:00"
+        },
+        {
+          "name": "2.7.5",
+          "date": "2026-02-18T22:24:51+02:00"
+        },
+        {
+          "name": "2.7.4",
+          "date": "2026-02-18T17:45:02+02:00"
+        },
+        {
+          "name": "2.7.3",
+          "date": "2026-02-16T17:04:24+02:00"
+        },
+        {
+          "name": "2.7.2",
+          "date": "2026-02-10T08:33:41+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "maestro-ui-testing",
+      "path": "Workers/maestro/maestro-ui-testing",
+      "remoteUrl": "git@github.com:PagoApp/maestro-ui-testing.git",
+      "defaultBranch": "master",
+      "currentBranch": "master",
+      "totalCommits": 205,
+      "branchCount": 1,
+      "tagCount": 0,
+      "lastActivity": "2026-03-11T11:20:04+02:00",
+      "branches": [
+        {
+          "name": "master",
+          "lastCommitDate": "2026-03-11T11:20:04+02:00",
+          "lastCommitMsg": "Merge pull request #77 from PagoApp/PAGO-42303",
+          "lastAuthor": "irina-pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "54a5882",
+          "date": "2026-03-11T11:20:04+02:00",
+          "author": "irina-pago",
+          "message": "Merge pull request #77 from PagoApp/PAGO-42303"
+        },
+        {
+          "hash": "7f7b3b2",
+          "date": "2026-03-11T11:18:35+02:00",
+          "author": "Gabi",
+          "message": "Update README.md"
+        },
+        {
+          "hash": "5f7328a",
+          "date": "2026-02-25T11:43:37+02:00",
+          "author": "Gabriel Ginghina",
+          "message": "PAGO-42303 This PR includes a local taxes test with some updates."
+        },
+        {
+          "hash": "37fef38",
+          "date": "2026-02-25T11:39:25+02:00",
+          "author": "Gabriel Ginghina",
+          "message": "PAGO-42303 This PR includes all modifications related to Maestro tests, also some additions to the README.md file."
+        },
+        {
+          "hash": "797d70b",
+          "date": "2026-02-06T10:54:03+02:00",
+          "author": "irina-pago",
+          "message": "Merge pull request #76 from PagoApp/PAGO-42303"
+        },
+        {
+          "hash": "1fa8250",
+          "date": "2026-02-06T10:52:01+02:00",
+          "author": "Gabriel Ginghina",
+          "message": "PAGO-42303 Increase the timeout for better running"
+        },
+        {
+          "hash": "3133bea",
+          "date": "2026-02-06T10:51:36+02:00",
+          "author": "Gabriel Ginghina",
+          "message": "PAGO-42303 Increase the timeout for better running"
+        },
+        {
+          "hash": "5aa6bb2",
+          "date": "2026-02-06T09:39:13+02:00",
+          "author": "irina-pago",
+          "message": "Merge pull request #75 from PagoApp/PAGO-42303"
+        },
+        {
+          "hash": "3e05da1",
+          "date": "2026-02-06T09:31:34+02:00",
+          "author": "Gabriel Ginghina",
+          "message": "PAGO-42303 This PR includes some fine-tuning for TeamCity test on iOS"
+        },
+        {
+          "hash": "af79bd3",
+          "date": "2026-02-05T18:19:50+02:00",
+          "author": "irina-pago",
+          "message": "Merge pull request #74 from PagoApp/PAGO-42303"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "mobile-workflow",
+      "path": "Workers/mobile-workflow",
+      "remoteUrl": "https://github.com/gabitreat/mobile-workflow.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 20,
+      "branchCount": 2,
+      "tagCount": 0,
+      "lastActivity": "2026-03-20T07:16:20Z",
+      "branches": [
+        {
+          "name": "feature/minimal-dashboard",
+          "lastCommitDate": "2026-03-19T09:54:29Z",
+          "lastCommitMsg": "Simplify dashboard to just list the 4 Workers/ initiatives",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 13
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-20T07:16:20Z",
+          "lastCommitMsg": "Update dashboard: SPM now 11/11 modules (ios-hub + ios-prepay done)",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "a7ef2d1",
+          "date": "2026-03-20T07:16:20Z",
+          "author": "Gabi Pago",
+          "message": "Update dashboard: SPM now 11/11 modules (ios-hub + ios-prepay done)"
+        },
+        {
+          "hash": "668d35b",
+          "date": "2026-03-20T06:53:29Z",
+          "author": "Gabi Pago",
+          "message": "Update dashboard: loto PDF blocker identified as server 504"
+        },
+        {
+          "hash": "bed0c04",
+          "date": "2026-03-19T12:05:43Z",
+          "author": "Gabi Pago",
+          "message": "Update dashboard: refresh timestamp, 30min loop"
+        },
+        {
+          "hash": "c34744f",
+          "date": "2026-03-19T10:39:38Z",
+          "author": "Gabi Pago",
+          "message": "Update mobile-workflow: 40% coverage, add next steps"
+        },
+        {
+          "hash": "24a334b",
+          "date": "2026-03-19T10:37:23Z",
+          "author": "Gabi Pago",
+          "message": "Hide scrollbar on overlay panel"
+        },
+        {
+          "hash": "34b9daf",
+          "date": "2026-03-19T10:32:48Z",
+          "author": "Gabi Pago",
+          "message": "Update all projects from status.md files"
+        },
+        {
+          "hash": "f810ad0",
+          "date": "2026-03-19T10:31:42Z",
+          "author": "Gabi Pago",
+          "message": "Switch card details to overlay modal instead of inline expand"
+        },
+        {
+          "hash": "3c2c4eb",
+          "date": "2026-03-19T10:20:35Z",
+          "author": "Gabi Pago",
+          "message": "Add status.md for mobile-workflow initiative"
+        },
+        {
+          "hash": "12ccae0",
+          "date": "2026-03-19T10:20:17Z",
+          "author": "Gabi Pago",
+          "message": "Update loto from status.md: Phase 5 in progress, 6/49 e2e working"
+        },
+        {
+          "hash": "d239473",
+          "date": "2026-03-19T10:12:20Z",
+          "author": "Gabi Pago",
+          "message": "Add loto gap analysis coverage, working/blocked lists to dashboard"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-bills-dev",
+      "path": "Workers/pago-spm/ios-bills-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-bills-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 2394,
+      "branchCount": 3,
+      "tagCount": 11,
+      "lastActivity": "2026-03-23T11:35:42+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:56:11Z",
+          "lastCommitMsg": "Remove tracked .package.resolved to prevent stale SPM pin caching",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 40,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:42+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 43,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-02T17:05:10+02:00",
+          "lastCommitMsg": "New Crowdin updates (#858)",
+          "lastAuthor": "Adrian Pascu",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "82d38d0d",
+          "date": "2026-03-02T17:05:10+02:00",
+          "author": "Adrian Pascu",
+          "message": "New Crowdin updates (#858)"
+        },
+        {
+          "hash": "fab5e161",
+          "date": "2026-03-02T15:47:57+02:00",
+          "author": "Adrian Pascu",
+          "message": "New Crowdin updates (#856)"
+        },
+        {
+          "hash": "20e08e70",
+          "date": "2026-02-26T12:36:11+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#855)"
+        },
+        {
+          "hash": "319bae55",
+          "date": "2026-02-25T16:29:51+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "58e54cc6",
+          "date": "2026-02-25T16:29:50+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "5c91ce55",
+          "date": "2026-02-25T16:29:49+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations it.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "a55c485b",
+          "date": "2026-02-25T16:29:49+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "9cc5b62f",
+          "date": "2026-02-25T16:29:48+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations en.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "d823120f",
+          "date": "2026-02-25T09:41:43+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#854)"
+        },
+        {
+          "hash": "cab1b1aa",
+          "date": "2026-02-24T16:33:45+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 62)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.13.0",
+          "date": "2026-02-18T12:54:43+02:00"
+        },
+        {
+          "name": "1.12.8",
+          "date": "2025-11-24T12:30:31+02:00"
+        },
+        {
+          "name": "1.12.7",
+          "date": "2025-10-01T14:17:53+03:00"
+        },
+        {
+          "name": "1.12.6",
+          "date": "2025-09-18T18:04:36+03:00"
+        },
+        {
+          "name": "1.10.0",
+          "date": "2025-06-11T12:26:34+03:00"
+        },
+        {
+          "name": "0.9.0",
+          "date": "2024-04-09T09:33:43+03:00"
+        },
+        {
+          "name": "0.8.0",
+          "date": "2024-03-27T16:05:35+02:00"
+        },
+        {
+          "name": "0.7.0",
+          "date": "2024-03-06T13:17:47+02:00"
+        },
+        {
+          "name": "0.5.0",
+          "date": "2024-01-10T12:38:34+02:00"
+        },
+        {
+          "name": "0.3.1",
+          "date": "2023-11-13T17:49:53+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-buffer",
+      "path": "Workers/pago-spm/ios-buffer",
+      "remoteUrl": "git@github.com:PagoApp/ios-buffer.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 753,
+      "branchCount": 3,
+      "tagCount": 31,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:56:08Z",
+          "lastCommitMsg": "Remove tracked Package.resolved to prevent stale SPM pin caching",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 17,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 20,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-12T09:27:08+02:00",
+          "lastCommitMsg": "Merge pull request #230 from PagoApp/PAGO-28271",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "f2fd406",
+          "date": "2026-03-12T09:27:08+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #230 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "81e8cb0",
+          "date": "2026-03-11T12:16:05+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations en.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "15d6c90",
+          "date": "2026-03-10T16:07:35+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #228 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "f4b8f64",
+          "date": "2026-03-10T12:09:13+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #227 from PagoApp/release/1.4.43"
+        },
+        {
+          "hash": "7b638f4",
+          "date": "2026-03-10T11:41:45+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "f4d0900",
+          "date": "2026-03-10T11:41:44+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "cba83f3",
+          "date": "2026-03-10T11:41:43+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations it.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "1c31a16",
+          "date": "2026-03-10T11:41:43+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "f6fb31b",
+          "date": "2026-03-10T11:41:42+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations en.lproj/Localizable.strings (bundle: 74)"
+        },
+        {
+          "hash": "a7d4c7a",
+          "date": "2026-03-09T15:30:57+02:00",
+          "author": "Bogdan",
+          "message": "created release branch for 1.4.43"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.4.45",
+          "date": "2026-03-13T17:17:08+02:00"
+        },
+        {
+          "name": "1.4.44",
+          "date": "2026-03-10T12:16:47+02:00"
+        },
+        {
+          "name": "1.4.43",
+          "date": "2026-03-10T10:31:49+02:00"
+        },
+        {
+          "name": "1.4.42",
+          "date": "2026-03-09T14:06:37+02:00"
+        },
+        {
+          "name": "1.4.41",
+          "date": "2026-03-03T12:35:25+02:00"
+        },
+        {
+          "name": "1.4.37",
+          "date": "2026-02-24T14:45:07+02:00"
+        },
+        {
+          "name": "1.4.36",
+          "date": "2026-02-23T17:18:36+02:00"
+        },
+        {
+          "name": "1.4.35",
+          "date": "2026-02-18T23:14:35+02:00"
+        },
+        {
+          "name": "1.4.33",
+          "date": "2026-02-18T18:42:32+02:00"
+        },
+        {
+          "name": "1.4.34",
+          "date": "2026-02-18T17:46:03+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-core-dev",
+      "path": "Workers/pago-spm/ios-core-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-core-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 398,
+      "branchCount": 3,
+      "tagCount": 40,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:56:51Z",
+          "lastCommitMsg": "Add Package.resolved to .gitignore for SPM library hygiene",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 11,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 13,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-10T12:09:20+02:00",
+          "lastCommitMsg": "Merge pull request #146 from PagoApp/release/1.6.39",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "3ef367b",
+          "date": "2026-03-10T12:09:20+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #146 from PagoApp/release/1.6.39"
+        },
+        {
+          "hash": "b1fd0a7",
+          "date": "2026-03-09T15:30:47+02:00",
+          "author": "Bogdan",
+          "message": "created release branch for 1.6.39"
+        },
+        {
+          "hash": "251414b",
+          "date": "2026-03-03T11:49:41+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-42721 - Add Crowdin OTA support for default project (#143)"
+        },
+        {
+          "hash": "3daf527",
+          "date": "2026-02-17T15:27:16+02:00",
+          "author": "Gabi",
+          "message": "release/1.6.27 (#137)"
+        },
+        {
+          "hash": "3199cc8",
+          "date": "2026-02-11T11:41:22+02:00",
+          "author": "Cosmin Iulian",
+          "message": "adapt decimal (#136)"
+        },
+        {
+          "hash": "81c8440",
+          "date": "2026-01-26T14:04:38+02:00",
+          "author": "Cosmin Iulian",
+          "message": "release/1.6.25 (#135)"
+        },
+        {
+          "hash": "4423605",
+          "date": "2026-01-19T11:20:04+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #134 from PagoApp/fix/ui_json_preload/PAGO-41963"
+        },
+        {
+          "hash": "98e18c3",
+          "date": "2026-01-16T15:42:59+02:00",
+          "author": "Bogdan",
+          "message": "fix: fallback to cached JSON UI config when server fails"
+        },
+        {
+          "hash": "eefa63a",
+          "date": "2025-12-12T10:15:15+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #133 from PagoApp/feature/reomve_diacritics/PAGO-41263"
+        },
+        {
+          "hash": "63ef557",
+          "date": "2025-12-03T12:29:07+02:00",
+          "author": "Bogdan",
+          "message": "Computed property for removing diacritics | PAGO-41263"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.6.41",
+          "date": "2026-03-13T17:16:17+02:00"
+        },
+        {
+          "name": "1.6.40",
+          "date": "2026-03-10T12:16:05+02:00"
+        },
+        {
+          "name": "1.6.39",
+          "date": "2026-03-10T10:31:09+02:00"
+        },
+        {
+          "name": "1.6.38",
+          "date": "2026-03-09T14:06:01+02:00"
+        },
+        {
+          "name": "1.6.37",
+          "date": "2026-03-03T12:34:45+02:00"
+        },
+        {
+          "name": "1.6.33",
+          "date": "2026-02-24T14:44:33+02:00"
+        },
+        {
+          "name": "1.6.32",
+          "date": "2026-02-23T17:17:51+02:00"
+        },
+        {
+          "name": "1.6.31",
+          "date": "2026-02-18T23:13:49+02:00"
+        },
+        {
+          "name": "1.6.29",
+          "date": "2026-02-18T18:38:56+02:00"
+        },
+        {
+          "name": "1.6.30",
+          "date": "2026-02-18T17:45:38+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-esim",
+      "path": "Workers/pago-spm/ios-esim",
+      "remoteUrl": "git@github.com:PagoApp/ios-esim.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 453,
+      "branchCount": 3,
+      "tagCount": 8,
+      "lastActivity": "2026-03-23T15:35:08+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:57:05Z",
+          "lastCommitMsg": "Add Package.resolved to .gitignore for SPM library hygiene",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 96,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T15:35:08+02:00",
+          "lastCommitMsg": "Remove SwiftLint build plugin from Package.swift",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 9,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-04T16:23:47+02:00",
+          "lastCommitMsg": "New Crowdin updates (#157)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "011d0df",
+          "date": "2026-03-04T16:23:47+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New Crowdin updates (#157)"
+        },
+        {
+          "hash": "f61e6f9",
+          "date": "2026-03-04T16:06:16+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-42742 - Fix background color on Select Plan and Countries List screens (#156)"
+        },
+        {
+          "hash": "31c7e7d",
+          "date": "2026-03-04T13:12:34+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #151 from PagoApp/feature/payment_flow/PAGO-42718"
+        },
+        {
+          "hash": "6816b5b",
+          "date": "2026-03-04T13:08:46+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/payment_flow/PAGO-42718"
+        },
+        {
+          "hash": "84fd2b9",
+          "date": "2026-03-04T12:58:35+02:00",
+          "author": "Cosmin Iulian",
+          "message": "removed implicit default id (#152)"
+        },
+        {
+          "hash": "96988ac",
+          "date": "2026-03-04T12:57:15+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/payment_flow/PAGO-42718"
+        },
+        {
+          "hash": "c828930",
+          "date": "2026-03-04T12:54:41+02:00",
+          "author": "Cosmin Iulian",
+          "message": "use the same approach as prepay or bills (#155)"
+        },
+        {
+          "hash": "202419f",
+          "date": "2026-03-04T12:51:03+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #153 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "55cd254",
+          "date": "2026-03-04T11:48:26+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 155)"
+        },
+        {
+          "hash": "82b5493",
+          "date": "2026-03-04T11:48:25+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations en.lproj/Localizable.strings (bundle: 155)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:34:05+02:00"
+        },
+        {
+          "name": "0.1.8",
+          "date": "2026-02-24T14:43:59+02:00"
+        },
+        {
+          "name": "0.1.7",
+          "date": "2026-02-23T17:17:07+02:00"
+        },
+        {
+          "name": "0.1.6",
+          "date": "2026-02-18T22:25:10+02:00"
+        },
+        {
+          "name": "0.1.5",
+          "date": "2026-02-18T17:45:14+02:00"
+        },
+        {
+          "name": "0.1.4",
+          "date": "2026-02-16T17:04:37+02:00"
+        },
+        {
+          "name": "0.1.2",
+          "date": "2026-02-10T15:22:32+02:00"
+        },
+        {
+          "name": "0.1.1",
+          "date": "2026-02-10T12:52:14+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-freemium",
+      "path": "Workers/pago-spm/ios-freemium",
+      "remoteUrl": "git@github.com:PagoApp/ios-freemium.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 985,
+      "branchCount": 3,
+      "tagCount": 10,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-19T12:31:12Z",
+          "lastCommitMsg": "Fix: change SSH URLs to HTTPS in Package.swift for CI compatibility",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 8,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 11,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-12T17:33:00+02:00",
+          "lastCommitMsg": "Merge pull request #287 from PagoApp/PAGO-28271",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "7813126",
+          "date": "2026-03-12T17:33:00+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #287 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "d735d64",
+          "date": "2026-03-12T13:01:33+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/ro.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "ff46cab",
+          "date": "2026-03-12T13:01:33+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/pl.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "ad42a0c",
+          "date": "2026-03-12T13:01:32+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/it.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "5b589cf",
+          "date": "2026-03-12T13:01:32+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/hu.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "fa34c34",
+          "date": "2026-03-12T13:01:31+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/en.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "99f8d5e",
+          "date": "2026-03-12T09:27:27+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #286 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "de4b37d",
+          "date": "2026-03-11T11:36:11+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New translations PagoFreemiumSDK/en.lproj/Localizable.strings (bundle: 66)"
+        },
+        {
+          "hash": "d5086df",
+          "date": "2026-03-11T09:33:26+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #285 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "6f0801d",
+          "date": "2026-03-10T16:07:50+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into PAGO-28271"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.2.14",
+          "date": "2026-03-13T17:17:31+02:00"
+        },
+        {
+          "name": "1.2.13",
+          "date": "2026-03-10T10:32:09+02:00"
+        },
+        {
+          "name": "1.2.12",
+          "date": "2026-02-18T12:59:17+02:00"
+        },
+        {
+          "name": "1.2.11",
+          "date": "2025-11-24T12:31:35+02:00"
+        },
+        {
+          "name": "1.1.27",
+          "date": "2025-06-11T12:29:19+03:00"
+        },
+        {
+          "name": "0.0.6",
+          "date": "2025-01-09T17:52:11+02:00"
+        },
+        {
+          "name": "0.0.6.binary",
+          "date": "2025-01-09T17:41:16+02:00"
+        },
+        {
+          "name": "0.0.5",
+          "date": "2024-01-11T18:37:29+02:00"
+        },
+        {
+          "name": "0.0.2",
+          "date": "2023-11-15T17:30:54+02:00"
+        },
+        {
+          "name": "0.0.1",
+          "date": "2023-11-10T14:32:05+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-hub",
+      "path": "Workers/pago-spm/ios-hub",
+      "remoteUrl": "git@github.com:PagoApp/ios-hub.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 124,
+      "branchCount": 3,
+      "tagCount": 2,
+      "lastActivity": "2026-03-23T13:37:19+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-20T09:08:24+02:00",
+          "lastCommitMsg": "Add SPM Sources and Tests for PagoHubSDK",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 2,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T13:37:19+02:00",
+          "lastCommitMsg": "Remove git submodules - now using SPM for dependencies",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 6,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-04T12:54:50+02:00",
+          "lastCommitMsg": "PAGO-42714 - Add eSIM entry point to Hub landing page (#52)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "2599091",
+          "date": "2026-03-04T12:54:50+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-42714 - Add eSIM entry point to Hub landing page (#52)"
+        },
+        {
+          "hash": "282cd58",
+          "date": "2026-02-11T12:21:17+02:00",
+          "author": "Cosmin Iulian",
+          "message": "update submodules (#49)"
+        },
+        {
+          "hash": "5c132a1",
+          "date": "2026-02-11T11:41:11+02:00",
+          "author": "Cosmin Iulian",
+          "message": "adapt decimal type (#48)"
+        },
+        {
+          "hash": "948e22a",
+          "date": "2025-12-09T10:01:47+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #47 from PagoApp/fix/update_gitmodules"
+        },
+        {
+          "hash": "a9bd01d",
+          "date": "2025-12-09T09:49:30+02:00",
+          "author": "Bogdan",
+          "message": "update submodules"
+        },
+        {
+          "hash": "0436b0e",
+          "date": "2025-12-08T17:20:13+02:00",
+          "author": "Bogdan",
+          "message": "Update gitmodules file"
+        },
+        {
+          "hash": "5f04233",
+          "date": "2025-12-08T16:55:25+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #46 from PagoApp/feature/PAGO-32924"
+        },
+        {
+          "hash": "aa1daaf",
+          "date": "2025-11-12T16:53:40+02:00",
+          "author": "Bogdan",
+          "message": "Update network"
+        },
+        {
+          "hash": "410bfb0",
+          "date": "2025-11-06T14:15:57+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #45 from PagoApp/fix/update_function_name"
+        },
+        {
+          "hash": "55859df",
+          "date": "2025-11-06T14:15:05+02:00",
+          "author": "Bogdan",
+          "message": "Update reset function name"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.3.0",
+          "date": "2026-02-18T13:00:57+02:00"
+        },
+        {
+          "name": "1.6.3.binary",
+          "date": "2024-11-18T20:04:41+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-integrator",
+      "path": "Workers/pago-spm/ios-integrator",
+      "remoteUrl": "git@github.com:PagoApp/ios-integrator.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 7,
+      "branchCount": 4,
+      "tagCount": 0,
+      "lastActivity": "2026-03-24T16:34:01+02:00",
+      "branches": [
+        {
+          "name": "feature/hub-integration",
+          "lastCommitDate": "2026-03-20T11:16:15+02:00",
+          "lastCommitMsg": "Rename PagoESIMIntegrator to PagoIntegrator",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 3,
+          "behindDefault": 6
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-24T16:31:54+02:00",
+          "lastCommitMsg": "Update Project.swift, Workspace.swift, and AppCoordinator for libs mode",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 1
+        },
+        {
+          "name": "feature/xcframework-build",
+          "lastCommitDate": "2026-03-20T13:02:23+02:00",
+          "lastCommitMsg": "Update package pins after switch-deps validation, make script executable",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 4
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-24T16:34:01+02:00",
+          "lastCommitMsg": "Add README with setup instructions and dependency modes",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "9a70ae1",
+          "date": "2026-03-24T16:34:01+02:00",
+          "author": "Gabi Pago",
+          "message": "Add README with setup instructions and dependency modes"
+        },
+        {
+          "hash": "ad8cf33",
+          "date": "2026-03-24T16:31:54+02:00",
+          "author": "Gabi Pago",
+          "message": "Update Project.swift, Workspace.swift, and AppCoordinator for libs mode"
+        },
+        {
+          "hash": "602fb83",
+          "date": "2026-03-23T11:46:23+02:00",
+          "author": "Gabi Pago",
+          "message": "Improve cleanup: wipe entire DerivedData between mode switches"
+        },
+        {
+          "hash": "8b43aa2",
+          "date": "2026-03-20T18:48:01+02:00",
+          "author": "Gabi Pago",
+          "message": "Add libs mode to switch-deps for xcodeproj-based workspace generation"
+        },
+        {
+          "hash": "8d2ff0e",
+          "date": "2026-03-20T13:02:23+02:00",
+          "author": "Gabi Pago",
+          "message": "Update package pins after switch-deps validation, make script executable"
+        },
+        {
+          "hash": "f345c44",
+          "date": "2026-03-20T11:25:36+02:00",
+          "author": "Gabi Pago",
+          "message": "Consolidate integrator: rename to PagoIntegrator, add Hub SDK for BCR"
+        },
+        {
+          "hash": "76699a0",
+          "date": "2026-03-19T14:38:37Z",
+          "author": "Gabi Pago",
+          "message": "Initial commit: PagoIntegrator with eSIM, RCA, Bills, and Hub SDK integration"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-network-dev",
+      "path": "Workers/pago-spm/ios-network-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-network-dev.git",
+      "defaultBranch": "feature/spm_lib",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 454,
+      "branchCount": 2,
+      "tagCount": 40,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:57:05Z",
+          "lastCommitMsg": "Add Package.resolved to .gitignore for SPM library hygiene",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 3
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "155d6f3",
+          "date": "2026-03-23T11:35:41+02:00",
+          "author": "Gabi Pago",
+          "message": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings"
+        },
+        {
+          "hash": "9fc7ebf",
+          "date": "2026-03-20T23:00:48+02:00",
+          "author": "Gabi Pago",
+          "message": "Update Package.swift dependency branches to feature/spm_lib"
+        },
+        {
+          "hash": "f171622",
+          "date": "2026-03-20T18:47:35+02:00",
+          "author": "Gabi Pago",
+          "message": "Add Tuist ProjectDescriptionHelpers for xcodeproj generation"
+        },
+        {
+          "hash": "81d84c2",
+          "date": "2026-03-18T09:57:05Z",
+          "author": "Gabi Pago",
+          "message": "Add Package.resolved to .gitignore for SPM library hygiene"
+        },
+        {
+          "hash": "72bb6dd",
+          "date": "2026-03-17T15:56:03Z",
+          "author": "Gabi Pago",
+          "message": "Remove .gitmodules leftover from submodule migration"
+        },
+        {
+          "hash": "87cd1b8",
+          "date": "2026-03-17T15:26:06Z",
+          "author": "Gabi Pago",
+          "message": "Remove stale ios-core-dev submodule gitlink"
+        },
+        {
+          "hash": "d192356",
+          "date": "2026-03-05T08:53:13+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Fix: remove dead duplicate decode block in PagoURLSessionAPIClient - revert to main approach"
+        },
+        {
+          "hash": "f3b84da",
+          "date": "2026-03-04T22:12:40+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Merge main into feature/spm"
+        },
+        {
+          "hash": "3e4dc68",
+          "date": "2026-03-04T11:33:37+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Switch Package.swift dependency URLs from SSH to HTTPS"
+        },
+        {
+          "hash": "6c02b95",
+          "date": "2026-02-26T19:24:20+02:00",
+          "author": "Pago Buddy",
+          "message": "Switch SPM dependencies from local paths to remote GitHub URLs"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.6.46",
+          "date": "2026-03-13T17:16:47+02:00"
+        },
+        {
+          "name": "1.6.45",
+          "date": "2026-03-10T12:16:25+02:00"
+        },
+        {
+          "name": "1.6.44",
+          "date": "2026-03-10T10:31:29+02:00"
+        },
+        {
+          "name": "1.6.43",
+          "date": "2026-03-09T14:06:19+02:00"
+        },
+        {
+          "name": "1.6.42",
+          "date": "2026-03-03T12:35:05+02:00"
+        },
+        {
+          "name": "1.6.38",
+          "date": "2026-02-24T14:44:51+02:00"
+        },
+        {
+          "name": "1.6.37",
+          "date": "2026-02-23T17:18:13+02:00"
+        },
+        {
+          "name": "1.6.36",
+          "date": "2026-02-18T23:14:11+02:00"
+        },
+        {
+          "name": "1.6.34",
+          "date": "2026-02-18T18:40:48+02:00"
+        },
+        {
+          "name": "1.6.35",
+          "date": "2026-02-18T17:45:50+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-pay",
+      "path": "Workers/pago-spm/ios-pay",
+      "remoteUrl": "git@github.com:PagoApp/ios-pay.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 1058,
+      "branchCount": 3,
+      "tagCount": 24,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:55:54Z",
+          "lastCommitMsg": "Remove tracked Package.resolved to prevent stale SPM pin caching",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 20,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 23,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-10T12:09:06+02:00",
+          "lastCommitMsg": "Merge pull request #278 from PagoApp/release/1.8.32",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "9a627d9",
+          "date": "2026-03-10T12:09:06+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #278 from PagoApp/release/1.8.32"
+        },
+        {
+          "hash": "aff3b94",
+          "date": "2026-03-10T11:58:26+02:00",
+          "author": "Bogdan",
+          "message": "Fix CI test failure: update simulator device and prelaunch"
+        },
+        {
+          "hash": "628767d",
+          "date": "2026-03-09T15:31:06+02:00",
+          "author": "Bogdan",
+          "message": "created release branch for 1.8.32"
+        },
+        {
+          "hash": "cdf100a",
+          "date": "2026-03-06T13:05:16+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #276 from PagoApp/feature/esim_confirmation/PAGO-42710"
+        },
+        {
+          "hash": "2081173",
+          "date": "2026-03-04T16:53:20+02:00",
+          "author": "Bogdan",
+          "message": "remove debug code"
+        },
+        {
+          "hash": "990ddde",
+          "date": "2026-03-04T16:52:40+02:00",
+          "author": "Bogdan",
+          "message": "fix background color"
+        },
+        {
+          "hash": "ff98d5c",
+          "date": "2026-03-04T16:49:58+02:00",
+          "author": "Bogdan",
+          "message": "eSIM Payment confirmation screen"
+        },
+        {
+          "hash": "1813f9f",
+          "date": "2026-02-25T14:09:43+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #274 from PagoApp/release/1.8.27"
+        },
+        {
+          "hash": "f500519",
+          "date": "2026-02-25T14:05:12+02:00",
+          "author": "Bogdan",
+          "message": "Fix integrator"
+        },
+        {
+          "hash": "340055e",
+          "date": "2026-02-25T12:00:15+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into release/1.8.27"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.8.34",
+          "date": "2026-03-13T17:17:52+02:00"
+        },
+        {
+          "name": "1.8.33",
+          "date": "2026-03-10T12:17:08+02:00"
+        },
+        {
+          "name": "1.8.32",
+          "date": "2026-03-10T10:32:29+02:00"
+        },
+        {
+          "name": "1.8.31",
+          "date": "2026-03-09T14:06:55+02:00"
+        },
+        {
+          "name": "1.8.30",
+          "date": "2026-03-03T12:35:44+02:00"
+        },
+        {
+          "name": "1.8.27",
+          "date": "2026-02-24T14:45:23+02:00"
+        },
+        {
+          "name": "1.8.26",
+          "date": "2026-02-23T17:18:59+02:00"
+        },
+        {
+          "name": "1.8.25",
+          "date": "2026-02-18T23:14:58+02:00"
+        },
+        {
+          "name": "1.8.23",
+          "date": "2026-02-18T18:44:58+02:00"
+        },
+        {
+          "name": "1.8.24",
+          "date": "2026-02-18T17:46:15+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-prepay",
+      "path": "Workers/pago-spm/ios-prepay",
+      "remoteUrl": "https://github.com/PagoApp/ios-prepay-dev.git",
+      "defaultBranch": "feature/spm_lib",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 5,
+      "branchCount": 2,
+      "tagCount": 0,
+      "lastActivity": "2026-03-23T11:35:42+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-19T13:32:26Z",
+          "lastCommitMsg": "Add .gitignore for SPM build artifacts",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 3
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:42+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "b64b2fa",
+          "date": "2026-03-23T11:35:42+02:00",
+          "author": "Gabi Pago",
+          "message": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings"
+        },
+        {
+          "hash": "3b815fb",
+          "date": "2026-03-20T23:00:48+02:00",
+          "author": "Gabi Pago",
+          "message": "Update Package.swift dependency branches to feature/spm_lib"
+        },
+        {
+          "hash": "d821652",
+          "date": "2026-03-20T18:47:47+02:00",
+          "author": "Gabi Pago",
+          "message": "Add Tuist Project.swift and ProjectDescriptionHelpers for xcodeproj generation"
+        },
+        {
+          "hash": "70e661a",
+          "date": "2026-03-19T13:32:26Z",
+          "author": "Gabi Pago",
+          "message": "Add .gitignore for SPM build artifacts"
+        },
+        {
+          "hash": "d8df0cb",
+          "date": "2026-03-19T13:31:11Z",
+          "author": "Gabi Pago",
+          "message": "Add SPM support: Package.swift, Sources/Tests layout, PrepayResourceBundle for Bundle.module"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-rca-dev",
+      "path": "Workers/pago-spm/ios-rca-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-rca-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 4352,
+      "branchCount": 3,
+      "tagCount": 47,
+      "lastActivity": "2026-03-23T11:35:42+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-18T09:57:05Z",
+          "lastCommitMsg": "Add Package.resolved to .gitignore for SPM library hygiene",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 39,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:42+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 42,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-02T09:43:38+02:00",
+          "lastCommitMsg": "Removed extra blank lines in DataRepository",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "d8e0b9da",
+          "date": "2026-03-02T09:43:38+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Removed extra blank lines in DataRepository"
+        },
+        {
+          "hash": "2cb5aff1",
+          "date": "2026-02-25T12:46:09+02:00",
+          "author": "Cristi",
+          "message": "release/2.7.7 (#1154)"
+        },
+        {
+          "hash": "666943a5",
+          "date": "2026-02-25T09:42:12+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1155)"
+        },
+        {
+          "hash": "b8dac160",
+          "date": "2026-02-24T13:02:33+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1152)"
+        },
+        {
+          "hash": "ff060e92",
+          "date": "2026-02-23T09:23:23+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1151)"
+        },
+        {
+          "hash": "220e137d",
+          "date": "2026-02-19T16:26:29+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1148)"
+        },
+        {
+          "hash": "10f0acfd",
+          "date": "2026-02-18T10:58:46+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1146)"
+        },
+        {
+          "hash": "d02f7ad5",
+          "date": "2026-02-16T11:08:43+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1145)"
+        },
+        {
+          "hash": "5e902b23",
+          "date": "2026-02-11T12:33:02+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1143)"
+        },
+        {
+          "hash": "2f766d92",
+          "date": "2026-02-09T12:15:49+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1142)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "2.7.12",
+          "date": "2026-03-03T12:33:46+02:00"
+        },
+        {
+          "name": "2.7.7",
+          "date": "2026-02-24T14:43:42+02:00"
+        },
+        {
+          "name": "2.7.6",
+          "date": "2026-02-23T17:16:46+02:00"
+        },
+        {
+          "name": "2.7.5",
+          "date": "2026-02-18T22:24:51+02:00"
+        },
+        {
+          "name": "2.7.4",
+          "date": "2026-02-18T17:45:02+02:00"
+        },
+        {
+          "name": "2.7.3",
+          "date": "2026-02-16T17:04:24+02:00"
+        },
+        {
+          "name": "2.7.2",
+          "date": "2026-02-10T08:33:41+02:00"
+        },
+        {
+          "name": "2.7.0",
+          "date": "2026-01-21T11:04:06+02:00"
+        },
+        {
+          "name": "2.5.3",
+          "date": "2025-12-17T10:08:45+02:00"
+        },
+        {
+          "name": "2.4.1",
+          "date": "2025-12-16T16:58:13+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-releases",
+      "path": "Workers/pago-spm/ios-releases",
+      "remoteUrl": "git@github.com:PagoSDK/ios-releases.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 63,
+      "branchCount": 1,
+      "tagCount": 0,
+      "lastActivity": "2026-03-10T12:12:06+02:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-10T12:12:06+02:00",
+          "lastCommitMsg": "Merge pull request #18 from PagoSDK/feature/release-script-updates",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "79bf81f",
+          "date": "2026-03-10T12:12:06+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #18 from PagoSDK/feature/release-script-updates"
+        },
+        {
+          "hash": "6976087",
+          "date": "2026-03-10T11:38:16+02:00",
+          "author": "Bogdan",
+          "message": "Added Artifactory Package.swift generation and upload to the release script"
+        },
+        {
+          "hash": "dbdabb7",
+          "date": "2026-03-09T12:29:38+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Update readme instructions"
+        },
+        {
+          "hash": "4a9b5c2",
+          "date": "2026-03-09T12:25:40+02:00",
+          "author": "Gabi",
+          "message": "release/esim_new (#17)"
+        },
+        {
+          "hash": "3f76c8a",
+          "date": "2026-02-19T11:54:14+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Update README.md (#16)"
+        },
+        {
+          "hash": "76daf05",
+          "date": "2026-02-10T13:03:20+02:00",
+          "author": "Gabi",
+          "message": "feature/add_esim_release (#15)"
+        },
+        {
+          "hash": "85bb916",
+          "date": "2025-12-23T11:01:24+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #14 from PagoSDK/feature/code_freeze_branch_main/PAGO-41825"
+        },
+        {
+          "hash": "b768654",
+          "date": "2025-12-23T10:34:09+02:00",
+          "author": "Bogdan",
+          "message": "update README.md file"
+        },
+        {
+          "hash": "c8c176c",
+          "date": "2025-12-18T17:44:03+02:00",
+          "author": "Bogdan",
+          "message": "update release script to accept explicit version and create dev repo pr"
+        },
+        {
+          "hash": "6a7d400",
+          "date": "2025-11-24T15:30:30+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #13 from PagoSDK/add-wip-message-for-tag-script"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-ui-dev",
+      "path": "Workers/pago-spm/ios-ui-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-ui-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/spm_lib",
+      "totalCommits": 1901,
+      "branchCount": 3,
+      "tagCount": 40,
+      "lastActivity": "2026-03-23T11:35:41+02:00",
+      "branches": [
+        {
+          "name": "feature/spm",
+          "lastCommitDate": "2026-03-20T16:53:40+02:00",
+          "lastCommitMsg": "Merge remote-tracking branch 'origin/main' into feature/spm",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 36,
+          "behindDefault": 0
+        },
+        {
+          "name": "feature/spm_lib",
+          "lastCommitDate": "2026-03-23T11:35:41+02:00",
+          "lastCommitMsg": "Add SWIFT_INSTALL_OBJC_HEADER and CLANG_ENABLE_MODULES settings",
+          "lastAuthor": "Gabi Pago",
+          "aheadOfDefault": 38,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-11T13:58:35+02:00",
+          "lastCommitMsg": "add support for bg color override inside su tab bar (#612)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "1780bf3",
+          "date": "2026-03-11T13:58:35+02:00",
+          "author": "Cosmin Iulian",
+          "message": "add support for bg color override inside su tab bar (#612)"
+        },
+        {
+          "hash": "1cbb0aa",
+          "date": "2026-03-10T12:09:23+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #610 from PagoApp/release/1.6.49"
+        },
+        {
+          "hash": "0615770",
+          "date": "2026-03-09T15:30:43+02:00",
+          "author": "Bogdan",
+          "message": "created release branch for 1.6.49"
+        },
+        {
+          "hash": "077ecaa",
+          "date": "2026-03-06T10:29:08+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #608 from PagoApp/tab-bar-selection/PAGO-42761"
+        },
+        {
+          "hash": "f8dac96",
+          "date": "2026-03-05T17:20:48+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Update PagoUI/UI Customization/PagoUIConfigurator.swift"
+        },
+        {
+          "hash": "c7edf8d",
+          "date": "2026-03-05T17:09:00+02:00",
+          "author": "Cosmin Iulian",
+          "message": "add new tab bar style"
+        },
+        {
+          "hash": "e50e7db",
+          "date": "2026-03-05T13:56:01+02:00",
+          "author": "Cosmin Iulian",
+          "message": "tab bar selection style"
+        },
+        {
+          "hash": "e3f1487",
+          "date": "2026-03-04T12:51:45+02:00",
+          "author": "Cosmin Iulian",
+          "message": "add esim gatekeeper flag (#607)"
+        },
+        {
+          "hash": "f89cdab",
+          "date": "2026-03-02T12:53:17+02:00",
+          "author": "bengarazvan",
+          "message": "Merge pull request #605 from PagoApp/force-dismiss-button"
+        },
+        {
+          "hash": "58483f7",
+          "date": "2026-03-02T12:50:13+02:00",
+          "author": "bengarazvan",
+          "message": "Merge branch 'main' into force-dismiss-button"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.6.51",
+          "date": "2026-03-13T17:15:57+02:00"
+        },
+        {
+          "name": "1.6.50",
+          "date": "2026-03-10T12:15:46+02:00"
+        },
+        {
+          "name": "1.6.49",
+          "date": "2026-03-10T10:30:49+02:00"
+        },
+        {
+          "name": "1.6.48",
+          "date": "2026-03-09T14:05:43+02:00"
+        },
+        {
+          "name": "1.6.47",
+          "date": "2026-03-03T12:34:24+02:00"
+        },
+        {
+          "name": "1.6.43",
+          "date": "2026-02-24T14:44:16+02:00"
+        },
+        {
+          "name": "1.6.42",
+          "date": "2026-02-23T17:17:30+02:00"
+        },
+        {
+          "name": "1.6.41",
+          "date": "2026-02-18T23:13:25+02:00"
+        },
+        {
+          "name": "1.6.39",
+          "date": "2026-02-18T18:37:00+02:00"
+        },
+        {
+          "name": "1.6.40",
+          "date": "2026-02-18T17:45:26+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "android-esim",
+      "path": "android-esim",
+      "remoteUrl": "https://github.com/PagoApp/android-esim",
+      "defaultBranch": "master",
+      "currentBranch": "master",
+      "totalCommits": 766,
+      "branchCount": 1,
+      "tagCount": 2,
+      "lastActivity": "2026-02-20T15:12:35Z",
+      "branches": [
+        {
+          "name": "master",
+          "lastCommitDate": "2026-02-20T15:12:35Z",
+          "lastCommitMsg": "[skip ci] Version bump to 50",
+          "lastAuthor": "P4g0",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "9611b85",
+          "date": "2026-02-20T15:12:35Z",
+          "author": "P4g0",
+          "message": "[skip ci] Version bump to 50"
+        },
+        {
+          "hash": "88313d1",
+          "date": "2026-02-20T17:08:55+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "Merge pull request #80 from PagoApp/feature/PAGO-42527_not_activated"
+        },
+        {
+          "hash": "bd7e974",
+          "date": "2026-02-20T16:50:59+02:00",
+          "author": "alinateca",
+          "message": "Merge branch 'master' into feature/PAGO-42527_not_activated"
+        },
+        {
+          "hash": "e524f2a",
+          "date": "2026-02-20T13:50:16Z",
+          "author": "P4g0",
+          "message": "[skip ci] Version bump to 49"
+        },
+        {
+          "hash": "b2a9152",
+          "date": "2026-02-20T15:47:51+02:00",
+          "author": "stefanhaluspago",
+          "message": "PAGO-42539 - Add connection speed row for unlimited plans in plan details (#87)"
+        },
+        {
+          "hash": "df17be4",
+          "date": "2026-02-20T12:58:21Z",
+          "author": "P4g0",
+          "message": "[skip ci] Version bump to 48"
+        },
+        {
+          "hash": "e1b0f2a",
+          "date": "2026-02-20T14:54:56+02:00",
+          "author": "AndreiAgachePago",
+          "message": "Merge pull request #86 from PagoApp/feature/PAGO-42574_warning_in_install_instruction"
+        },
+        {
+          "hash": "5d035e4",
+          "date": "2026-02-20T14:03:31+02:00",
+          "author": "aagache",
+          "message": "Reduced top padding in install instructions tab content to minimize gap below tabs"
+        },
+        {
+          "hash": "872c79e",
+          "date": "2026-02-20T13:22:07+02:00",
+          "author": "Cristi",
+          "message": "New Crowdin updates (#88)"
+        },
+        {
+          "hash": "6fbdc22",
+          "date": "2026-02-20T10:55:06Z",
+          "author": "P4g0",
+          "message": "[skip ci] Version bump to 47"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.0_RC4",
+          "date": "2026-02-16T13:11:00+02:00"
+        },
+        {
+          "name": "1.0.0_RC3",
+          "date": "2026-02-09T16:48:22+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "iOS-eSIM",
+      "path": "iOS-eSIM",
+      "remoteUrl": "git@github.com:PagoApp/iOS-eSIM.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 547,
+      "branchCount": 26,
+      "tagCount": 12,
+      "lastActivity": "2026-03-18T15:15:30+02:00",
+      "branches": [
+        {
+          "name": "bugfix/PAGO-42378",
+          "lastCommitDate": "2026-02-09T20:24:49+02:00",
+          "lastCommitMsg": "Fixed code review issues for notification publisher",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 421
+        },
+        {
+          "name": "bugfix/PAGO-42512",
+          "lastCommitDate": "2026-02-18T14:07:20+02:00",
+          "lastCommitMsg": "Save and restore interactivePopGestureRecognizer state on SDK dismiss - Co-Authored-By: Claude Opus 4.6 <noreply@anthrop",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 4,
+          "behindDefault": 316
+        },
+        {
+          "name": "bugfix/PAGO-42548-p1",
+          "lastCommitDate": "2026-02-19T17:58:33+02:00",
+          "lastCommitMsg": "Fix didFinishESIMFlow not called on back in demo flow - Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 307
+        },
+        {
+          "name": "bugfix/PAGO-42548-p2",
+          "lastCommitDate": "2026-02-20T15:36:30+02:00",
+          "lastCommitMsg": "Remove nav bar restoration and appState from ESIMHostingViewController - Co-Authored-By: Claude Opus 4.6 <noreply@anthro",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 6,
+          "behindDefault": 307
+        },
+        {
+          "name": "bugfix/PAGO-42583",
+          "lastCommitDate": "2026-02-20T16:45:09+02:00",
+          "lastCommitMsg": "Integrate checkDataPreloadAndStartFlow into startFlow",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 275
+        },
+        {
+          "name": "bugfix/PAGO-42588",
+          "lastCommitDate": "2026-02-23T14:22:10+02:00",
+          "lastCommitMsg": "Pop navigation stack on payment completion",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 16,
+          "behindDefault": 252
+        },
+        {
+          "name": "bugfix/PAGO-42588-2",
+          "lastCommitDate": "2026-02-23T16:29:43+02:00",
+          "lastCommitMsg": "Rename logoUrl to logo in ESIMTopupSelectionViewModel",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 9,
+          "behindDefault": 242
+        },
+        {
+          "name": "bugfix/PAGO-42590",
+          "lastCommitDate": "2026-02-20T18:13:49+02:00",
+          "lastCommitMsg": "Replace raw error localizedDescription with generic error message",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 273
+        },
+        {
+          "name": "bugfix/PAGO-42600",
+          "lastCommitDate": "2026-02-23T15:28:10+02:00",
+          "lastCommitMsg": "Merge branch 'main' into bugfix/PAGO-42600",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 12,
+          "behindDefault": 247
+        },
+        {
+          "name": "bugfix/PAGO-426244-1",
+          "lastCommitDate": "2026-02-24T16:16:09Z",
+          "lastCommitMsg": "Set BT as default integrator in demo app",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 0,
+          "behindDefault": 231
+        },
+        {
+          "name": "bugfix/PAGO-42644",
+          "lastCommitDate": "2026-02-24T18:17:52+02:00",
+          "lastCommitMsg": "Bugfix",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 0,
+          "behindDefault": 230
+        },
+        {
+          "name": "bugfix/PAGO-42644-2",
+          "lastCommitDate": "2026-02-24T16:35:31Z",
+          "lastCommitMsg": "Invalidate destinations cache when locale changes",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 0,
+          "behindDefault": 229
+        },
+        {
+          "name": "bugfix/PAGO-42644-3",
+          "lastCommitDate": "2026-02-24T18:51:29+02:00",
+          "lastCommitMsg": "Reload navigation type after user enters esim sdk after back",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 0,
+          "behindDefault": 228
+        },
+        {
+          "name": "bugfix/esim_flow",
+          "lastCommitDate": "2026-02-25T12:58:08+02:00",
+          "lastCommitMsg": "Fix buy second esim flow",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 206
+        },
+        {
+          "name": "bugfix/maestro_fixes",
+          "lastCommitDate": "2026-03-17T18:45:00+02:00",
+          "lastCommitMsg": "Improve maestro tests",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 3,
+          "behindDefault": 19
+        },
+        {
+          "name": "bugfix/move_scripts",
+          "lastCommitDate": "2026-02-24T15:26:22+02:00",
+          "lastCommitMsg": "Move scripts and add switchAndPull",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 233
+        },
+        {
+          "name": "bugfix/remove_mockserver",
+          "lastCommitDate": "2026-02-23T14:44:37+02:00",
+          "lastCommitMsg": "Rename maestro tests",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 3,
+          "behindDefault": 252
+        },
+        {
+          "name": "feature/PAGO-42406",
+          "lastCommitDate": "2026-02-11T13:51:51+02:00",
+          "lastCommitMsg": "Update mock connection",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 408
+        },
+        {
+          "name": "feature/maestro-e2e-tests",
+          "lastCommitDate": "2026-02-17T18:41:31+02:00",
+          "lastCommitMsg": "Merge branch 'feature/maestro-e2e-tests' of github.com:PagoApp/iOS-eSIM into feature/maestro-e2e-tests",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 31,
+          "behindDefault": 336
+        },
+        {
+          "name": "feature/progress_bar_colors",
+          "lastCommitDate": "2026-02-25T10:58:00+02:00",
+          "lastCommitMsg": "Merge branch 'main' into feature/progress_bar_colors",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 217
+        },
+        {
+          "name": "feature/rca",
+          "lastCommitDate": "2026-02-24T15:20:19+02:00",
+          "lastCommitMsg": "Update with new esim release",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 2,
+          "behindDefault": 241
+        },
+        {
+          "name": "feature/settings-page-refactor/PAGO-42634",
+          "lastCommitDate": "2026-03-02T13:27:18+02:00",
+          "lastCommitMsg": "Update PagoESIMIntegrator/Views/SettingsView.swift",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 127
+        },
+        {
+          "name": "feature/simplifySDKCommunication",
+          "lastCommitDate": "2026-02-16T16:47:17+02:00",
+          "lastCommitMsg": "UPdate sdk communication with consuming apps",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 341
+        },
+        {
+          "name": "feature/topup-validity-sections",
+          "lastCommitDate": "2026-02-23T17:38:40+02:00",
+          "lastCommitMsg": "Group active topup packages by validity with section headers",
+          "lastAuthor": "gabipago",
+          "aheadOfDefault": 1,
+          "behindDefault": 241
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-18T15:15:30+02:00",
+          "lastCommitMsg": "Dark Mode for BCR (#178)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "release/0.1.0",
+          "lastCommitDate": "2026-02-10T15:16:47+02:00",
+          "lastCommitMsg": "Add finish paymnet event",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 5,
+          "behindDefault": 421
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "a8f05b3",
+          "date": "2026-03-18T15:15:30+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Dark Mode for BCR (#178)"
+        },
+        {
+          "hash": "dcda91b",
+          "date": "2026-03-18T14:30:59+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-42752 - Add direct top-up flow entry point (#188)"
+        },
+        {
+          "hash": "5e424fa",
+          "date": "2026-03-18T10:04:13+02:00",
+          "author": "Gabi",
+          "message": "bugfix/maestro_fixes (#189)"
+        },
+        {
+          "hash": "337230f",
+          "date": "2026-03-17T17:03:49+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #187 from PagoApp/feature/bcr_custom_buttons/PAGO-42827"
+        },
+        {
+          "hash": "de8efa6",
+          "date": "2026-03-17T16:59:21+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/bcr_custom_buttons/PAGO-42827"
+        },
+        {
+          "hash": "00c2cf7",
+          "date": "2026-03-17T16:55:29+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #186 from PagoApp/feature/success_screen_polling/PAGO-42852"
+        },
+        {
+          "hash": "7169600",
+          "date": "2026-03-17T16:47:07+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/success_screen_polling/PAGO-42852"
+        },
+        {
+          "hash": "586a638",
+          "date": "2026-03-17T15:06:50+02:00",
+          "author": "Bogdan",
+          "message": "Fix test predicates to match viewModel filtering logic"
+        },
+        {
+          "hash": "a93a1f4",
+          "date": "2026-03-17T14:52:19+02:00",
+          "author": "Bogdan",
+          "message": "Added configurable eSIM action row button order and expansion"
+        },
+        {
+          "hash": "a46bfa2",
+          "date": "2026-03-16T18:10:06+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #184 from PagoApp/PAGO-28271"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.7",
+          "date": "2026-03-13T17:15:37+02:00"
+        },
+        {
+          "name": "1.0.6",
+          "date": "2026-03-10T12:15:26+02:00"
+        },
+        {
+          "name": "1.0.5",
+          "date": "2026-03-10T10:30:28+02:00"
+        },
+        {
+          "name": "1.0.4",
+          "date": "2026-03-09T14:05:26+02:00"
+        },
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:34:05+02:00"
+        },
+        {
+          "name": "0.1.8",
+          "date": "2026-02-24T14:43:59+02:00"
+        },
+        {
+          "name": "0.1.7",
+          "date": "2026-02-23T17:17:07+02:00"
+        },
+        {
+          "name": "0.1.6",
+          "date": "2026-02-18T22:25:10+02:00"
+        },
+        {
+          "name": "0.1.5",
+          "date": "2026-02-18T17:45:14+02:00"
+        },
+        {
+          "name": "0.1.4",
+          "date": "2026-02-16T17:04:37+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-bills-dev",
+      "path": "ios-bills-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-bills-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 2300,
+      "branchCount": 1,
+      "tagCount": 10,
+      "lastActivity": "2026-01-19T14:50:44+02:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2026-01-19T14:50:44+02:00",
+          "lastCommitMsg": "PAGO-41471 (#844)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "402e8ee1",
+          "date": "2026-01-19T14:50:44+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-41471 (#844)"
+        },
+        {
+          "hash": "b1989311",
+          "date": "2026-01-19T10:37:16+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#842)"
+        },
+        {
+          "hash": "7b4bbc74",
+          "date": "2026-01-16T16:25:35+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into PAGO-28271"
+        },
+        {
+          "hash": "724d656c",
+          "date": "2026-01-16T16:11:50+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "8e087430",
+          "date": "2026-01-16T16:11:49+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations it.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "129baecc",
+          "date": "2026-01-16T16:11:49+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "5a8b71e9",
+          "date": "2026-01-15T16:15:14+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "0fa52e88",
+          "date": "2026-01-13T10:41:50+02:00",
+          "author": "Bogdan",
+          "message": "Remove diacritics | PAGO-41263 (#836)"
+        },
+        {
+          "hash": "ee2bd5e2",
+          "date": "2026-01-12T12:45:44+02:00",
+          "author": "Adrian Pascu",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 62)"
+        },
+        {
+          "hash": "575fa079",
+          "date": "2026-01-12T09:30:43+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/remove-diacritics/PAGO-41263"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.12.8",
+          "date": "2025-11-24T12:30:31+02:00"
+        },
+        {
+          "name": "1.12.7",
+          "date": "2025-10-01T14:17:53+03:00"
+        },
+        {
+          "name": "1.12.6",
+          "date": "2025-09-18T18:04:36+03:00"
+        },
+        {
+          "name": "1.10.0",
+          "date": "2025-06-11T12:26:34+03:00"
+        },
+        {
+          "name": "0.9.0",
+          "date": "2024-04-09T09:33:43+03:00"
+        },
+        {
+          "name": "0.8.0",
+          "date": "2024-03-27T16:05:35+02:00"
+        },
+        {
+          "name": "0.7.0",
+          "date": "2024-03-06T13:17:47+02:00"
+        },
+        {
+          "name": "0.5.0",
+          "date": "2024-01-10T12:38:34+02:00"
+        },
+        {
+          "name": "0.3.1",
+          "date": "2023-11-13T17:49:53+02:00"
+        },
+        {
+          "name": "0.3.0",
+          "date": "2023-11-10T14:26:45+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-pago-support",
+      "path": "ios-pago-support",
+      "remoteUrl": "git@github.com:PagoApp/ios-pago.git",
+      "defaultBranch": "main",
+      "currentBranch": "feature/italy_subs",
+      "totalCommits": 8326,
+      "branchCount": 2,
+      "tagCount": 122,
+      "lastActivity": "2026-03-13T15:06:04+02:00",
+      "branches": [
+        {
+          "name": "feature/italy_subs",
+          "lastCommitDate": "2026-03-13T15:06:04+02:00",
+          "lastCommitMsg": "add italy subs findings",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-06T16:07:57+02:00",
+          "lastCommitMsg": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1175)",
+          "lastAuthor": "Gabi",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "70156d769",
+          "date": "2026-03-06T16:07:57+02:00",
+          "author": "Gabi",
+          "message": "Add Maestro UI tests (migrated from maestro-ui-testing) (#1175)"
+        },
+        {
+          "hash": "3347e3d12",
+          "date": "2026-03-05T15:32:47+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1181)"
+        },
+        {
+          "hash": "50fddb99d",
+          "date": "2026-03-05T14:26:32+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "c0f1b024f",
+          "date": "2026-03-05T14:25:25+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        },
+        {
+          "hash": "51a4625c9",
+          "date": "2026-03-04T16:05:32+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1179)"
+        },
+        {
+          "hash": "35e9451d2",
+          "date": "2026-03-04T13:19:41+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "83bec178d",
+          "date": "2026-03-04T13:18:46+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        },
+        {
+          "hash": "4b9e64d93",
+          "date": "2026-03-04T12:55:27+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1177)"
+        },
+        {
+          "hash": "180b9fd7c",
+          "date": "2026-03-03T11:35:35+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "d53fc6d5a",
+          "date": "2026-03-03T11:34:48+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "4.0.3",
+          "date": "2026-02-26T14:32:58+02:00"
+        },
+        {
+          "name": "4.0.1",
+          "date": "2026-02-23T09:02:06+02:00"
+        },
+        {
+          "name": "4.0.0",
+          "date": "2026-02-19T11:23:28+02:00"
+        },
+        {
+          "name": "3.10.2",
+          "date": "2026-02-10T17:01:21+02:00"
+        },
+        {
+          "name": "3.9.2",
+          "date": "2026-01-16T11:03:59+02:00"
+        },
+        {
+          "name": "3.9.1",
+          "date": "2026-01-14T11:11:02+02:00"
+        },
+        {
+          "name": "3.9.0",
+          "date": "2025-12-17T11:40:44+02:00"
+        },
+        {
+          "name": "3.8.2",
+          "date": "2025-12-03T18:01:40+02:00"
+        },
+        {
+          "name": "3.8.1",
+          "date": "2025-12-03T15:23:34+02:00"
+        },
+        {
+          "name": "3.8.0",
+          "date": "2025-11-24T17:59:44+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-pago",
+      "path": "ios-pago",
+      "remoteUrl": "git@github.com:PagoApp/ios-pago.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 8342,
+      "branchCount": 12,
+      "tagCount": 123,
+      "lastActivity": "2026-03-15T13:32:33+02:00",
+      "branches": [
+        {
+          "name": "feature/PAGO-42289-2",
+          "lastCommitDate": "2026-02-17T11:10:17+02:00",
+          "lastCommitMsg": "Merge branch 'main' into feature/PAGO-42289-2",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 5,
+          "behindDefault": 69
+        },
+        {
+          "name": "feature/PAGO-42289-forced-crash",
+          "lastCommitDate": "2026-02-13T11:43:44+02:00",
+          "lastCommitMsg": "Force crash in HUB",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 5,
+          "behindDefault": 77
+        },
+        {
+          "name": "feature/PAGO-42419",
+          "lastCommitDate": "2026-03-06T15:03:21+02:00",
+          "lastCommitMsg": "Add esim sdk target to Pago live",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 20,
+          "behindDefault": 28
+        },
+        {
+          "name": "feature/clevertap_update",
+          "lastCommitDate": "2026-02-12T19:02:55+02:00",
+          "lastCommitMsg": "Update clevertap",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 77
+        },
+        {
+          "name": "feature/esim",
+          "lastCommitDate": "2026-03-10T07:54:20+02:00",
+          "lastCommitMsg": "Revert to main xcode settings",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 12
+        },
+        {
+          "name": "feature/ghiseu_v2",
+          "lastCommitDate": "2026-02-25T15:09:07+02:00",
+          "lastCommitMsg": "Update ghiseul",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 7,
+          "behindDefault": 69
+        },
+        {
+          "name": "fix/crashlytics-points-manager-safety",
+          "lastCommitDate": "2026-03-16T13:20:24Z",
+          "lastCommitMsg": "Fix crashes in PointsManager: weak self captures and force unwrap",
+          "lastAuthor": "Claude",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        },
+        {
+          "name": "+ fix/crashlytics-reward-screen-manager-force-unwrap",
+          "lastCommitDate": "",
+          "lastCommitMsg": "",
+          "lastAuthor": "",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "fix/crashlytics-update-firebase-clarity-sdk",
+          "lastCommitDate": "2026-03-16T14:04:32Z",
+          "lastCommitMsg": "Update Firebase SDK to 12.10.0 and Clarity SDK to 3.4.4",
+          "lastAuthor": "Claude",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-15T13:32:33+02:00",
+          "lastCommitMsg": "removed claude shared submodule (#1193)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "+ worktree-agent-a6966d67",
+          "lastCommitDate": "",
+          "lastCommitMsg": "",
+          "lastAuthor": "",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "worktree-agent-ae6f9310",
+          "lastCommitDate": "2026-03-15T13:32:33+02:00",
+          "lastCommitMsg": "removed claude shared submodule (#1193)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "233e3cdb8",
+          "date": "2026-03-15T13:32:33+02:00",
+          "author": "Cosmin Iulian",
+          "message": "removed claude shared submodule (#1193)"
+        },
+        {
+          "hash": "17e2e1744",
+          "date": "2026-03-13T17:24:31+02:00",
+          "author": "Gabi",
+          "message": "PAGO-42419: eSIM SDK integration (#1185)"
+        },
+        {
+          "hash": "ef9c73c75",
+          "date": "2026-03-13T14:05:50+02:00",
+          "author": "bengarazvan",
+          "message": "PAGO-42674 - Firebase dSYM upload for Xcode Cloud (#1191)"
+        },
+        {
+          "hash": "08b08f43d",
+          "date": "2026-03-12T18:01:01+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1188)"
+        },
+        {
+          "hash": "5a859e625",
+          "date": "2026-03-12T17:32:13+02:00",
+          "author": "bobby",
+          "message": "Commit localisations"
+        },
+        {
+          "hash": "b587a1e66",
+          "date": "2026-03-12T17:26:58+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into PAGO-28271"
+        },
+        {
+          "hash": "6c24a6cea",
+          "date": "2026-03-12T17:19:04+02:00",
+          "author": "bengarazvan",
+          "message": "PAGO-42830 - Fixed data race crash in RewardScreenManager (#1189)"
+        },
+        {
+          "hash": "498fc2355",
+          "date": "2026-03-12T14:51:56+02:00",
+          "author": "Gabi",
+          "message": "New translations ios-packages/Core/Sources/LocalizationLive/Resources/Localizable.xcstrings (bundle: 44)"
+        },
+        {
+          "hash": "6aec40296",
+          "date": "2026-03-11T15:06:19+02:00",
+          "author": "Gabi",
+          "message": "New Crowdin updates (#1187)"
+        },
+        {
+          "hash": "23395c89f",
+          "date": "2026-03-10T16:08:05+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1184)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "4.1.0",
+          "date": "2026-03-16T12:17:31+02:00"
+        },
+        {
+          "name": "4.0.3",
+          "date": "2026-02-26T14:32:58+02:00"
+        },
+        {
+          "name": "4.0.1",
+          "date": "2026-02-23T09:02:06+02:00"
+        },
+        {
+          "name": "4.0.0",
+          "date": "2026-02-19T11:23:28+02:00"
+        },
+        {
+          "name": "3.10.2",
+          "date": "2026-02-10T17:01:21+02:00"
+        },
+        {
+          "name": "3.9.2",
+          "date": "2026-01-16T11:03:59+02:00"
+        },
+        {
+          "name": "3.9.1",
+          "date": "2026-01-14T11:11:02+02:00"
+        },
+        {
+          "name": "3.9.0",
+          "date": "2025-12-17T11:40:44+02:00"
+        },
+        {
+          "name": "3.8.2",
+          "date": "2025-12-03T18:01:40+02:00"
+        },
+        {
+          "name": "3.8.1",
+          "date": "2025-12-03T15:23:34+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-rca-dev",
+      "path": "ios-rca-dev",
+      "remoteUrl": "git@github.com:PagoApp/ios-rca-dev.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 4301,
+      "branchCount": 1,
+      "tagCount": 47,
+      "lastActivity": "2026-02-09T12:15:49+02:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2026-02-09T12:15:49+02:00",
+          "lastCommitMsg": "New Crowdin updates (#1142)",
+          "lastAuthor": "Tec\u0103 Alina-Mihaela",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "2f766d92",
+          "date": "2026-02-09T12:15:49+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1142)"
+        },
+        {
+          "hash": "853f8663",
+          "date": "2026-02-05T10:05:53+02:00",
+          "author": "Tec\u0103 Alina-Mihaela",
+          "message": "New Crowdin updates (#1141)"
+        },
+        {
+          "hash": "755aea92",
+          "date": "2026-01-28T11:43:15+02:00",
+          "author": "Cosmin Iulian",
+          "message": "fix price with 13 decimals - deserialization issue (#1136)"
+        },
+        {
+          "hash": "11d966dc",
+          "date": "2026-01-26T14:05:19+02:00",
+          "author": "Cosmin Iulian",
+          "message": "release/2.7.0 (#1140)"
+        },
+        {
+          "hash": "e6925b34",
+          "date": "2026-01-21T12:13:32+02:00",
+          "author": "bengarazvan",
+          "message": "Adds knowledge base claude md file (#1139)"
+        },
+        {
+          "hash": "5478da07",
+          "date": "2026-01-21T10:48:04+02:00",
+          "author": "Bogdan",
+          "message": "Fix discount offers endpoint and improve experiment flow navigation (#1138)"
+        },
+        {
+          "hash": "79d146f3",
+          "date": "2026-01-19T11:08:14+02:00",
+          "author": "Cosmin Iulian",
+          "message": "eliminate unnecessary payment flow (#1137)"
+        },
+        {
+          "hash": "2311b70e",
+          "date": "2026-01-14T13:38:23+02:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-41716 (#1135)"
+        },
+        {
+          "hash": "b04e1646",
+          "date": "2026-01-13T16:55:12+02:00",
+          "author": "Bogdan",
+          "message": "Add car details labels by refactoring the model"
+        },
+        {
+          "hash": "86d01f49",
+          "date": "2025-12-23T14:33:43+02:00",
+          "author": "Bogdan",
+          "message": "New Crowdin updates (#1129)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "2.7.12",
+          "date": "2026-03-03T12:33:46+02:00"
+        },
+        {
+          "name": "2.7.7",
+          "date": "2026-02-24T14:43:42+02:00"
+        },
+        {
+          "name": "2.7.6",
+          "date": "2026-02-23T17:16:46+02:00"
+        },
+        {
+          "name": "2.7.5",
+          "date": "2026-02-18T22:24:51+02:00"
+        },
+        {
+          "name": "2.7.4",
+          "date": "2026-02-18T17:45:02+02:00"
+        },
+        {
+          "name": "2.7.3",
+          "date": "2026-02-16T17:04:24+02:00"
+        },
+        {
+          "name": "2.7.2",
+          "date": "2026-02-10T08:33:41+02:00"
+        },
+        {
+          "name": "2.7.0",
+          "date": "2026-01-21T11:04:06+02:00"
+        },
+        {
+          "name": "2.5.3",
+          "date": "2025-12-17T10:08:45+02:00"
+        },
+        {
+          "name": "2.4.1",
+          "date": "2025-12-16T16:58:13+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-rca-sample",
+      "path": "ios-rca-sample",
+      "remoteUrl": "git@github.com:PagoSDK/ios-rca-sample.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 351,
+      "branchCount": 1,
+      "tagCount": 261,
+      "lastActivity": "2025-09-04T13:34:24+03:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2025-09-04T13:34:24+03:00",
+          "lastCommitMsg": "PAGO-40520 (#106)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "65b2ba0",
+          "date": "2025-09-04T13:34:24+03:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-40520 (#106)"
+        },
+        {
+          "hash": "1bb5d88",
+          "date": "2025-09-03T15:45:19+03:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #105 from PagoSDK/update-readme"
+        },
+        {
+          "hash": "26cb95f",
+          "date": "2025-09-03T15:44:54+03:00",
+          "author": "Cosmin Iulian",
+          "message": "Update README.md"
+        },
+        {
+          "hash": "0716b5e",
+          "date": "2025-06-17T14:32:25+03:00",
+          "author": "Gabi",
+          "message": "Cleanup sample app (#103)"
+        },
+        {
+          "hash": "5ed7f15",
+          "date": "2025-03-18T11:11:53+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #94 from PagoSDK/release/1.10.0"
+        },
+        {
+          "hash": "683d251",
+          "date": "2025-03-14T14:26:38+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Add release updates for 1.10.0"
+        },
+        {
+          "hash": "0ddffa7",
+          "date": "2025-02-12T17:17:41+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #92 from PagoSDK/release/1.9.6"
+        },
+        {
+          "hash": "19ee4b8",
+          "date": "2025-02-12T14:38:32+02:00",
+          "author": "Bogdan",
+          "message": "Add release updates for 1.9.6"
+        },
+        {
+          "hash": "4e76737",
+          "date": "2025-02-10T17:08:25+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #91 from PagoSDK/release/1.9.3"
+        },
+        {
+          "hash": "0577b13",
+          "date": "2025-02-07T18:35:10+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Add release updates for 1.9.3"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.12.0",
+          "date": "2025-04-10T17:20:46+03:00"
+        },
+        {
+          "name": "1.9.6",
+          "date": "2025-02-17T17:19:05+02:00"
+        },
+        {
+          "name": "1.8.0",
+          "date": "2025-02-06T12:32:10+02:00"
+        },
+        {
+          "name": "1.6.4",
+          "date": "2024-10-25T11:35:55+03:00"
+        },
+        {
+          "name": "1.6.3",
+          "date": "2024-10-25T10:19:47+03:00"
+        },
+        {
+          "name": "1.6.1",
+          "date": "2024-10-15T11:42:13+03:00"
+        },
+        {
+          "name": "1.6.0",
+          "date": "2024-10-14T15:39:58+03:00"
+        },
+        {
+          "name": "1.5.0",
+          "date": "2024-09-04T09:24:42+03:00"
+        },
+        {
+          "name": "1.4.1",
+          "date": "2024-08-12T11:29:26+03:00"
+        },
+        {
+          "name": "1.4.0",
+          "date": "2024-08-05T13:53:56+03:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-releases",
+      "path": "ios-releases",
+      "remoteUrl": "git@github.com:PagoSDK/ios-releases.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 61,
+      "branchCount": 2,
+      "tagCount": 0,
+      "lastActivity": "2026-03-09T12:29:38+02:00",
+      "branches": [
+        {
+          "name": "feature/add_esim_release",
+          "lastCommitDate": "2026-02-10T13:01:33+02:00",
+          "lastCommitMsg": "Add esim in project",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 6,
+          "behindDefault": 4
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-09T12:29:38+02:00",
+          "lastCommitMsg": "Update readme instructions",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "dbdabb7",
+          "date": "2026-03-09T12:29:38+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Update readme instructions"
+        },
+        {
+          "hash": "4a9b5c2",
+          "date": "2026-03-09T12:25:40+02:00",
+          "author": "Gabi",
+          "message": "release/esim_new (#17)"
+        },
+        {
+          "hash": "3f76c8a",
+          "date": "2026-02-19T11:54:14+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Update README.md (#16)"
+        },
+        {
+          "hash": "76daf05",
+          "date": "2026-02-10T13:03:20+02:00",
+          "author": "Gabi",
+          "message": "feature/add_esim_release (#15)"
+        },
+        {
+          "hash": "85bb916",
+          "date": "2025-12-23T11:01:24+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #14 from PagoSDK/feature/code_freeze_branch_main/PAGO-41825"
+        },
+        {
+          "hash": "b768654",
+          "date": "2025-12-23T10:34:09+02:00",
+          "author": "Bogdan",
+          "message": "update README.md file"
+        },
+        {
+          "hash": "c8c176c",
+          "date": "2025-12-18T17:44:03+02:00",
+          "author": "Bogdan",
+          "message": "update release script to accept explicit version and create dev repo pr"
+        },
+        {
+          "hash": "6a7d400",
+          "date": "2025-11-24T15:30:30+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #13 from PagoSDK/add-wip-message-for-tag-script"
+        },
+        {
+          "hash": "d3bdd6b",
+          "date": "2025-11-24T15:27:30+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Update README.md"
+        },
+        {
+          "hash": "45b9821",
+          "date": "2025-08-29T15:34:22+03:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #12 from PagoSDK/feature/script-improvements/PAGO-40422"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-esim-release",
+      "path": "ios-releases/ios-esim-release",
+      "remoteUrl": "git@github.com:PagoSDK/ios-esim-release.git",
+      "defaultBranch": "main",
+      "currentBranch": "release/1.0.6",
+      "totalCommits": 13,
+      "branchCount": 9,
+      "tagCount": 32,
+      "lastActivity": "2026-03-10T11:54:44+02:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-02T10:49:38+02:00",
+          "lastCommitMsg": "Merge pull request #9 from PagoSDK/release/1.0.1",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "release/0.1.0",
+          "lastCommitDate": "2026-02-10T09:09:44+02:00",
+          "lastCommitMsg": "Add release updates for 0.1.0",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 0,
+          "behindDefault": 9
+        },
+        {
+          "name": "release/0.1.1",
+          "lastCommitDate": "2026-02-10T10:57:31+02:00",
+          "lastCommitMsg": "Add release updates for 0.1.1",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 11
+        },
+        {
+          "name": "release/0.1.2",
+          "lastCommitDate": "2026-02-09T20:34:56+02:00",
+          "lastCommitMsg": "Initial commit: add Package.swift and source placeholders",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 0,
+          "behindDefault": 11
+        },
+        {
+          "name": "release/0.1.3",
+          "lastCommitDate": "2026-02-10T15:35:10+02:00",
+          "lastCommitMsg": "Add release updates for 0.1.3",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 0,
+          "behindDefault": 7
+        },
+        {
+          "name": "release/0.1.4",
+          "lastCommitDate": "2026-02-16T17:20:49+02:00",
+          "lastCommitMsg": "Add release updates for 0.1.4",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 0,
+          "behindDefault": 5
+        },
+        {
+          "name": "release/0.1.9",
+          "lastCommitDate": "2026-02-25T13:17:30+02:00",
+          "lastCommitMsg": "Add release updates for 0.1.9",
+          "lastAuthor": "Cristi",
+          "aheadOfDefault": 1,
+          "behindDefault": 2
+        },
+        {
+          "name": "release/1.0.4",
+          "lastCommitDate": "2026-03-09T12:48:41+02:00",
+          "lastCommitMsg": "Add release updates for 1.0.4",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        },
+        {
+          "name": "release/1.0.6",
+          "lastCommitDate": "2026-03-10T11:54:44+02:00",
+          "lastCommitMsg": "Add release updates for 1.0.6",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "983fc40",
+          "date": "2026-03-02T10:49:38+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #9 from PagoSDK/release/1.0.1"
+        },
+        {
+          "hash": "8449abe",
+          "date": "2026-02-27T18:47:24+02:00",
+          "author": "Bogdan",
+          "message": "Add release updates for 1.0.1"
+        },
+        {
+          "hash": "50e3234",
+          "date": "2026-02-18T17:57:36+02:00",
+          "author": "Gabi",
+          "message": "Merge pull request #4 from PagoSDK/release/0.1.5"
+        },
+        {
+          "hash": "d0db9f5",
+          "date": "2026-02-18T17:51:40+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Add release updates for 0.1.5"
+        },
+        {
+          "hash": "8ae8f1a",
+          "date": "2026-02-16T17:51:23+02:00",
+          "author": "Gabi",
+          "message": "Merge pull request #3 from PagoSDK/release/0.1.4"
+        },
+        {
+          "hash": "ca8b7c2",
+          "date": "2026-02-16T17:20:49+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Add release updates for 0.1.4"
+        },
+        {
+          "hash": "d112c96",
+          "date": "2026-02-12T18:52:34+02:00",
+          "author": "Gabi",
+          "message": "Merge pull request #2 from PagoSDK/release/0.1.3"
+        },
+        {
+          "hash": "c469790",
+          "date": "2026-02-10T15:35:10+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Add release updates for 0.1.3"
+        },
+        {
+          "hash": "72880aa",
+          "date": "2026-02-10T15:24:06+02:00",
+          "author": "Gabi",
+          "message": "Merge pull request #1 from PagoSDK/release/0.1.0"
+        },
+        {
+          "hash": "dcd3385",
+          "date": "2026-02-10T09:09:44+02:00",
+          "author": "Gabi Chiosa",
+          "message": "Add release updates for 0.1.0"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.6",
+          "date": "2026-03-10T12:15:17+02:00"
+        },
+        {
+          "name": "1.0.6.binary",
+          "date": "2026-03-10T11:48:14+02:00"
+        },
+        {
+          "name": "1.0.5",
+          "date": "2026-03-10T10:30:19+02:00"
+        },
+        {
+          "name": "1.0.4",
+          "date": "2026-03-09T14:05:18+02:00"
+        },
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:33:56+02:00"
+        },
+        {
+          "name": "1.0.3.binary",
+          "date": "2026-03-02T10:49:38+02:00"
+        },
+        {
+          "name": "1.0.4.binary",
+          "date": "2026-03-02T10:49:38+02:00"
+        },
+        {
+          "name": "1.0.5.binary",
+          "date": "2026-03-02T10:49:38+02:00"
+        },
+        {
+          "name": "1.0.2",
+          "date": "2026-02-27T19:51:21+02:00"
+        },
+        {
+          "name": "1.0.1",
+          "date": "2026-02-27T19:40:59+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-esim",
+      "path": "ios-releases/ios-esim",
+      "remoteUrl": "git@github.com:PagoApp/ios-esim.git",
+      "defaultBranch": "main",
+      "currentBranch": "release/1.0.6",
+      "totalCommits": 490,
+      "branchCount": 7,
+      "tagCount": 11,
+      "lastActivity": "2026-03-10T11:46:46+02:00",
+      "branches": [
+        {
+          "name": "bugfix/PAGO-42378",
+          "lastCommitDate": "2026-02-09T20:24:49+02:00",
+          "lastCommitMsg": "Fixed code review issues for notification publisher",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 2,
+          "behindDefault": 363
+        },
+        {
+          "name": "main",
+          "lastCommitDate": "2026-03-09T16:57:07+02:00",
+          "lastCommitMsg": "Merge pull request #170 from PagoApp/feature/successs_screen",
+          "lastAuthor": "Bogdan",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        },
+        {
+          "name": "release/0.1.0",
+          "lastCommitDate": "2026-02-10T15:16:47+02:00",
+          "lastCommitMsg": "Add finish paymnet event",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 5,
+          "behindDefault": 363
+        },
+        {
+          "name": "release/0.1.2",
+          "lastCommitDate": "2026-02-12T18:48:16+02:00",
+          "lastCommitMsg": "Revert ios-buffer submodule to main branch version",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 10,
+          "behindDefault": 359
+        },
+        {
+          "name": "release/0.1.4",
+          "lastCommitDate": "2026-02-16T17:04:29+02:00",
+          "lastCommitMsg": "created release branch for 0.1.4",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 282
+        },
+        {
+          "name": "release/1.0.4",
+          "lastCommitDate": "2026-03-09T12:41:53+02:00",
+          "lastCommitMsg": "created release branch for 1.0.4",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 25
+        },
+        {
+          "name": "release/1.0.6",
+          "lastCommitDate": "2026-03-10T11:46:46+02:00",
+          "lastCommitMsg": "created release branch for 1.0.6",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 1,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "e312ef9",
+          "date": "2026-03-09T16:57:07+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #170 from PagoApp/feature/successs_screen"
+        },
+        {
+          "hash": "95a8695",
+          "date": "2026-03-09T16:52:49+02:00",
+          "author": "Bogdan",
+          "message": "Set showPaymentSuccessScreen = true in test that asserts success screen display"
+        },
+        {
+          "hash": "22705a3",
+          "date": "2026-03-09T16:43:43+02:00",
+          "author": "Bogdan",
+          "message": "Made showPaymentSuccessScreen available in all builds with default false"
+        },
+        {
+          "hash": "9e9feac",
+          "date": "2026-03-09T15:17:27+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #165 from PagoApp/feature/bcr_payment/PAGO-42711"
+        },
+        {
+          "hash": "9f7e839",
+          "date": "2026-03-09T15:09:25+02:00",
+          "author": "Bogdan",
+          "message": "Merge branch 'main' into feature/bcr_payment/PAGO-42711"
+        },
+        {
+          "hash": "fc7109b",
+          "date": "2026-03-09T14:48:03+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #168 from PagoApp/PAGO-28271"
+        },
+        {
+          "hash": "3a69046",
+          "date": "2026-03-09T14:42:24+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations ro.lproj/Localizable.strings (bundle: 155)"
+        },
+        {
+          "hash": "8fe2cfd",
+          "date": "2026-03-09T14:42:24+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations pl.lproj/Localizable.strings (bundle: 155)"
+        },
+        {
+          "hash": "419ebec",
+          "date": "2026-03-09T14:42:23+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations it.lproj/Localizable.strings (bundle: 155)"
+        },
+        {
+          "hash": "ae0fde4",
+          "date": "2026-03-09T14:42:22+02:00",
+          "author": "Cosmin Iulian",
+          "message": "New translations hu.lproj/Localizable.strings (bundle: 155)"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.0.6",
+          "date": "2026-03-10T12:15:26+02:00"
+        },
+        {
+          "name": "1.0.5",
+          "date": "2026-03-10T10:30:28+02:00"
+        },
+        {
+          "name": "1.0.4",
+          "date": "2026-03-09T14:05:26+02:00"
+        },
+        {
+          "name": "1.0.3",
+          "date": "2026-03-03T12:34:05+02:00"
+        },
+        {
+          "name": "0.1.8",
+          "date": "2026-02-24T14:43:59+02:00"
+        },
+        {
+          "name": "0.1.7",
+          "date": "2026-02-23T17:17:07+02:00"
+        },
+        {
+          "name": "0.1.6",
+          "date": "2026-02-18T22:25:10+02:00"
+        },
+        {
+          "name": "0.1.5",
+          "date": "2026-02-18T17:45:14+02:00"
+        },
+        {
+          "name": "0.1.4",
+          "date": "2026-02-16T17:04:37+02:00"
+        },
+        {
+          "name": "0.1.2",
+          "date": "2026-02-10T15:22:32+02:00"
+        }
+      ]
+    }
+,
+    {
+      "name": "ios-research",
+      "path": "ios-research",
+      "remoteUrl": "git@github.com:PagoApp/ios-research.git",
+      "defaultBranch": "feature/bills_scan",
+      "currentBranch": "feature/bills_scan",
+      "totalCommits": 3,
+      "branchCount": 1,
+      "tagCount": 0,
+      "lastActivity": "2026-02-22T18:05:43+02:00",
+      "branches": [
+        {
+          "name": "feature/bills_scan",
+          "lastCommitDate": "2026-02-22T18:05:43+02:00",
+          "lastCommitMsg": "Add experiment conclusion documenting results and findings",
+          "lastAuthor": "Pago Buddy",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "0bb1c54",
+          "date": "2026-02-22T18:05:43+02:00",
+          "author": "Pago Buddy",
+          "message": "Add experiment conclusion documenting results and findings"
+        },
+        {
+          "hash": "f4f0777",
+          "date": "2026-02-22T18:04:38+02:00",
+          "author": "Pago Buddy",
+          "message": "BillScanner: achieve 100% supplier/amount detection, 95% barcode"
+        },
+        {
+          "hash": "7c7eaec",
+          "date": "2026-02-22T11:25:15+02:00",
+          "author": "Pago Buddy",
+          "message": "add research files"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-unified-integrator",
+      "path": "ios-unified-integrator",
+      "remoteUrl": "",
+      "defaultBranch": "HEAD\ndetached",
+      "currentBranch": "HEAD\ndetached",
+      "totalCommits": 0,
+      "branchCount": 0,
+      "tagCount": 0,
+      "lastActivity": "",
+      "branches": [
+      ],
+      "recentCommits": [
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "pago-shared-config",
+      "path": "pago-shared-config",
+      "remoteUrl": "git@github.com:PagoApp/pago-shared-config.git",
+      "defaultBranch": "master",
+      "currentBranch": "feature/add_sync_option",
+      "totalCommits": 59,
+      "branchCount": 2,
+      "tagCount": 0,
+      "lastActivity": "2026-02-11T17:36:09+02:00",
+      "branches": [
+        {
+          "name": "feature/add_sync_option",
+          "lastCommitDate": "2026-02-11T17:36:09+02:00",
+          "lastCommitMsg": "Add autopilot command and update README structure",
+          "lastAuthor": "Gabi Chiosa",
+          "aheadOfDefault": 9,
+          "behindDefault": 16
+        },
+        {
+          "name": "master",
+          "lastCommitDate": "2026-02-09T13:15:45+02:00",
+          "lastCommitMsg": "Merge pull request #18 from PagoApp/feature/review-pr-deduplication",
+          "lastAuthor": "stefanhaluspago",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "c1c4dae",
+          "date": "2026-02-09T13:15:45+02:00",
+          "author": "stefanhaluspago",
+          "message": "Merge pull request #18 from PagoApp/feature/review-pr-deduplication"
+        },
+        {
+          "hash": "14efefc",
+          "date": "2026-02-09T13:15:32+02:00",
+          "author": "stefanhaluspago",
+          "message": "Update android/commands/review-pr.md"
+        },
+        {
+          "hash": "474394d",
+          "date": "2026-02-09T13:10:53+02:00",
+          "author": "Stefan Halus",
+          "message": "Add code-review and unit test rules to plan structure"
+        },
+        {
+          "hash": "5d1e42a",
+          "date": "2026-02-09T13:03:32+02:00",
+          "author": "Stefan Halus",
+          "message": "Revert workflow-rules.md changes"
+        },
+        {
+          "hash": "56fdea1",
+          "date": "2026-02-09T12:59:10+02:00",
+          "author": "Stefan Halus",
+          "message": "Add subagent context rule and update workflow rules"
+        },
+        {
+          "hash": "fb0be48",
+          "date": "2026-02-09T12:55:35+02:00",
+          "author": "Stefan Halus",
+          "message": "Add deduplication for existing PR comments in review-pr"
+        },
+        {
+          "hash": "ded9550",
+          "date": "2026-02-05T15:47:57+02:00",
+          "author": "stefanhaluspago",
+          "message": "Merge pull request #17 from PagoApp/feature/enhance-agents-and-workflow"
+        },
+        {
+          "hash": "262e204",
+          "date": "2026-02-05T15:47:40+02:00",
+          "author": "stefanhaluspago",
+          "message": "Update android/agents/figma-spec-extractor.md"
+        },
+        {
+          "hash": "5b018c1",
+          "date": "2026-02-05T15:43:27+02:00",
+          "author": "Stefan Halus",
+          "message": "Merge master and resolve conflict in workflow-rules.md"
+        },
+        {
+          "hash": "30b87ee",
+          "date": "2026-02-05T15:41:10+02:00",
+          "author": "Stefan Halus",
+          "message": "Enhanced agents and workflow rules"
+        }
+      ],
+      "tags": [
+      ]
+    }
+,
+    {
+      "name": "ios-rca-sample",
+      "path": "temp/ios-rca-sample",
+      "remoteUrl": "git@github.com:PagoSDK/ios-rca-sample.git",
+      "defaultBranch": "main",
+      "currentBranch": "main",
+      "totalCommits": 351,
+      "branchCount": 1,
+      "tagCount": 261,
+      "lastActivity": "2025-09-04T13:34:24+03:00",
+      "branches": [
+        {
+          "name": "main",
+          "lastCommitDate": "2025-09-04T13:34:24+03:00",
+          "lastCommitMsg": "PAGO-40520 (#106)",
+          "lastAuthor": "Cosmin Iulian",
+          "aheadOfDefault": 0,
+          "behindDefault": 0
+        }
+      ],
+      "recentCommits": [
+        {
+          "hash": "65b2ba0",
+          "date": "2025-09-04T13:34:24+03:00",
+          "author": "Cosmin Iulian",
+          "message": "PAGO-40520 (#106)"
+        },
+        {
+          "hash": "1bb5d88",
+          "date": "2025-09-03T15:45:19+03:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #105 from PagoSDK/update-readme"
+        },
+        {
+          "hash": "26cb95f",
+          "date": "2025-09-03T15:44:54+03:00",
+          "author": "Cosmin Iulian",
+          "message": "Update README.md"
+        },
+        {
+          "hash": "0716b5e",
+          "date": "2025-06-17T14:32:25+03:00",
+          "author": "Gabi",
+          "message": "Cleanup sample app (#103)"
+        },
+        {
+          "hash": "5ed7f15",
+          "date": "2025-03-18T11:11:53+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #94 from PagoSDK/release/1.10.0"
+        },
+        {
+          "hash": "683d251",
+          "date": "2025-03-14T14:26:38+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Add release updates for 1.10.0"
+        },
+        {
+          "hash": "0ddffa7",
+          "date": "2025-02-12T17:17:41+02:00",
+          "author": "Bogdan",
+          "message": "Merge pull request #92 from PagoSDK/release/1.9.6"
+        },
+        {
+          "hash": "19ee4b8",
+          "date": "2025-02-12T14:38:32+02:00",
+          "author": "Bogdan",
+          "message": "Add release updates for 1.9.6"
+        },
+        {
+          "hash": "4e76737",
+          "date": "2025-02-10T17:08:25+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Merge pull request #91 from PagoSDK/release/1.9.3"
+        },
+        {
+          "hash": "0577b13",
+          "date": "2025-02-07T18:35:10+02:00",
+          "author": "Cosmin Iulian",
+          "message": "Add release updates for 1.9.3"
+        }
+      ],
+      "tags": [
+        {
+          "name": "1.12.0",
+          "date": "2025-04-10T17:20:46+03:00"
+        },
+        {
+          "name": "1.9.6",
+          "date": "2025-02-17T17:19:05+02:00"
+        },
+        {
+          "name": "1.8.0",
+          "date": "2025-02-06T12:32:10+02:00"
+        },
+        {
+          "name": "1.6.4",
+          "date": "2024-10-25T11:35:55+03:00"
+        },
+        {
+          "name": "1.6.3",
+          "date": "2024-10-25T10:19:47+03:00"
+        },
+        {
+          "name": "1.6.1",
+          "date": "2024-10-15T11:42:13+03:00"
+        },
+        {
+          "name": "1.6.0",
+          "date": "2024-10-14T15:39:58+03:00"
+        },
+        {
+          "name": "1.5.0",
+          "date": "2024-09-04T09:24:42+03:00"
+        },
+        {
+          "name": "1.4.1",
+          "date": "2024-08-12T11:29:26+03:00"
+        },
+        {
+          "name": "1.4.0",
+          "date": "2024-08-05T13:53:56+03:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaJira — Live Repo Tracker</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3347;
+    --text: #e2e4ed;
+    --muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --green: #00b894;
+    --orange: #f39c12;
+    --red: #d63031;
+    --blue: #0984e3;
+    --cyan: #00cec9;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* Header */
+  .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+  h1 {
+    font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #e2e4ed 0%, #6c5ce7 60%, #00cec9 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .poc-badge {
+    font-size: 0.6rem; font-weight: 700; padding: 2px 8px; border-radius: 8px;
+    background: rgba(108,92,231,0.15); color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 24px; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 18px; flex: 1; min-width: 120px;
+  }
+  .stat-val { font-size: 1.5rem; font-weight: 800; }
+  .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; }
+  .tab {
+    padding: 6px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border); background: var(--surface);
+    color: var(--muted); transition: all 0.2s;
+  }
+  .tab:hover { border-color: var(--accent); color: var(--text); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* Search */
+  .search-bar {
+    margin-bottom: 16px;
+  }
+  .search-bar input {
+    width: 100%; padding: 10px 14px; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font-size: 0.85rem; outline: none; transition: border-color 0.2s;
+  }
+  .search-bar input::placeholder { color: var(--muted); }
+  .search-bar input:focus { border-color: var(--accent); }
+
+  /* View: Repos */
+  .repo-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+  .repo-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; cursor: pointer; transition: border-color 0.2s;
+  }
+  .repo-card:hover { border-color: var(--accent); }
+  .repo-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .repo-name { font-weight: 700; font-size: 0.95rem; }
+  .repo-path { font-size: 0.68rem; color: var(--muted); font-family: 'SF Mono', monospace; }
+  .repo-meta { display: flex; gap: 14px; font-size: 0.72rem; color: var(--muted); flex-wrap: wrap; }
+  .repo-meta span { display: flex; align-items: center; gap: 4px; }
+  .repo-meta .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+  /* Branch pills */
+  .branch-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+  .branch-pill {
+    font-size: 0.65rem; padding: 2px 8px; border-radius: 6px;
+    font-family: 'SF Mono', monospace; white-space: nowrap;
+  }
+  .branch-pill.default { background: rgba(0,184,148,0.12); color: var(--green); }
+  .branch-pill.feature { background: rgba(108,92,231,0.12); color: var(--accent); }
+  .branch-pill.other { background: var(--surface2); color: var(--muted); }
+
+  /* View: Activity timeline */
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 6px; padding: 8px 14px; background: var(--surface); border-radius: 8px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -18px; top: 14px;
+    width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--border); background: var(--bg);
+  }
+  .tl-item.commit::before { border-color: var(--green); }
+  .tl-item.tag::before { border-color: var(--orange); background: var(--orange); }
+  .tl-item.branch::before { border-color: var(--accent); }
+  .tl-date { font-size: 0.65rem; color: var(--muted); }
+  .tl-repo { font-size: 0.7rem; font-weight: 600; color: var(--accent); }
+  .tl-msg { font-size: 0.78rem; }
+  .tl-hash { font-size: 0.65rem; color: var(--muted); font-family: 'SF Mono', monospace; }
+
+  /* View: Tags/Releases */
+  .tag-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+  .tag-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .tag-name {
+    font-weight: 700; font-size: 0.9rem; color: var(--orange);
+    font-family: 'SF Mono', monospace;
+  }
+  .tag-repo { font-size: 0.72rem; color: var(--muted); }
+  .tag-date { font-size: 0.68rem; color: var(--muted); }
+
+  /* View: Branches overview */
+  .branch-table { width: 100%; border-collapse: collapse; }
+  .branch-table th {
+    text-align: left; font-size: 0.65rem; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--muted); padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .branch-table td {
+    padding: 8px 10px; font-size: 0.78rem; border-bottom: 1px solid var(--border);
+  }
+  .branch-table tr:hover td { background: var(--surface2); }
+  .mono { font-family: 'SF Mono', monospace; font-size: 0.72rem; }
+  .ahead { color: var(--green); font-size: 0.68rem; font-weight: 600; }
+  .behind { color: var(--red); font-size: 0.68rem; font-weight: 600; }
+
+  /* Overlay */
+  .overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.open { display: flex; }
+  .overlay-panel {
+    background: var(--surface); border: 1px solid var(--accent); border-radius: var(--radius);
+    max-width: 700px; width: 100%; max-height: 85vh; overflow-y: auto;
+    padding: 28px 24px; position: relative;
+    box-shadow: 0 8px 40px rgba(108,92,231,0.2);
+    scrollbar-width: none;
+  }
+  .overlay-panel::-webkit-scrollbar { display: none; }
+  .overlay-close {
+    position: absolute; top: 14px; right: 16px; background: var(--surface2);
+    border: 1px solid var(--border); color: var(--muted); width: 28px; height: 28px;
+    border-radius: 50%; cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .overlay-close:hover { border-color: var(--accent); color: var(--text); }
+
+  .detail-section { margin-bottom: 14px; }
+  .detail-label {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); font-weight: 600; margin-bottom: 6px;
+  }
+  .commit-row {
+    display: flex; align-items: baseline; gap: 8px; padding: 4px 0;
+    font-size: 0.78rem; border-bottom: 1px solid var(--border);
+  }
+  .commit-row:last-child { border-bottom: none; }
+  .commit-hash { font-family: 'SF Mono', monospace; font-size: 0.68rem; color: var(--cyan); min-width: 60px; }
+  .commit-msg { flex: 1; }
+  .commit-date { font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
+  .commit-author { font-size: 0.65rem; color: var(--muted); white-space: nowrap; min-width: 80px; }
+
+  .updated { text-align: center; font-size: 0.7rem; color: var(--muted); margin-top: 28px; }
+  .back-link {
+    display: inline-block; margin-bottom: 24px; padding: 5px 14px; border-radius: 16px;
+    font-size: 0.8rem; font-weight: 500; background: var(--surface); color: var(--muted);
+    border: 1px solid var(--border); text-decoration: none;
+  }
+  .back-link:hover { border-color: var(--accent); color: var(--text); }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 600px) {
+    .stats-bar { gap: 6px; }
+    .stat { min-width: 80px; padding: 8px 12px; }
+    .stat-val { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">&larr; Workflow</a>
+
+  <div class="header">
+    <h1>PaJira</h1>
+    <span class="poc-badge">POC</span>
+  </div>
+  <div class="sub" id="sub">Loading...</div>
+
+  <div id="stats-bar" class="stats-bar"></div>
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search repos, branches, commits..." />
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-view="repos">Repos</div>
+    <div class="tab" data-view="activity">Activity</div>
+    <div class="tab" data-view="branches">Branches</div>
+    <div class="tab" data-view="tags">Tags</div>
+  </div>
+
+  <div id="view-repos" class="repo-grid"></div>
+  <div id="view-activity" class="timeline hidden"></div>
+  <div id="view-branches" class="hidden"></div>
+  <div id="view-tags" class="tag-list hidden"></div>
+
+  <div class="updated" id="updated"></div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-panel" id="overlay-panel"></div>
+</div>
+
+<script>
+(async function() {
+  let data;
+  try {
+    const r = await fetch('pajira-data.json?' + Date.now());
+    if (!r.ok) throw new Error(`HTTP ${r.status} — run ./pajira-scan.sh first`);
+    data = await r.json();
+  } catch (e) {
+    document.getElementById('sub').innerHTML = `<span style="color:var(--red)">Could not load data: ${e.message}</span>`;
+    return;
+  }
+
+  const repos = data.repos || [];
+  const overlay = document.getElementById('overlay');
+  const panel = document.getElementById('overlay-panel');
+
+  // Sub
+  document.getElementById('sub').textContent = `${data.repoCount} repositories scanned from ${data.scanRoot}`;
+
+  // Stats
+  const totalBranches = repos.reduce((s, r) => s + r.branchCount, 0);
+  const totalTags = repos.reduce((s, r) => s + r.tagCount, 0);
+  const totalCommits = repos.reduce((s, r) => s + r.totalCommits, 0);
+  const activeBranches = repos.reduce((s, r) => s + r.branches.filter(b => b.name !== r.defaultBranch).length, 0);
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="stat"><div class="stat-val">${repos.length}</div><div class="stat-label">Repos</div></div>
+    <div class="stat"><div class="stat-val">${totalBranches}</div><div class="stat-label">Branches</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--accent)">${activeBranches}</div><div class="stat-label">Active branches</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--orange)">${totalTags}</div><div class="stat-label">Tags</div></div>
+    <div class="stat"><div class="stat-val">${totalCommits.toLocaleString()}</div><div class="stat-label">Total commits</div></div>
+  `;
+
+  // Updated
+  const gen = new Date(data.generatedAt);
+  document.getElementById('updated').textContent = `Scanned ${gen.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} at ${gen.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+
+  // ---- VIEWS ----
+
+  function relTime(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    const diff = Date.now() - d.getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days < 30) return `${days}d ago`;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function shortDate(dateStr) {
+    if (!dateStr) return '';
+    return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
+  }
+
+  // Repos view
+  function renderRepos(filter = '') {
+    const el = document.getElementById('view-repos');
+    const filtered = filter
+      ? repos.filter(r => r.name.toLowerCase().includes(filter) || r.path.toLowerCase().includes(filter))
+      : repos;
+
+    el.innerHTML = filtered.map((r, i) => {
+      const featureBranches = r.branches.filter(b => b.name !== r.defaultBranch);
+      const branchPills = r.branches.slice(0, 6).map(b => {
+        const cls = b.name === r.defaultBranch ? 'default' : (b.name.includes('feature') ? 'feature' : 'other');
+        return `<span class="branch-pill ${cls}">${b.name}</span>`;
+      }).join('') + (r.branches.length > 6 ? `<span class="branch-pill other">+${r.branches.length - 6}</span>` : '');
+
+      return `
+        <div class="repo-card" onclick="openRepo('${r.name}')">
+          <div class="repo-card-top">
+            <span class="repo-name">${r.name}</span>
+            <span class="repo-path">${r.path}</span>
+          </div>
+          <div class="repo-meta">
+            <span><span class="dot" style="background:var(--green)"></span> ${r.defaultBranch}</span>
+            <span>${r.branchCount} branch${r.branchCount !== 1 ? 'es' : ''}</span>
+            <span>${r.tagCount} tag${r.tagCount !== 1 ? 's' : ''}</span>
+            <span>${r.totalCommits} commits</span>
+            <span>${relTime(r.lastActivity)}</span>
+          </div>
+          <div class="branch-pills">${branchPills}</div>
+        </div>`;
+    }).join('');
+  }
+
+  // Activity view — merge all recent commits, sort by date
+  function renderActivity(filter = '') {
+    const el = document.getElementById('view-activity');
+    let events = [];
+
+    repos.forEach(r => {
+      r.recentCommits.forEach(c => {
+        events.push({ type: 'commit', repo: r.name, ...c });
+      });
+      r.tags.forEach(t => {
+        events.push({ type: 'tag', repo: r.name, name: t.name, date: t.date });
+      });
+    });
+
+    events.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (filter) {
+      events = events.filter(e =>
+        e.repo.toLowerCase().includes(filter) ||
+        (e.message || '').toLowerCase().includes(filter) ||
+        (e.name || '').toLowerCase().includes(filter)
+      );
+    }
+
+    el.innerHTML = events.slice(0, 100).map(e => {
+      if (e.type === 'commit') {
+        return `<div class="tl-item commit">
+          <div class="tl-date">${relTime(e.date)}</div>
+          <div class="tl-repo">${e.repo}</div>
+          <div class="tl-msg">${e.message}</div>
+          <div class="tl-hash">${e.hash} &middot; ${e.author}</div>
+        </div>`;
+      } else {
+        return `<div class="tl-item tag">
+          <div class="tl-date">${shortDate(e.date)}</div>
+          <div class="tl-repo">${e.repo}</div>
+          <div class="tl-msg" style="color:var(--orange)">Tag: ${e.name}</div>
+        </div>`;
+      }
+    }).join('');
+  }
+
+  // Branches view — all non-default branches across repos
+  function renderBranches(filter = '') {
+    const el = document.getElementById('view-branches');
+    let rows = [];
+    repos.forEach(r => {
+      r.branches.forEach(b => {
+        if (b.name === r.defaultBranch) return;
+        rows.push({ repo: r.name, ...b });
+      });
+    });
+
+    rows.sort((a, b) => new Date(b.lastCommitDate) - new Date(a.lastCommitDate));
+
+    if (filter) {
+      rows = rows.filter(r =>
+        r.repo.toLowerCase().includes(filter) ||
+        r.name.toLowerCase().includes(filter) ||
+        r.lastCommitMsg.toLowerCase().includes(filter)
+      );
+    }
+
+    el.innerHTML = `<table class="branch-table">
+      <thead><tr>
+        <th>Repo</th><th>Branch</th><th>Last Commit</th><th>Author</th><th>Ahead</th><th>Behind</th><th>Updated</th>
+      </tr></thead>
+      <tbody>
+      ${rows.map(r => `<tr>
+        <td style="font-weight:600">${r.repo}</td>
+        <td class="mono">${r.name}</td>
+        <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.lastCommitMsg}</td>
+        <td style="color:var(--muted)">${r.lastAuthor}</td>
+        <td>${r.aheadOfDefault > 0 ? `<span class="ahead">+${r.aheadOfDefault}</span>` : '<span style="color:var(--muted)">0</span>'}</td>
+        <td>${r.behindDefault > 0 ? `<span class="behind">-${r.behindDefault}</span>` : '<span style="color:var(--muted)">0</span>'}</td>
+        <td style="color:var(--muted)">${relTime(r.lastCommitDate)}</td>
+      </tr>`).join('')}
+      </tbody>
+    </table>`;
+  }
+
+  // Tags view
+  function renderTags(filter = '') {
+    const el = document.getElementById('view-tags');
+    let tags = [];
+    repos.forEach(r => {
+      r.tags.forEach(t => tags.push({ repo: r.name, ...t }));
+    });
+    tags.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (filter) {
+      tags = tags.filter(t =>
+        t.repo.toLowerCase().includes(filter) || t.name.toLowerCase().includes(filter)
+      );
+    }
+
+    el.innerHTML = tags.length ? tags.map(t => `
+      <div class="tag-card">
+        <div class="tag-name">${t.name}</div>
+        <div class="tag-repo">${t.repo}</div>
+        <div class="tag-date">${shortDate(t.date)}</div>
+      </div>
+    `).join('') : '<div style="color:var(--muted);text-align:center;padding:40px;">No tags found</div>';
+  }
+
+  // Repo detail overlay
+  window.openRepo = function(name) {
+    const r = repos.find(x => x.name === name);
+    if (!r) return;
+
+    const commitsHtml = r.recentCommits.map(c => `
+      <div class="commit-row">
+        <span class="commit-hash">${c.hash}</span>
+        <span class="commit-author">${c.author}</span>
+        <span class="commit-msg">${c.message}</span>
+        <span class="commit-date">${relTime(c.date)}</span>
+      </div>
+    `).join('');
+
+    const branchesHtml = r.branches.map(b => {
+      const cls = b.name === r.defaultBranch ? 'default' : (b.name.includes('feature') ? 'feature' : 'other');
+      const delta = b.name !== r.defaultBranch
+        ? ` &middot; <span class="ahead">+${b.aheadOfDefault}</span> <span class="behind">-${b.behindDefault}</span>`
+        : '';
+      return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--border)">
+        <span class="branch-pill ${cls}">${b.name}</span>
+        <span style="flex:1;font-size:0.72rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${b.lastCommitMsg}</span>
+        <span style="font-size:0.65rem;color:var(--muted);white-space:nowrap">${relTime(b.lastCommitDate)}${delta}</span>
+      </div>`;
+    }).join('');
+
+    const tagsHtml = r.tags.length
+      ? r.tags.map(t => `<span class="branch-pill" style="background:rgba(243,156,18,0.12);color:var(--orange);margin:2px">${t.name}</span>`).join('')
+      : '<span style="color:var(--muted);font-size:0.78rem">No tags</span>';
+
+    panel.innerHTML = `
+      <button class="overlay-close" onclick="closeOverlay()">&times;</button>
+      <div style="font-size:1.2rem;font-weight:700;margin-bottom:2px;padding-right:36px">${r.name}</div>
+      <div style="font-size:0.72rem;color:var(--muted);font-family:monospace;margin-bottom:16px">${r.path}${r.remoteUrl ? ' &middot; ' + r.remoteUrl : ''}</div>
+
+      <div style="display:flex;gap:16px;margin-bottom:16px;font-size:0.78rem">
+        <span>${r.totalCommits} commits</span>
+        <span>${r.branchCount} branches</span>
+        <span>${r.tagCount} tags</span>
+        <span>Last: ${relTime(r.lastActivity)}</span>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-label">Branches</div>
+        ${branchesHtml}
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-label">Recent commits on ${r.defaultBranch}</div>
+        ${commitsHtml}
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-label">Tags / Releases</div>
+        <div style="display:flex;flex-wrap:wrap;gap:2px">${tagsHtml}</div>
+      </div>
+    `;
+    overlay.classList.add('open');
+  };
+
+  window.closeOverlay = function() { overlay.classList.remove('open'); };
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+
+  // Tab switching
+  const views = ['repos', 'activity', 'branches', 'tags'];
+  let currentView = 'repos';
+
+  function switchView(view) {
+    currentView = view;
+    views.forEach(v => {
+      document.getElementById('view-' + v).classList.toggle('hidden', v !== view);
+    });
+    document.querySelectorAll('.tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.view === view);
+    });
+    renderCurrentView();
+  }
+
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => switchView(t.dataset.view));
+  });
+
+  function renderCurrentView(filter = '') {
+    const f = filter.toLowerCase();
+    if (currentView === 'repos') renderRepos(f);
+    else if (currentView === 'activity') renderActivity(f);
+    else if (currentView === 'branches') renderBranches(f);
+    else if (currentView === 'tags') renderTags(f);
+  }
+
+  // Search
+  document.getElementById('search').addEventListener('input', e => {
+    renderCurrentView(e.target.value);
+  });
+
+  // Initial render
+  renderRepos();
+})();
+</script>
+</body>
+</html>
